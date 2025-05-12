@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:40:59 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/13 00:07:22 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/13 00:17:18 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int main(int argc, char **argv)
     if (argc > 1)
     {
         while (i < argc)
-        {
-            megaphone(argv[i]);
-            i++;
-        }
+            megaphone(argv[i++]);
     }
     else
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
