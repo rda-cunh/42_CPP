@@ -6,14 +6,14 @@
 #    By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/10 17:41:53 by rda-cunh          #+#    #+#              #
-#    Updated: 2025/05/11 15:16:09 by rda-cunh         ###   ########.fr        #
+#    Updated: 2025/05/13 00:11:06 by rda-cunh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = 
 
 SRCS = 	 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
