@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rda-cunh <rda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:31:16 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/13 00:38:40 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/13 19:23:44 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ class Contact {
         std::string nickname;
         std::string phoneNumber;
         std::string darkestSecret;
+        int init;
 
     public:
-        void setContactInfo() // to set each contact
-        void displayContact() // to display contact info
-        void contactExists() // to check if a contact exists
+        void startContact(); // to start each of the contacts
+        void setContactInfo(); // to set each contact
+        void displayContact(); // to display contact info
+        void contactExists(); // to check if a contact exists
 };
 
 #endif
