@@ -15,12 +15,18 @@
 
 #include <iostream>
 
-class PhoneBook
-{
-    public:
-
+class Contact {
     private:
+        std::string firstName;
+        std::string lastName;
+        std::string nickname;
+        std::string phoneNumber;
+        std::string darkestSecret;
 
+    public:
+        void setContactInfo() // to set each contact
+        void displayContact() // to display contact info
+        void contactExists() // to check if a contact exists
 };
 
 #endif

@@ -27,7 +27,7 @@ void	print_header(void)
 
 int main(void)
 {
-    PhoneBook phone;
+    PhoneBook Phone;
     std::string input;
     
     while(1)
@@ -41,9 +41,9 @@ int main(void)
         if (input == "exit")
             break ;
         else if (input == "add")
-            //function to add contact
+            Phone.addContact();
         else if (input == "search")
-            //function to search contact          
+            Phone.searchContacts();         
     }
     std::cout << CLEAR;
     return (0);

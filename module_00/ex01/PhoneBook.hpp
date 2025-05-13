@@ -14,13 +14,17 @@
 # define PHONEBOOK_HPP
 
 #include "Contact.hpp"
+#include "header.hpp"
 
-class PhoneBook
-{
-    public:
-
+class PhoneBook {
     private:
+        Contact contacts[MaxId];
+        int nextIndex; // keeps the index for the next contact
+        int totalContacts; //keeps the total number of contacts
 
+    public:
+        void addContact() //funtion to add a contact
+        void searchContacts() //function to search contacts
 };
 
 #endif
