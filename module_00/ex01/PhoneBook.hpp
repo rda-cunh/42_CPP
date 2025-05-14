@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:26:04 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/14 01:12:37 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/14 01:17:04 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class PhoneBook
     private:
         Contact _contacts[MAX_CONTACTS]; //array of strings
         int     _id; // keeps the id of the contact
-        void    printtable();
+        void    _printtable();
 
     public:
         PhoneBook();
