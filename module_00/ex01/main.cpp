@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:24:42 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/13 01:10:10 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/14 01:05:16 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ int main(void)
 {
     PhoneBook Phone;
     std::string input;
+    int invalid_input = 0;
     
     while(1)
     {
-        print_header();
+        if (!invalid_input)
+            print_header();
         std::cout << "Enter a command: ";
         if (!std::getline(std::cin, input))
             break ;
@@ -43,7 +45,14 @@ int main(void)
         else if (input == "add")
             Phone.addContact();
         else if (input == "search")
-            Phone.searchContacts();         
+            Phone.searchContacts();
+        else
+        {
+            std::cout << "Invalid command. Please insert again." << std::endl;
+            invalid_input = 1;
+            continue ;
+        }
+        invalid_input = 0;                 
     }
     std::cout << CLEAR;
     return (0);

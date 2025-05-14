@@ -3,24 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rda-cunh <rda-cunh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:26:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/13 19:37:48 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/14 01:13:39 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void PhoneBook::startContacts()
+PhoneBook::PhoneBook()
 {
-    for(int i = 0; i < MAX_CONTACTS; i++)
-    {
-        contact[i].startContact(); 
-    }
+    _id = 0;
 }
 
-void PhoneBook::addContact() 
+void PhoneBook::addContact()
 {
     std::string firstName;
     std::string lastName;
@@ -28,9 +25,7 @@ void PhoneBook::addContact()
     std::string phoneNumber;
     std::string darkestSecret;
 
-    if (nextIndex == MAX_CONTACTS)
-        nextIndex == 0;
-    
+ 
     std::cout << "Enter a command: ";
 
 }

@@ -3,28 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rda-cunh <rda-cunh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:26:04 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/13 19:34:40 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/14 01:12:37 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include "header.hpp"
+# include "header.hpp"
 
 #define MAX_CONTACTS 8
 
-class PhoneBook {
+class PhoneBook 
+{
     private:
-        Contact contact[MAX_CONTACTS];
-        int nextIndex; // keeps the index of the contact
-        int totalContacts; //keeps the total number of contacts
+        Contact _contacts[MAX_CONTACTS]; //array of strings
+        int     _id; // keeps the id of the contact
+        void    printtable();
 
     public:
-        void startContacts(); // starts the contacts
+        PhoneBook();
+        ~PhoneBook();
         void addContact(); //funtion to add a contact info
         void searchContacts() const; //function to search contacts
 };
