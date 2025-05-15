@@ -14,8 +14,10 @@
 
 PhoneBook::PhoneBook()
 {
-    _id = 0;
+    _addCount = 0;
 }
+
+PhoneBook::~PhoneBook() {}
 
 void PhoneBook::addContact()
 {
@@ -24,8 +26,20 @@ void PhoneBook::addContact()
     std::string nickname;
     std::string phoneNumber;
     std::string darkestSecret;
+    int contact_id;
 
- 
-    std::cout << "Enter a command: ";
+    std::cout << CLEAR;
+    std::cout << "**********************************" << std::endl;
+	std::cout << "*           ADD CONTACT          *" << std::endl;
+	std::cout << "**********************************" << std::endl << std::endl;
+    std::cout << "Type the contact informations:" << std::endl << std::endl;
+	std::cout << "First name: ";
+    std::getline(std::cin, firstName);
+    std::cout << "Last name: ";
+    std::getline(std::cin, lastName);
+    // ...
+    //condition to check if any of the inputs is not empty. If empty print a message and return.
+
+    _contacts[_addCount++ % 8] = setContact(firstName, lastName, nickname, phoneNumber, darkestSecretcret);
 
 }

@@ -25,8 +25,9 @@ class Contact {
         int init;
 
     public:
-        void startContact(); // to start each of the contacts
-        void setContactInfo(); // to set each contact
+        Contact(void);
+        ~Contact(void);
+        void setContact(std::string firstName, std::string lastName, std::string nickname, std::string phone, std::string secret); // to set each of the contacts
         void displayContact(); // to display contact info
         void contactExists(); // to check if a contact exists
 };

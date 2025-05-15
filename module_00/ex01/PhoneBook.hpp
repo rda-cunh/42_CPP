@@ -20,15 +20,15 @@
 class PhoneBook 
 {
     private:
-        Contact _contacts[MAX_CONTACTS]; //array of strings
-        int     _id; // keeps the id of the contact
-        void    _printtable();
+        Contact _contacts[MAX_CONTACTS]; //array of strings/ contacts
+        int     _addCount; // tracks the number of added contacts
 
     public:
         PhoneBook();
         ~PhoneBook();
         void addContact(); //funtion to add a contact info
         void searchContacts() const; //function to search contacts
+        void prinTable(); // I believe i will need to print the table somehow (check later if it's needed and if bust be public or private)
 };
 
 #endif
