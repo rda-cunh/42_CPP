@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rda-cunh <rda-cunh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:26:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/15 20:11:09 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/16 01:34:26 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "header.hpp"
 
 PhoneBook::PhoneBook()
 {
@@ -26,7 +27,7 @@ void PhoneBook::addContact()
     std::string nickname;
     std::string phoneNumber;
     std::string darkestSecret;
-    int contact_id;
+    int current_id;
 
     std::cout << CLEAR;
     std::cout << "**********************************" << std::endl;
@@ -44,7 +45,8 @@ void PhoneBook::addContact()
     std::cout << "Darkest secret: ";
     std::getline(std::cin, darkestSecret); 
 
-    if (firstName.empty() || lastName.empty() || nickname.empty() || phoneNumber.empty() || darkestSecret.empty())
+    if (firstName.empty() || lastName.empty() || nickname.empty() \
+        || phoneNumber.empty() || darkestSecret.empty())
     {
         std::cout << std::endl << "Contact cannot have an empty field. Press ENTER to continue" << std::endl;
         std::cin.ignore();
@@ -52,5 +54,13 @@ void PhoneBook::addContact()
     }
 
     _contacts[_addCount++ % 8] = setContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
+    current_id = _addCount % 8 == 0 ? 8 : _addCount % 8;
+
+    if (_addCount > 8)
+        std::cout << "Contact added to position " << current_id << " (old contact overwritten)" << std::endl;
+    else
+        
+    
+    
 
 }

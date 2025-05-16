@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:24:42 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/14 01:05:16 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/16 01:23:18 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ int main(void)
         std::cout << "Enter a command: ";
         if (!std::getline(std::cin, input))
             break ;
-        for (int i = 0; input[i]; i++)
-            input[i] = std::tolower(input[i]);
-        if (input == "exit")
+        if (input == "EXIT")
             break ;
-        else if (input == "add")
+        else if (input == "ADD")
             Phone.addContact();
-        else if (input == "search")
+        else if (input == "SEARCH")
             Phone.searchContacts();
         else
         {
