@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:26:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/16 13:42:14 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/16 19:13:56 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void PhoneBook::addContact()
     int current_id;
 
     std::cout << CLEAR;
-    std::cout << "**********************************" << std::endl;
-	std::cout << "*           ADD CONTACT          *" << std::endl;
-	std::cout << "**********************************" << std::endl << std::endl;
+    std::cout << "*********************************************" << std::endl;
+	std::cout << "*                ADD CONTACT                *" << std::endl;
+	std::cout << "*********************************************" << std::endl << std::endl;
     std::cout << "Type the contact informations bellow:" << std::endl << std::endl;
 	std::cout << "First name: ";
     std::getline(std::cin, firstName);
@@ -42,13 +42,15 @@ void PhoneBook::addContact()
     std::cout << "Phone number: ";
     std::getline(std::cin, phoneNumber);
     std::cout << "Darkest secret: ";
-    std::getline(std::cin, darkestSecret); 
+    std::getline(std::cin, darkestSecret);
+    std::cout << std::endl; 
 
     if (firstName.empty() || lastName.empty() || nickname.empty() \
         || phoneNumber.empty() || darkestSecret.empty())
     {
-        std::cout << std::endl << "Contact cannot have an empty field. Press ENTER to continue" << std::endl;
-        std::cin.ignore();
+        std::cout << std::endl << "A contact cannot have an empty field." << std::endl;
+		std::cout << "Press ENTER to continue." << std::endl;
+		std::cin.ignore();
         return ;        
     }
 
@@ -75,24 +77,25 @@ void PhoneBook::_printTable()
         {
             std::cout << "|" << std::setw(10) << i + 1 << "|";
             str = _contacts[i].getFirstName();
-            std::cout << std::setw(10) << Contact::formatWidth(str) << "|";
+            std::cout << std::setw(10) << std::right << Contact::formatWidth(str) << "|";
             str = _contacts[i].getLastName();
-            std::cout << std::setw(10) << Contact::formatWidth(str) << "|";
+            std::cout << std::setw(10) << std::right << Contact::formatWidth(str) << "|";
             str = _contacts[i].getNick();
-            std::cout << std::setw(10) << Contact::formatWidth(str) << "|" << std::endl; 
+            std::cout << std::setw(10) << std::right << Contact::formatWidth(str) << "|" << std::endl; 
         }      
     }
     std::cout << std::endl;
 }
 
-void PhoneBook::searchContacts() const
+void PhoneBook::searchContacts()
 {
-    std::string input; 
+    std::string input;
+    int index;
 
     std::cout << CLEAR;
-    std::cout << "**********************************" << std::endl;
-	std::cout << "*          SEARCH CONTACT        *" << std::endl;
-	std::cout << "**********************************" << std::endl << std::endl;
+    std::cout << "*********************************************" << std::endl;
+	std::cout << "*                SEARCH CONTACT             *" << std::endl;
+	std::cout << "*********************************************" << std::endl << std::endl;
 
     if (_addCount == 0)
     {
@@ -102,11 +105,27 @@ void PhoneBook::searchContacts() const
         return ;
     }
     _printTable();
-
     std::cout << "Available commands: " << std::endl;
     std::cout << "  [index number] " << std::endl;
     std::cout << "  BACK " << std::endl << std::endl;
-    
-           
-    
+    while (1)
+    {
+        std::cout << "Please, enter a command: ";
+        std::getline(std::cin, input);
+        index = std::atoi(input.c_str());
+        if (input == "BACK")
+            break ;
+        else if (index < 1 || index > MAX_CONTACTS)
+        {
+            std::cout << "Index number not valid. Try again or type BACK." << std::endl;
+            continue ;
+        }
+        else
+        {
+            _contacts[index - 1].displayContact();
+            std::cout << "Press ENTER to continue." << std::endl;
+            std::cin.ignore();
+            break ;            
+        }
+    }  
 }

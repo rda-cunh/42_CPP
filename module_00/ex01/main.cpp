@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:24:42 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/16 13:34:49 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/16 19:16:30 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 void	print_header(void)
 {
 	std::cout << CLEAR;
-	std::cout << "**********************************" << std::endl;
-	std::cout << "*         CRAPY PHONEBOOK        *" << std::endl;
-	std::cout << "**********************************" << std::endl;
+	std::cout << "*********************************************" << std::endl;
+	std::cout << "*              CRAPY PHONEBOOK              *" << std::endl;
+	std::cout << "*********************************************" << std::endl;
+    std::cout << std::endl;
 	std::cout << " Available commands: " << std::endl;
 	std::cout << "  ADD " << std::endl;
 	std::cout << "  SEARCH " << std::endl;

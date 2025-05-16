@@ -17,6 +17,7 @@
 #include <string> // handle strings
 #include <iomanip> // handle output formatting
 #include <cctype> // use funtions like tolower
+#include <cstdlib> //use atoi 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 

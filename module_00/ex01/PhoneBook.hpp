@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:26:04 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/16 13:29:42 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:32:08 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class PhoneBook
         PhoneBook();
         ~PhoneBook();
         void addContact(); //funtion to add a contact info
-        void searchContacts() const; //function to search contacts
+        void searchContacts(); //function to search contacts
 };
 
 #endif

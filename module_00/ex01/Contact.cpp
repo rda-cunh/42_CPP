@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:31:29 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/16 13:05:49 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/16 19:14:23 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,16 @@ std::string	Contact::formatWidth(std::string str)
         return (str.substr(1, 9) + "."); 
     else
         return (str);
+}
+
+void Contact::displayContact()
+{
+    std::cout << CLEAR;
+    std::cout << "*********************************************" << std::endl;
+	std::cout << "*              DISPLAY CONTACT              *" << std::endl;
+	std::cout << "*********************************************" << std::endl << std::endl;
+    std::cout << "First name: " << _firstName << std::endl;
+    std::cout << "Last name: " << _lastName << std::endl;
+    std::cout << "Nickname: " << _nickname << std::endl;
+    std::cout << "Darkest secret " << _darkestSecret << std::endl << std::endl;
 }
