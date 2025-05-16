@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:26:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/16 19:13:56 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/16 19:35:26 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,21 @@ void PhoneBook::addContact()
 	std::cout << "*********************************************" << std::endl << std::endl;
     std::cout << "Type the contact informations bellow:" << std::endl << std::endl;
 	std::cout << "First name: ";
-    std::getline(std::cin, firstName);
+    if (!std::getline(std::cin, firstName))
+        return ;
     std::cout << "Last name: ";
-    std::getline(std::cin, lastName);
+    if (!std::getline(std::cin, lastName))
+        return ;
     std::cout << "Nickname: ";
-    std::getline(std::cin, nickname);
+    if (!std::getline(std::cin, nickname))
+        return ;
     std::cout << "Phone number: ";
-    std::getline(std::cin, phoneNumber);
+    if (!std::getline(std::cin, phoneNumber))
+        return ;
     std::cout << "Darkest secret: ";
-    std::getline(std::cin, darkestSecret);
+    if (!std::getline(std::cin, darkestSecret))
+        return ;
     std::cout << std::endl; 
-
     if (firstName.empty() || lastName.empty() || nickname.empty() \
         || phoneNumber.empty() || darkestSecret.empty())
     {
@@ -53,10 +57,8 @@ void PhoneBook::addContact()
 		std::cin.ignore();
         return ;        
     }
-
     _contacts[_addCount++ % 8].setContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
     current_id = _addCount % 8 == 0 ? 8 : _addCount % 8;
-
     if (_addCount > 8)
         std::cout << "Contact added to position " << current_id << " (old contact overwritten)" << std::endl;
     else
@@ -111,7 +113,8 @@ void PhoneBook::searchContacts()
     while (1)
     {
         std::cout << "Please, enter a command: ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+            break ;
         index = std::atoi(input.c_str());
         if (input == "BACK")
             break ;
