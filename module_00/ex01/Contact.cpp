@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rda-cunh <rda-cunh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:31:29 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/16 19:14:23 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/18 18:00:42 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ std::string Contact::getNick()
 std::string	Contact::formatWidth(std::string str)
 {
     if (str.length() > 10)
-        return (str.substr(1, 9) + "."); 
+        return (str.substr(0, 9) + "."); 
     else
         return (str);
 }

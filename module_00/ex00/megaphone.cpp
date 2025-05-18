@@ -6,11 +6,12 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:40:59 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/13 00:17:18 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/18 18:08:18 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cctype>
 
 void    megaphone(char *str)
 {
