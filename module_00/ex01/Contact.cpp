@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:31:29 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/18 18:00:42 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/18 18:16:31 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void Contact::displayContact()
     std::cout << "First name: " << _firstName << std::endl;
     std::cout << "Last name: " << _lastName << std::endl;
     std::cout << "Nickname: " << _nickname << std::endl;
+    std::cout << "Phone number: " << _phoneNumber << std::endl;
     std::cout << "Darkest secret " << _darkestSecret << std::endl << std::endl;
 }
