@@ -14,10 +14,10 @@
 # define HEADER_HPP
 
 #include <iostream>
-#include <string> // handle strings
-#include <iomanip> // handle output formatting
-#include <cctype> // use funtions like tolower
-#include <cstdlib> //use atoi 
+#include <string>
+#include <iomanip>
+#include <cctype>
+#include <cstdlib>
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 

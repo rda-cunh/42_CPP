@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rda-cunh <rda-cunh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 00:26:04 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/16 14:32:08 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/18 18:23:09 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@
 class PhoneBook 
 {
     private:
-        Contact _contacts[MAX_CONTACTS]; //array of strings/ contacts
-        int     _addCount; // tracks the number of added contacts
-        void    _printTable(); // prints the table in seaching
+        Contact _contacts[MAX_CONTACTS];
+        int     _addCount;
+        void    _printTable();
 
     public:
         PhoneBook();
         ~PhoneBook();
-        void addContact(); //funtion to add a contact info
-        void searchContacts(); //function to search contacts
+        void addContact();
+        void searchContacts();
 };
 
 #endif
