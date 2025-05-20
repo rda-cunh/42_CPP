@@ -10,3 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Zombie.hpp"
+
+int main()
+{
+    str::string chumpName;
+    str::string zombieName;
+    Zombie *zombie;
+
+    std::cout << "Let's create some zombies and chumps!" << std::endl;
+    std::cout << "Enter the chump name: " << std::endl;
+    std::cin >> chumpName;
+    std::cout << "Enter the zombie name: " << std::endl;
+    std::cin >> zombieName;
+
+    zombie = newZombie(zombieName);
+    zombie->announce(),
+
+    randomChum(chumpName);
+
+    delete zombie;
+}

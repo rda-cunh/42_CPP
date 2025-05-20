@@ -16,12 +16,18 @@ Zombie::Zombie() {}
 
 Zombie::~Zombie() {}
 
-std::string Zombie::getName() {return (_name)}
-
 void Zombie::announce()
 {
-    std::string name;
+    std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
 
-    name = getName();
-    std::cout << name << ":" << "BraiiiiiiinnnzzzZ..." << std::endl;
+Zombie  *newZombie(std::string name)
+{
+    return (new Zombie(name));
+}
+
+void    randomChump(std::string name)
+{
+    Zombie chump(name);
+    chump.announce(),
 }

@@ -24,8 +24,7 @@ private:
 public:
     Zombie();
     ~Zombie();
-    void        announce();
-    std::string getName();
+    void    announce();
 };
 
 //heap
