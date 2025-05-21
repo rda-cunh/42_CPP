@@ -12,7 +12,7 @@
 
 NAME = zombie
 
-SRCS = main.cpp zombie.cpp newZombie.ccp randomChamp.cpp
+SRCS = main.cpp Zombie.cpp newZombie.cpp randomChamp.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++

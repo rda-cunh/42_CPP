@@ -14,6 +14,6 @@
 
 Zombie  *newZombie(std::string name)
 {
-    Zombie *Random = new Zombie(name), 
+    Zombie *Random = new Zombie(name); 
     return (Random);
 }

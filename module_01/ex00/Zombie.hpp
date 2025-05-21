@@ -27,7 +27,7 @@ public:
     void    announce();
 };
 
-Zombie* newZombie( std::string name ); //heap
-void randomChump( std::string name ); //stack
+Zombie* newZombie(std::string name); //heap
+void randomChump(std::string name); //stack
 
 #endif
