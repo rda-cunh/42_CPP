@@ -22,8 +22,7 @@ private:
     std::string name;
 
 public:
-    Zombie();
-    Zombie(std::string &input);
+    Zombie(const std::string &inputname);
     ~Zombie();
     void    announce();
 };
