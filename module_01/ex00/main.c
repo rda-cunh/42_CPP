@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 00:41:36 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/19 00:41:39 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/21 01:20:59 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int main()
 {
-    str::string chumpName;
-    str::string zombieName;
+    std::string chumpName;
+    std::string zombieName;
     Zombie *zombie;
 
     std::cout << "Let's create some zombies and chumps!" << std::endl;
@@ -27,7 +27,7 @@ int main()
     zombie = newZombie(zombieName);
     zombie->announce(),
 
-    randomChum(chumpName);
+    randomChump(chumpName);
 
     delete zombie;
 }
