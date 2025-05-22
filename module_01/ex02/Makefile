@@ -6,13 +6,13 @@
 #    By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/10 17:41:50 by rda-cunh          #+#    #+#              #
-#    Updated: 2025/05/19 23:56:38 by rda-cunh         ###   ########.fr        #
+#    Updated: 2025/05/22 01:03:43 by rda-cunh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 
+NAME = brain
 
-SRCS = 
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
