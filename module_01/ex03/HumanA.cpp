@@ -6,7 +6,9 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 00:56:38 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/23 00:56:39 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/23 09:29:19 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "HumanA.hpp"
+#include "Weapon.hpp"

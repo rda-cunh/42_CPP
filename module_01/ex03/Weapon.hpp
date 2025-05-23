@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 01:18:01 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/23 01:05:25 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/23 09:19:18 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ class Weapon
         std::string _type;
     
     public:
-        Weapon()    
-
+        Weapon(std::string type);
+        ~Weapon();
+        void setType(std::string type);
+        const std::string &getType();
 };
 
 #endif
