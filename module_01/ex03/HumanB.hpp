@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 00:56:50 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/23 00:56:55 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:17:55 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ class HumanB
         ~HumanB();
         void attack();
         void setWeapon(Weapon &weapon);
-}
+};
 
 #endif

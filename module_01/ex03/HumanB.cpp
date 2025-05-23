@@ -6,13 +6,13 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 00:56:46 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/23 00:56:48 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:32:22 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : this->_name(name) 
+HumanB::HumanB(std::string name) : _name(name) 
 {
     this->_weapon = NULL;
 }
@@ -24,7 +24,7 @@ void    HumanB::attack()
     if (!this->_weapon)
         std::cout << this->_name << " has no weapon." << std::endl;
     else
-        std::cout << this->_name << " atacks with his " << this->_weapon << std::endl;
+        std::cout << this->_name << " atacks with his " << this->_weapon->getType() << std::endl;
 }
 
 void    HumanB::setWeapon(Weapon &weapon)

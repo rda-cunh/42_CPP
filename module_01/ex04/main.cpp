@@ -13,7 +13,7 @@ void checkArgs(int argc, char **argv)
     std::string strToFind = argv[2];
     if (strToFind.empty())
     {
-        std::cout << "String cannot be empty."
+        std::cout << "String cannot be empty." << std::endl; 
         exit(1);
     }
 }
