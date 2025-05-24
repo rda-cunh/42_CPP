@@ -6,30 +6,20 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 00:13:04 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/24 18:07:19 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/24 22:30:36 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
+    if (argc != 2)
+    {
+        std::cout << "Please insert only one argument." << std::endl;
+    }
+
     Harl test;
-    std::cout << "Here are some tests of the complain function:" << std::endl;
-    std::cout << std::endl;
-    std::cout << "DEBUG TEST:" << std::endl;
-    test.complain("DEBUG");
-    std::cout << std::endl;
-    std::cout << "INFO TEST:" << std::endl;
-    test.complain("INFO");
-    std::cout << std::endl;
-    std::cout << "WARNING TEST:" << std::endl;
-    test.complain("WARNING");
-    std::cout << std::endl;
-    std::cout << "ERROR TEST:" << std::endl;
-    test.complain("ERROR");
-    std::cout << std::endl;
-    std::cout << "INVALID TEST:" << std::endl;
-    test.complain("INVALID");
+    test.complain(argv[1]);
     return (0);
 }
