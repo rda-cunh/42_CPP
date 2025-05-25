@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 00:48:03 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/22 01:15:26 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/25 12:03:47 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main()
 {
     std::string str = "HI THIS IS BRAIN";
-        std::string *stringPTR = &str;
+    std::string *stringPTR = &str;
     std::string &stringREF = str; 
 
     std::cout << "memory address of the string variable: " << &str << std::endl;
