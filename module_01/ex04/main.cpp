@@ -49,7 +49,7 @@ int main(int argc, char **argv)
     std::ifstream inFile;
     inFile.open(argv[1], std::ios::in);
     if (inFile.fail())
-        return (std::cout << "File annot be open." << std::endl, 1); 
+        return (std::cout << "File cannot be open." << std::endl, 1); 
     else
     {
         std::ofstream outFile;
