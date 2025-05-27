@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:48:59 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/26 20:08:19 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/27 00:40:51 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 class Fixed
 {
     private:
-    int numValue;
-    const int numFractionalBits;  
+        int numValue;
+        const int numFractionalBits;  
 
     public:
     
