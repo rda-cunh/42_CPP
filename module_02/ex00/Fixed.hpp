@@ -6,21 +6,28 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:48:59 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/27 00:40:51 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/27 23:26:16 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
+#include <iostream>
+
 class Fixed
 {
     private:
-        int numValue;
-        const int numFractionalBits;  
+        int                 _value;
+        static const int    _fractionBits = 8;  
 
     public:
-    
+        Fixed();                                //default constructor: Initializes objects with default values
+        Fixed(Fixed &copy);                     //copy constructor: Creates a new object by copying an existing one.
+        Fixed &operator = (Fixed const &copy);  //copy assignement operator: overloads - to assign values from one object to another
+        ~Fixed();                               //destructor: Handles resource cleanup when an object is destroyed.
+		int	getRawBits(void) const;
+		void setRawBits(int const raw);
 };
 
 #endif
