@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:48:59 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/29 16:51:11 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/29 17:25:52 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ class Fixed
         Fixed operator--(int);
         
         static Fixed &min(Fixed &fixed1, Fixed &fixed2);
-        static const Fixed &min(const Fixed &fixed1, const Fixed fixed2);
+        static const Fixed &min(const Fixed &fixed1, const Fixed &fixed2);
         static Fixed &max(Fixed &fixed1, Fixed &fixed2);
         static const Fixed &max(const Fixed &fixed1, const Fixed &fixed2);  
 };

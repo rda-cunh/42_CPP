@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:49:10 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/29 16:58:12 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/29 17:31:18 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,6 @@ float Fixed::toFloat() const
 int Fixed::toInt() const
 {
     return (int(this->_value) / int (1 << this->_fractionBits));
-}
-
-std::ostream &operator<<(std::ostream &out, const Fixed &object)
-{
-    out << object.toFloat();
-    return (out);
 }
 
 bool Fixed::operator>(const Fixed &other) const
@@ -149,3 +143,28 @@ Fixed Fixed::operator--(int)
     return (duplicated);
 }
 
+Fixed &Fixed::min(Fixed &fixed1, Fixed &fixed2)
+{
+    return (fixed1 < fixed2 ? fixed1 : fixed2);
+}
+
+const Fixed &Fixed::min(const Fixed &fixed1, const Fixed &fixed2)
+{
+    return (fixed1 < fixed2 ? fixed1 : fixed2);
+}
+
+Fixed &Fixed::max(Fixed &fixed1, Fixed &fixed2)
+{
+    return (fixed1 > fixed2 ? fixed1 : fixed2);
+}
+
+const Fixed &Fixed::max(const Fixed &fixed1, const Fixed &fixed2)
+{
+    return (fixed1 > fixed2 ? fixed1 : fixed2);
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &object)
+{
+    out << object.toFloat();
+    return (out);
+}
