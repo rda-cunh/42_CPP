@@ -6,13 +6,12 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:50:47 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/29 18:45:15 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:56:48 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-/*
 int main(void) 
 {
     Fixed a;
@@ -29,9 +28,9 @@ int main(void)
     std::cout << Fixed::max( a, b ) << std::endl;
 
     return (0);
-} 
-*/
+}
 
+/*
 int main(void) 
 {
     Fixed a(3.14f);
@@ -78,7 +77,8 @@ int main(void)
     // Const version tests
     std::cout << "\n=== Const Versions ===" << std::endl;
     std::cout << "min(const b, const 0): " << Fixed::min(b, Fixed(0)) << std::endl;
-    std::cout << "max(const b, const 0): " << Fixed::max(b, Fixed(0)) << std::endl;
+    std::cout << "max(const b, const 0): " << Fixed::max(b, Fixed(0)) << std::endl << "\n";
 
     return (0);
 }
+*/

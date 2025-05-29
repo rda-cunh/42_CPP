@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:49:10 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/29 17:31:18 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:50:30 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 Fixed::Fixed() : _value(0)
 {
-    std::cout << "Default constructor called" << std::endl;
+//    std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float numFloat) : _value(numFloat * float(1 << _fractionBits) + (numFloat >= 0 ? 0.5 : -0.5))
 {
-    std::cout << "Float constructor called" << std::endl;
+//    std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int numInt) : _value(numInt * int(1 << _fractionBits) + (numInt >= 0 ? 0.5 : -0.5))
 {
-    std::cout << "Int constructor called" << std::endl;
+//    std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &other) : _value(other._value)
 {
-    std::cout << "Copy constructor called" << std::endl;
+//    std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &other) 
 {
-    std::cout << "Copy assignment operator called" << std::endl;
+//    std::cout << "Copy assignment operator called" << std::endl;
     if (this == &other)
         return *this;
     this->setRawBits(other.getRawBits());
@@ -43,12 +43,12 @@ Fixed &Fixed::operator=(const Fixed &other)
 
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" << std::endl;
+//    std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits() const
 {
-    std::cout << "getRawBits member function called" << std::endl;
+//    std::cout << "getRawBits member function called" << std::endl;
     return (this->_value);
 }
 
