@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:48:59 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/29 01:37:04 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/29 01:45:20 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ class Fixed
 		
         int	getRawBits(void) const;
 		void setRawBits(const int raw);
-        int toIntiger(void) const;
+        int toInt(void) const;
         float toFloat(void) const;        
 };
+
+std::ostream &operator<<(std::ostream &out, const Fixed &right);
 
 #endif
