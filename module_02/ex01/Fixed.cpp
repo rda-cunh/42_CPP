@@ -6,11 +6,22 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:49:10 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/29 00:54:28 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/29 11:08:55 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+
+Fixed::Fixed(const float numFloat) : _value(numFloat * float(1 << _fractionBits) + (numFloat >= 0 ? 0.5 : -0.5))
+{
+    std::cout << "Float constructor called" << std::endl;
+}
+
+Fixed::Fixed(const int numInt) : _value(numInt * int(1 << _fractionBits) + (numInt >= 0 ? 0.5 : -0.5))
+{
+    std::cout << "Int constructor called" << std::endl;
+}
 
 Fixed::Fixed() : _value(0)
 {
@@ -47,3 +58,12 @@ void Fixed::setRawBits(const int raw)
     this->_value = raw; 
 }
 
+float Fixed::toFloat() const 
+{
+    return (float(this->_value) / float(1 << this->_fractionBits));
+}
+
+int Fixed::toInt() const
+{
+    return (int(this->_value) / int (1 << this->_fractionBits));
+}
