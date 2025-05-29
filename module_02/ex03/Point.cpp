@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:52:59 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/29 20:27:52 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/29 21:21:24 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 Point::Point() : _x(0), _y(0) 
 {
-    std::cout << "Default constructor called" << std::endl;
+//    std::cout << "Default constructor called" << std::endl;
 }
 
 Point::Point(Fixed x, Fixed y) : _x(x), _y(y) 
 {
-    std::cout << "Constructor called" << std::endl; 
+//    std::cout << "Constructor called" << std::endl; 
 }
 
 Point::Point(const Point &other) : _x(other._x), _y(other._y) //copy constructor
 {
-    std::cout << "Copy constructor called" << std::endl; 
+//    std::cout << "Copy constructor called" << std::endl; 
 } 
 
 Point &Point::operator=(Point &other) //copy assignement operator
@@ -33,13 +33,13 @@ Point &Point::operator=(Point &other) //copy assignement operator
         return (*this);
     (Fixed) this->_x = other.getX();
     (Fixed) this->_y = other.getY();
-    std::cout << "Copy assignement operator called" << std::endl;
+//    std::cout << "Copy assignement operator called" << std::endl;
     return (*this);
 }
 
 Point::~Point()
 {
-    std::cout << "Destructor called" << std::endl;
+//    std::cout << "Destructor called" << std::endl;
 }
 
 Fixed Point::getX() {return (this->_x);}
