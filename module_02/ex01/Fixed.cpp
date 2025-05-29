@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:49:10 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/29 14:30:23 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/29 14:44:59 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int Fixed::toInt() const
     return (int(this->_value) / int (1 << this->_fractionBits));
 }
 
-std::ostream &operator<<(std::ostream &out, const Fixed &right)
+std::ostream &operator<<(std::ostream &out, const Fixed &object)
 {
-    out << right.toFloat();
+    out << object.toFloat();
     return (out);
 }
