@@ -6,12 +6,12 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:50:47 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/30 02:12:07 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/30 02:44:21 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-/*
+
 int main(void) 
 {
     Fixed a;
@@ -29,8 +29,8 @@ int main(void)
 
     return (0);
 }
-*/
 
+/*
 int main(void) 
 {
     Fixed a(3.14f);
@@ -78,4 +78,5 @@ int main(void)
 
     return (0);
 }
+*/
 
