@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 23:49:10 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/05/29 18:50:30 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/05/30 10:42:59 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Fixed::Fixed(const float numFloat) : _value(numFloat * float(1 << _fractionBits)
 //    std::cout << "Float constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int numInt) : _value(numInt * int(1 << _fractionBits) + (numInt >= 0 ? 0.5 : -0.5))
+Fixed::Fixed(const int numInt) : _value(numInt * int(1 << _fractionBits))
 {
 //    std::cout << "Int constructor called" << std::endl;
 }
