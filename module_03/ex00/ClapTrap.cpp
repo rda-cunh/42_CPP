@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:15:01 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/02 16:39:56 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:54:57 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,31 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
     return (*this);
 }
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &other) {
-  std::cout << "Copy assignment operator called\n";
-  if (this == &other)
-    return *this;
-  this->Name_ = other.getName();
-  this->HitPoints_ = other.getHitPoints();
-  this->EnergyPoints_ = other.getEnergyPoints();
-  this->AttackDamage_ = other.getAttackDamage();
-  return *this;
+ClapTrap::~ClapTrap() 
+{
+    std::cout << "Destructor called. Claptrap " << this->_name << " has been destroyed." << std::endl;
 }
 
+std::string ClapTrap::getName() const {return (this->_name);}
+int ClapTrap::getHitPoints() const {return (this->_hitPoints);}
+int ClapTrap::getEnergyPoints() const {return (this->_energyPoints);}
+int ClapTrap::getAtackDamage() const {return (this->_atackDamage);}
 
-std::string ClapTrap::getName() {return (this->_name);}
+void ClapTrap::addEnergyPoints(int amount) {this->_energyPoints += amount;}
+void ClapTrap::addHitPoints(int amount) {this->_hitPoints += amount;}
 
-int ClapTrap::getHitPoints() {return (this->_hitPoints);}
+void ClapTrap::attack(const std::string& target)
+{
+    std::cout << "ClapTrap " << _name << " attacked." << std::endl;
+    addEnergyPoints(-1);
+}
 
-int ClapTrap::getEnergyPoints() {return (this->_energyPoints);}
+void ClapTrap::takeDamage(unsigned int amount)
+{
+    std::cout << "ClapTrap " << _name << "was attacked and lost " << amount << "points." << std::endl;
+    addHitPoints(amount);
+}
 
-int ClapTrap::getAtackDamage() {return (this->_atackDamage);}
 
 
 

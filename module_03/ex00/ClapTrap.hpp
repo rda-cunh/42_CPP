@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:14:45 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/02 16:32:12 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:52:43 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,17 @@ class ClapTrap
         ClapTrap &operator(ClapTrap const &other);  //copy assignment operator      
         ~ClapTrap();                                //destructor
 
-        std::string getName();
-        int         getHitPoints();
-        int         getEnergyPoints();
-        int         getAtackDamage();
+        std::string getName() const;
+        int         getHitPoints() const;
+        int         getEnergyPoints() const;
+        int         getAtackDamage() const;
+
+        void addEnergyPoints(int amount);
+        void addHitPoints(int amount);
 
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
-}
+};
 
 #endif
