@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:14:45 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/03 16:52:43 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/06 07:59:54 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class ClapTrap
         ClapTrap();                                 //default constructor
         ClapTrap(std::string name);
         ClapTrap(const ClapTrap &other);            //copy constructor
-        ClapTrap &operator(ClapTrap const &other);  //copy assignment operator      
+        ClapTrap &operator=(ClapTrap const &other);  //copy assignment operator   
         ~ClapTrap();                                //destructor
 
         std::string getName() const;

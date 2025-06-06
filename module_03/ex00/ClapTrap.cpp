@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:15:01 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/03 16:54:57 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/06 08:25:21 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,38 @@ void ClapTrap::addHitPoints(int amount) {this->_hitPoints += amount;}
 
 void ClapTrap::attack(const std::string& target)
 {
-    std::cout << "ClapTrap " << _name << " attacked." << std::endl;
-    addEnergyPoints(-1);
+    if (getEnergyPoints() > 0 && getHitPoints() > 0)
+    {
+        std::cout << this->getName() << " attacked " << target << "." << std::endl;
+        addEnergyPoints(-1);
+    }
+    else
+    {
+        std::cout << this->getName() << " can't attack." << std::endl;
+        return ;
+    }
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    std::cout << "ClapTrap " << _name << "was attacked and lost " << amount << "points." << std::endl;
-    addHitPoints(amount);
+    std::cout << this->getName() << " was attacked and lost " << amount << " points." << std::endl;
+    addHitPoints(-(int)amount);
+}
+
+void ClapTrap::beRepaired(unsigned int amount)
+{
+    if (getEnergyPoints() > 0 && getHitPoints() > 0)
+    {
+        std::cout << this->getName() << " repared himself and gained " << amount << " hit points." << std::endl;
+        addHitPoints((int)amount);
+        addEnergyPoints(-1);
+    }
+    else
+    {
+        std::cout << this->getName() << " can't be repaired." << std::endl;
+        return ;
+    }
+
 }
 
 
