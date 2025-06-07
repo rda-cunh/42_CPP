@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:15:01 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/06 16:09:06 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/07 09:53:08 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
-    std::cout << "Copy assignment operator called." << std::endl;
+    std::cout << "Copy assignment operator called for Claptrap." << std::endl;
     if (this == &other)
         return *this;
     this->_name = other.getName();
@@ -63,15 +63,16 @@ void ClapTrap::setName(const std::string& newName)
     this->_name = newName;
 }
 
-
 void ClapTrap::addEnergyPoints(int amount) {this->_energyPoints += amount;}
 void ClapTrap::addHitPoints(int amount) {this->_hitPoints += amount;}
+
 
 void ClapTrap::attack(const std::string& target)
 {
     if (getEnergyPoints() > 0 && getHitPoints() > 0)
     {
-        std::cout << this->getName() << " attacked " << target << "." << std::endl;
+        std::cout << "ClapTrap " << this->getName() << " attacks " << target 
+        << ", causing " << this->getAtackDamage() << " points of damage!" << std::endl;
         addEnergyPoints(-1);
     }
     else
@@ -83,7 +84,7 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    std::cout << this->getName() << " was attacked and lost " << amount << " points." << std::endl;
+    std::cout << "ClapTrap " << this->getName() << " was attacked and lost " << amount << " points." << std::endl;
     addHitPoints(-(int)amount);
 }
 
@@ -91,7 +92,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
     if (getEnergyPoints() > 0 && getHitPoints() > 0)
     {
-        std::cout << this->getName() << " repared himself and gained " << amount << " hit points." << std::endl;
+        std::cout << "ClapTrap " << this->getName() << " repared himself and gained " << amount << " hit points." << std::endl;
         addHitPoints((int)amount);
         addEnergyPoints(-1);
     }

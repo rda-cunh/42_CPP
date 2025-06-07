@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:14:45 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/06 16:07:05 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/07 09:39:47 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define CLAPTRAP_HPP
 
 #include <iostream>
+#include <string>
 
 class ClapTrap
 {
-    private:
+    protected:
         std::string _name;
         int         _hitPoints;
         int         _energyPoints;
