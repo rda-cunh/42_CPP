@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:15:01 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/07 09:09:46 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/07 17:24:59 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap()
     this->_name = "NoName";
     this->_hitPoints = 10;
     this->_energyPoints = 10;
-    this->_atackDamage = 0;
+    this->_attackDamage = 0;
     std::cout << "Default constructor called. ClapTrap has been created." << std::endl;
 }
 
@@ -26,7 +26,7 @@ ClapTrap::ClapTrap(std::string name)
     this-> _name = name;
     this->_hitPoints = 10;
     this->_energyPoints = 10;
-    this->_atackDamage = 0;
+    this->_attackDamage = 0;
     std::cout << "Constructor called. Claptrap " << this->_name << " has been created." << std::endl;
 }
 
@@ -44,7 +44,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
     this->_name = other.getName();
     this->_hitPoints = other.getHitPoints();
     this->_energyPoints = other.getEnergyPoints();
-    this->_atackDamage = other.getAtackDamage();
+    this->_attackDamage = other.getattackDamage();
     return (*this);
 }
 
@@ -56,7 +56,7 @@ ClapTrap::~ClapTrap()
 std::string ClapTrap::getName() const {return (this->_name);}
 int ClapTrap::getHitPoints() const {return (this->_hitPoints);}
 int ClapTrap::getEnergyPoints() const {return (this->_energyPoints);}
-int ClapTrap::getAtackDamage() const {return (this->_atackDamage);}
+int ClapTrap::getattackDamage() const {return (this->_attackDamage);}
 void ClapTrap::setName(const std::string& newName) 
 {
     std::cout << this->getName() << " was renamed " << newName << "." << std::endl;
@@ -72,7 +72,7 @@ void ClapTrap::attack(const std::string& target)
     if (getEnergyPoints() > 0 && getHitPoints() > 0)
     {
         std::cout << "ClapTrap " << this->getName() << " attacks " << target 
-        << ", causing " << this->getAtackDamage() << " points of damage!" << std::endl;
+        << ", causing " << this->getattackDamage() << " points of damage!" << std::endl;
         addEnergyPoints(-1);
     }
     else

@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:14:45 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/06 16:07:05 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/07 17:24:59 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class ClapTrap
         std::string _name;
         int         _hitPoints;
         int         _energyPoints;
-        int         _atackDamage;
+        int         _attackDamage;
 
     public:
         ClapTrap();                                 //default constructor
@@ -33,7 +33,7 @@ class ClapTrap
         std::string getName() const;
         int         getHitPoints() const;
         int         getEnergyPoints() const;
-        int         getAtackDamage() const;
+        int         getattackDamage() const;
         void        setName(const std::string& newName);
 
         void addEnergyPoints(int amount);
