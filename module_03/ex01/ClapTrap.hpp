@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:14:45 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/07 17:24:59 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/08 09:16:12 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ class ClapTrap
         int         _attackDamage;
 
     public:
-        ClapTrap();                                 //default constructor
+        ClapTrap();                                  //default constructor
         ClapTrap(std::string name);
-        ClapTrap(const ClapTrap &other);            //copy constructor
+        ClapTrap(const ClapTrap &other);             //copy constructor
         ClapTrap &operator=(ClapTrap const &other);  //copy assignment operator   
-        ~ClapTrap();                                //destructor
+        virtual ~ClapTrap();                         //destructor
 
         std::string getName() const;
         int         getHitPoints() const;
@@ -40,7 +40,7 @@ class ClapTrap
         void addEnergyPoints(int amount);
         void addHitPoints(int amount);
 
-        void attack(const std::string& target);
+        virtual void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
 };
