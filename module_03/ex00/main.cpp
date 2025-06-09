@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:14:32 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/06 16:14:36 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:18:26 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main()
     RoboCop2.takeDamage(5);
     
     std::cout << std::endl;
-    std::cout << "RoboCop clone died, but will atempt to atack and repair:" << std::endl;
+    std::cout << "RoboCop Clone died, but will atempt to atack and repair:" << std::endl;
     RoboCop2.attack("aliens");
     RoboCop2.beRepaired(10);
     
