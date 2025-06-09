@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:14:32 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/09 14:20:03 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:25:41 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int main()
     std::cout << std::endl;
 
     RoboCop.attack("aliens");   //ScavTrap message (overrided)
+    RoboCop.takeDamage(6);      //Inherenced message method from ClapTrap
     RoboCop.beRepaired(6);      //Inherenced message method from ClapTrap
     RoboCop.guardGate();        //Scavtrap original method/message
     std::cout << std::endl;

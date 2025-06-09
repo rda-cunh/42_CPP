@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:14:32 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/09 14:20:10 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:30:47 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main()
     std::cout << std::endl;
     
     RoboCop.attack("aliens");   //Inherenced message method from ClapTrap (subject does not request to override)
+    RoboCop.takeDamage(6);      //Inherenced message method from ClapTrap
     RoboCop.beRepaired(6);      //Inherenced message method from ClapTrap
     RoboCop.highFivesGuys();    //FragTrap original method/message
     std::cout << std::endl;
