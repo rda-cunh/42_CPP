@@ -6,33 +6,32 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 12:04:14 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/09 13:03:56 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/09 15:31:59 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap() : ClapTrap(), FragTrap(), ScavTrap() 
 {
     this->_name = "NoName";
     this->ClapTrap::_name = "NoName_clap_name";
-    this->_hitPoints = 100;
-    this->_energyPoints = 50;
+    //this->_hitPoints = 100;
+    //this->_energyPoints = 50;
     this->_attackDamage = 30;
     std::cout << "Default constructor called. DiamondTrap has been created." << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const std::string &name) : ClapTrap(name), ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(const std::string &name) : ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name) 
 {
     this->_name = name;
-    this->ClapTrap::_name = name + "_clap_name";
-    this->_hitPoints = 100;
-    this->_energyPoints = 50;
+    //this->_hitPoints = 100;
+    //this->_energyPoints = 50;
     this->_attackDamage = 30;
     std::cout << "Constructor called. DiamondTrap " << this->_name << " has been created." << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other._name), ScavTrap(other._name), FragTrap(other._name)
+DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other._name), FragTrap(other._name), ScavTrap(other._name)
 {
     *this = other;
     std::cout << "Copy Constructor called. DiamondTrap " << this->_name << " has been created." << std::endl;

@@ -6,14 +6,14 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 12:04:39 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/09 12:26:55 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/09 15:11:06 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class DiamondTrap : public ScavTrap, public FragTrap
+class DiamondTrap : public FragTrap, public ScavTrap 
 {
     private:
         std::string _name;
