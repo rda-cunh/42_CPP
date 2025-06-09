@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 16:26:21 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/07 17:24:59 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/09 11:57:40 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
     this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackDamage = 20;
-    std::cout << "Constructor called. ScavTrap has been created." << std::endl;
+    std::cout << "Constructor called. ScavTrap " << this->_name << " has been created." << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)

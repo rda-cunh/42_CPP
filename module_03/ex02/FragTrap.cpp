@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap2.cpp                                      :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:40:47 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/09 11:41:09 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/09 11:57:01 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
     this->_hitPoints = 100;
     this->_energyPoints = 100;
     this->_attackDamage = 30;
-    std::cout << "Constructor called. FragTrap has been created." << std::endl;
+    std::cout << "Constructor called. FragTrap " << this->_name << " has been created." << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
