@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:15:01 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/07 17:24:59 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:12:26 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void ClapTrap::attack(const std::string& target)
     }
     else
     {
-        std::cout << this->getName() << " can't attack." << std::endl;
+        std::cout << "ClapTrap " << this->getName() << " can't attack." << std::endl;
         return ;
     }
 }
@@ -98,7 +98,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     }
     else
     {
-        std::cout << this->getName() << " can't be repaired." << std::endl;
+        std::cout << "ClapTrap " << this->getName() << " can't be repaired." << std::endl;
         return ;
     }
 

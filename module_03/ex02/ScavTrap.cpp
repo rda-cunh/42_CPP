@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 16:26:21 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/09 11:57:12 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:14:07 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void ScavTrap::attack(const std::string& target)
     }
     else
     {
-        std::cout << this->getName() << " can't attack." << std::endl;
+        std::cout << "ScavTrap " << this->getName() << " can't attack." << std::endl;
         return ;
     }
 }
