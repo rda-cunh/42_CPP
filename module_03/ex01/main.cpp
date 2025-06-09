@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:14:32 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/08 08:54:03 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/09 14:20:03 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,17 @@ int main()
     std::cout << "Constructors are called by by order (base class to derived class): " << std::endl;
     ScavTrap RoboCop("Robocop");
     std::cout << std::endl;
+
+    std::cout << "Hit Points:" << RoboCop.getHitPoints() << std::endl;
+    std::cout << "Energy Points:" << RoboCop.getEnergyPoints() << std::endl;
+    std::cout << "Attack Damage:" << RoboCop.getattackDamage() << std::endl;
+    std::cout << std::endl;
+
     RoboCop.attack("aliens");   //ScavTrap message (overrided)
     RoboCop.beRepaired(6);      //Inherenced message method from ClapTrap
     RoboCop.guardGate();        //Scavtrap original method/message
     std::cout << std::endl;
+    
     std::cout << "Destructors are called by by reverse order (derived class to base class): " << std::endl;
 
     return (0);
