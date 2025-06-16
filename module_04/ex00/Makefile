@@ -6,7 +6,7 @@
 #    By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/10 17:41:50 by rda-cunh          #+#    #+#              #
-#    Updated: 2025/06/14 19:01:12 by rda-cunh         ###   ########.fr        #
+#    Updated: 2025/06/16 01:39:14 by rda-cunh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 all: $(NAME)
