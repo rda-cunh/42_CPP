@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:28:39 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/17 00:38:51 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/18 10:28:16 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ class Brain
         std::string ideas[IDEAS];
 
     public:
-        ~Brain();                   //default constructor
-        Brain(const Brain &other);
+        Brain();                                //default constructor
+        Brain(const Brain &other);              //copy constructor
+        Brain &operator=(const Brain &other);   //copy assignment operator
+        virtual ~Brain();                       //destructor
+        
         void getIdeas() const; 
 };
