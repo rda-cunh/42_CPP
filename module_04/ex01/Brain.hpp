@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:28:39 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/20 18:30:59 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/22 23:22:51 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ class Brain
         Brain &operator=(const Brain &other);   //copy assignment operator
         virtual ~Brain();                       //destructor
         
-        void generateIdeas(); 
+        std::string getIdea(int index);
+        void setIdea(std::string idea, int index);
 };
