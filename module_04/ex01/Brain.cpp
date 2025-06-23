@@ -18,8 +18,7 @@
 Brain::Brain()
 {
     std::cout << "Brain: default constructor called." << std::endl;
-    for (int i = 0; i < IDEAS; i++)
-        this->ideas[i] = "Random idea " + std::to_string(i);
+    randomIdeas();
 }
 
 Brain::Brain(const Brain &other)
@@ -59,7 +58,33 @@ void Brain::setIdea(std::string idea, int index)
         std::cout << "Invalid index number." << std::endl;
 }
 
+void Brain::randomIdeas()
+{
+    const std::string random_ideas[] = {
+        "Get some food",
+        "Play around",
+        "Run away",
+        "Play with my tail",
+        "Sleep all day",
+        "Trying to understand my human",
+        "Take a nap",
+        "Get a girlfriend",
+        "Pee on the carpet",
+        "Steal a sock",
+        "Hanging around",
+        "Break something",
+        "Look for food",
+        "Hide and seek",
+        "Plan my night exit",
+        "Make strange noises",
+        "Play with daddy",
+        "Make that scary look",
+        "Search the garbage"};
+    
+    const int ideaCount = sizeof(random_ideas / sizeof(random_ideas[0]));
 
-
+    for (int i = 0; i < IDEAS; i++)
+      this->ideas[i] = random_ideas[rand() % ideaCount];
+}
 
 #endif

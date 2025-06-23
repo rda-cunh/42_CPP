@@ -16,13 +16,14 @@ Cat::Cat() : Animal()
 {
     std::cout << "Cat: default contructor called." << std::endl;
     this->_type = "Cat";
+    this->_brain = new Brain();
 }
 
 Cat::Cat(const Cat &other) : Animal(other)
 {
     std::cout << "Cat: copy contructor called." << std::endl;
-    this->_type = other._type;
-    
+    delete this->CatBrain;
+    this->CatBrain = new Brain(*other.CatBrain);    
 }
 
 Cat &Cat::operator=(const Cat &other)
@@ -30,13 +31,15 @@ Cat &Cat::operator=(const Cat &other)
     std::cout << "Cat: copy assignement operator called." << std::endl;
     if (this == &other)
         return *this;
-    this->_type = other._type;
+    delete this->CatBrain;
+    this->CatBrain = new Brain(*other.CatBrain);
     return (*this);
 }
 
 Cat::~Cat()
 {
     std::cout << "Cat: destructor called." << std::endl;
+    delete this->CatBrain;
 }
 
 void Cat::makeSound() const 

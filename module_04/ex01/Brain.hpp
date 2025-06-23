@@ -29,4 +29,5 @@ class Brain
         
         std::string getIdea(int index);
         void setIdea(std::string idea, int index);
+        void random_ideas();                    //sets random ideas from a idea repository when a brain is created.
 };

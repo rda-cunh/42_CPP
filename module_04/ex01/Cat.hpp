@@ -17,6 +17,9 @@
 
 class Cat : public Animal
 {
+    private:
+        Brain *_brain;
+
     public:
         Cat();                              //default constructor
         Cat(const Cat &other);              //copy constructor

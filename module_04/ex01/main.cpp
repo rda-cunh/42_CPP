@@ -27,7 +27,7 @@ int main()
     delete i;
 
     std::cout << std::endl;
-    std::cout << "*** Creating an array of cats and dogs (50/50) ***" << std::endl;
+    std::cout << "*** Creating an array of cats and dogs (50/50), printing some ideas, and deliting the array ***" << std::endl;
     std::cout << std::endl;
 
     //creating the array of animals
@@ -37,18 +37,27 @@ int main()
     animals[2] = new Dog();
     animals[3] = new Cat();
 
+    //printing 3 ideas from each of 4 the animals in the array
+    for (int i = 0; i < 4; i++)
+    {
+        std::cout << "Animal number " << i << "(" << animals[i]->getType() << ") ideas:" << std::endl;
+        for (int j = 0; j < 3; j++)
+            std::cout << "Idea " << j << ":" << animals[i]->getIdea(j) << std::endl;
+    }
+ 
     //clean the array of animals
     for (int i = 0; i < 4; i++)
         delete animals[i];
-
-    /*
+    
     std::cout << std::endl;
-    std::cout << "*** Creating an animal and testing a deep copy ***" << std::endl;
+    std::cout << "*** Creating a cat (with brain) and a copy cat and testing a deep copy ***" << std::endl;
     std::cout << std::endl;
 
     Cat *original = new Cat();
     Cat *copy = new Cat(*original);
-    */
+
+    
+
 
     
 
