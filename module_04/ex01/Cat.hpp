@@ -27,6 +27,7 @@ class Cat : public Animal
         ~Cat();                             //destructor
 
         void makeSound() const;
+        Brain *getBrain();
 };
 
 #endif

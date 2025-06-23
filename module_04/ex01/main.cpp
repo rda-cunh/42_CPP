@@ -49,18 +49,49 @@ int main()
     for (int i = 0; i < 4; i++)
         delete animals[i];
     
+    //tests with 2 cats    
     std::cout << std::endl;
-    std::cout << "*** Creating a cat (with brain) and a copy cat and testing a deep copy ***" << std::endl;
+    std::cout << "*** Creating a cat (with brain) and a copy cat and testing it's deep copy ***" << std::endl;
     std::cout << std::endl;
 
     Cat *original = new Cat();
     Cat *copy = new Cat(*original);
 
-    
+    std::cout << std::endl;
+    std::cout << "Printing first two ideas from each cat (must be equal)" << std::endl;
+    std::cout << std::endl;
+    original->getBrain()->getIdea(0);
+    original->getBrain()->getIdea(1);
+    copy->getBrain()->getIdea(0);
+    copy->getBrain()->getIdea(1);
 
-
+    std::cout << std::endl;
+    std::cout << "Printing brain adresses of both cats (must be different)" << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl << "Original cat memory adress: " << original->getBrain() << std::endl;
+    std::cout << "Copy cat memory adress: " << copy->getBrain() << std::endl;  
     
+    //tests with 2 dogs    
+    std::cout << std::endl;
+    std::cout << "*** Creating a dog (with brain) and a copy dog and testing it's deep copy (same as before, but with the dog class) ***" << std::endl;
+    std::cout << std::endl;
 
-    
+    Cat *original = new Cat();
+    Cat *copy = new Cat(*original);
+
+    std::cout << std::endl;
+    std::cout << "Printing first two ideas from each cat (must be equal)" << std::endl;
+    std::cout << std::endl;
+    original->getBrain()->getIdea(0);
+    original->getBrain()->getIdea(1);
+    copy->getBrain()->getIdea(0);
+    copy->getBrain()->getIdea(1);
+
+    std::cout << std::endl;
+    std::cout << "Printing brain adresses of both cats (must be different)" << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl << "Original cat memory adress: " << original->getBrain() << std::endl;
+    std::cout << "Copy cat memory adress: " << copy->getBrain() << std::endl;  
+
     return (0);
 }

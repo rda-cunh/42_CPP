@@ -17,6 +17,9 @@
 
 class Dog : public Animal
 {
+    private:
+        Brain *_brain;
+
     public:
         Dog();                              //default constructor
         Dog(const Dog &other);              //copy constructor
@@ -24,6 +27,7 @@ class Dog : public Animal
         ~Dog();                             //destructor
 
         void makeSound() const;
+        Brain *getBrain();
 };
 
 #endif
