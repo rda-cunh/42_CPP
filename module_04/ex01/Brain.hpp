@@ -6,9 +6,12 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:28:39 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/22 23:22:51 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/24 00:50:48 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 #include <iostream>
 #include <string>
@@ -29,5 +32,7 @@ class Brain
         
         std::string getIdea(int index);
         void setIdea(std::string idea, int index);
-        void random_ideas();                    //sets random ideas from a idea repository when a brain is created.
+        void randomIdeas();                    //sets random ideas from a idea repository when a brain is created.
 };
+
+#endif

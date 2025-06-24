@@ -6,12 +6,10 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:28:52 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/22 23:51:00 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/24 16:58:42 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
 
 #include "Brain.hpp"
 
@@ -29,7 +27,7 @@ Brain::Brain(const Brain &other)
 
 Brain &Brain::operator=(const Brain &other)
 {
-    std::cout << "Brain:: copy assignment operator called." << std::endl;
+    std::cout << "Brain: copy assignment operator called." << std::endl;
     if (this == &other)
         return (*this);
     for (int i = 0; i < IDEAS; i++)
@@ -81,10 +79,8 @@ void Brain::randomIdeas()
         "Make that scary look",
         "Search the garbage"};
     
-    const int ideaCount = sizeof(random_ideas / sizeof(random_ideas[0]));
+    const int ideaCount = sizeof(random_ideas) / sizeof(random_ideas[0]);
 
     for (int i = 0; i < IDEAS; i++)
       this->ideas[i] = random_ideas[rand() % ideaCount];
 }
-
-#endif

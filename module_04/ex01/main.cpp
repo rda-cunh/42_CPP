@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 01:18:44 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/22 23:48:53 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/24 16:50:08 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int main()
 {
     std::cout << std::endl;
-    std::cout << "*** Animal creation tests to check for leaks (given by the subject) ***" << std::endl;
+    std::cout << "*** Animal creation tests to check for leaks (example given by the subject) ***" << std::endl;
     std::cout << std::endl;
 
     const Animal* j = new Dog();
@@ -27,7 +27,7 @@ int main()
     delete i;
 
     std::cout << std::endl;
-    std::cout << "*** Creating an array of cats and dogs (50/50), printing some ideas, and deliting the array ***" << std::endl;
+    std::cout << "*** Creating an array of cats and dogs (50/50) and deleting the array ***" << std::endl;
     std::cout << std::endl;
 
     //creating the array of animals
@@ -37,15 +37,7 @@ int main()
     animals[2] = new Dog();
     animals[3] = new Cat();
 
-    //printing 3 ideas from each of 4 the animals in the array
-    for (int i = 0; i < 4; i++)
-    {
-        std::cout << "Animal number " << i << "(" << animals[i]->getType() << ") ideas:" << std::endl;
-        for (int j = 0; j < 3; j++)
-            std::cout << "Idea " << j << ":" << animals[i]->getIdea(j) << std::endl;
-    }
- 
-    //clean the array of animals
+    //delete the array of animals
     for (int i = 0; i < 4; i++)
         delete animals[i];
     
@@ -58,40 +50,44 @@ int main()
     Cat *copy = new Cat(*original);
 
     std::cout << std::endl;
-    std::cout << "Printing first two ideas from each cat (must be equal)" << std::endl;
-    std::cout << std::endl;
-    original->getBrain()->getIdea(0);
-    original->getBrain()->getIdea(1);
-    copy->getBrain()->getIdea(0);
-    copy->getBrain()->getIdea(1);
+    std::cout << "Printing first two ideas from each cat (must be equal):" << std::endl;
+    std::cout << "Original Idea 0: " << original->getBrain()->getIdea(0) << std::endl;
+    std::cout << "Original Idea 1: " << original->getBrain()->getIdea(1) << std::endl;
+    std::cout << "Copy Idea 0: " << copy->getBrain()->getIdea(0) << std::endl;
+    std::cout << "Copy Idea 1: " << copy->getBrain()->getIdea(1) << std::endl;
 
     std::cout << std::endl;
-    std::cout << "Printing brain adresses of both cats (must be different)" << std::endl;
+    std::cout << "Printing brain adresses of both cats (must be different):" << std::endl;
+    std::cout << "Original cat memory adress: " << original->getBrain() << std::endl;
+    std::cout << "Copy cat memory adress: " << copy->getBrain() << std::endl;
+
     std::cout << std::endl;
-    std::cout << std::endl << "Original cat memory adress: " << original->getBrain() << std::endl;
-    std::cout << "Copy cat memory adress: " << copy->getBrain() << std::endl;  
+    delete original;
+    delete copy;
     
     //tests with 2 dogs    
     std::cout << std::endl;
     std::cout << "*** Creating a dog (with brain) and a copy dog and testing it's deep copy (same as before, but with the dog class) ***" << std::endl;
     std::cout << std::endl;
 
-    Cat *original = new Cat();
-    Cat *copy = new Cat(*original);
+    Dog *originalDog = new Dog();
+    Dog *copyDog = new Dog(*originalDog);
 
     std::cout << std::endl;
-    std::cout << "Printing first two ideas from each cat (must be equal)" << std::endl;
-    std::cout << std::endl;
-    original->getBrain()->getIdea(0);
-    original->getBrain()->getIdea(1);
-    copy->getBrain()->getIdea(0);
-    copy->getBrain()->getIdea(1);
+    std::cout << "Printing first two ideas from each dog (must be equal):" << std::endl;
+    std::cout << "Original Dog Idea 0: " << originalDog->getBrain()->getIdea(0) << std::endl;
+    std::cout << "Original Dog Idea 1: " << originalDog->getBrain()->getIdea(1) << std::endl;
+    std::cout << "Copy Dog Idea 0: " << copyDog->getBrain()->getIdea(0) << std::endl;
+    std::cout << "Copy Dog Idea 1: " << copyDog->getBrain()->getIdea(1) << std::endl;
 
     std::cout << std::endl;
-    std::cout << "Printing brain adresses of both cats (must be different)" << std::endl;
+    std::cout << "Printing brain adresses of both dogs (must be different):" << std::endl;
+    std::cout << "Original dog memory adress: " << originalDog->getBrain() << std::endl;
+    std::cout << "Copy dog memory adress: " << copyDog->getBrain() << std::endl;
+
     std::cout << std::endl;
-    std::cout << std::endl << "Original cat memory adress: " << original->getBrain() << std::endl;
-    std::cout << "Copy cat memory adress: " << copy->getBrain() << std::endl;  
+    delete originalDog;
+    delete copyDog;
 
     return (0);
 }

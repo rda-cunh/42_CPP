@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 01:21:24 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/16 01:31:01 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/24 16:43:39 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ Dog::Dog() : Animal()
 Dog::Dog(const Dog &other) : Animal(other)
 {
     std::cout << "Dog: copy contructor called." << std::endl;
-    delete this->_brain;
     this->_brain = new Brain(*other._brain);
 }
 
