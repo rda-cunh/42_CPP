@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 01:18:44 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/24 16:50:08 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/25 18:24:16 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@
 int main()
 {
     std::cout << std::endl;
-    std::cout << "*** Animal creation tests to check for leaks (example given by the subject) ***" << std::endl;
+    std::cout << "*** NEW TEST: Animal creation tests to show animal class is non-instantiable (uncomment to cause compilation errors) ***" << std::endl;
     std::cout << std::endl;
 
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    
-    delete j;   //should not create a leak
-    delete i;
+    // Animal animal;              
+    // Animal* ptr = new Animal();
 
     std::cout << std::endl;
+    std::cout << "*** Repeating all tests from ex01 to check everything is working correctly as before ***" << std::endl;
     std::cout << "*** Creating an array of cats and dogs (50/50) and deleting the array ***" << std::endl;
     std::cout << std::endl;
 
