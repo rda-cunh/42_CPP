@@ -6,7 +6,99 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:26:46 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/26 01:26:49 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/26 22:47:25 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Character.hpp"
+
+Character::Character(std::string &name) : _name(name)
+{
+    std::cout << "Character: default constructed called." << std::endl;
+}
+
+Character::Character(const Character &other)
+{
+    std::cout << "Character: copy constructor called." << std::endl;
+    *this = other;
+}
+
+Character &Character::operator=(const Character &other)
+{
+    std::cout << "Character: copy assignement operator called." << std::endl;
+    if (this == &other)
+        return (*this);
+    while (!this->_unequipedMaterias.empty())
+    {
+        delete this->_unequipedMaterias.front();
+        this->_unequipedMaterias.pop_front();
+    }
+    this->_unequipedMaterias.assign(other._unequipedMaterias.begin(), 
+                                        other._unequipedMaterias.end());
+    
+    for (int i = 0; i < SLOTS; i++)
+    {
+        if (this->_inventory[i])
+            delete this->_inventory[i];
+        this->_inventory[i] = other._inventory[i];
+    }
+    return (*this);
+}
+
+Character::~Character()
+{
+    std::cout << "Character: destructor called." << std::endl;
+    while (!this->_unequipedMaterias.empty())
+    {
+        delete this->_unequipedMaterias.front();
+        this->_unequipedMaterias.pop_front();
+    }
+    for (int i = 0; i < SLOTS; i++)
+    {
+        if (this->_inventory[i])
+            delete this->_inventory[i];
+    }
+}
+
+const std::string &Character::getName() const {return (this->_name);}
+
+void Character::equip(AMateria *m)
+{
+    for (int i = 0; i <= SLOTS; i++)
+    {
+        if (i == SLOTS)
+        {
+            std::cout << "There's no space left to equip this " << m->getType() 
+                << "." << std::endl;
+            return ;
+        }
+        if (!this->_inventory[i])
+        {
+            this->_inventory[i] = m;
+            return ;
+        }    
+    }
+}
+
+void Character::unequip(int idx)
+{
+    if (idx < 0 || idx >= SLOTS)
+        std::cout << "Invalid slot number provided." << std::endl;
+    else if (!this->_inventory[idx])
+        std::cout << "The slot number provided is not equiped." << std::endl;
+    else
+    {
+        this->_unequipedMaterias.push_front(this->_inventory[idx]);
+        this->_inventory[idx] = NULL;
+    }    
+}
+
+void Character::use(int idx, ICharacter &target)
+{
+    if (idx < 0 || idx >= SLOTS)
+        std::cout << "Invalid slot number provided." << std::endl;
+    else if (!this->_inventory[idx])
+        std::cout << "The slot number provided is not equiped." << std::endl;
+    else
+        this->_inventory[idx]->use(target); 
+}
