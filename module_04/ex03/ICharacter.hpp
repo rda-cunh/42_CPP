@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 00:41:04 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/27 18:49:18 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:04:05 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ICHARACTER_HPP
 
 #include "AMateria.hpp"
+#include <string>
 
 class AMateria;
 

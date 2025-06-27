@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:26:35 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/26 22:48:05 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:06:46 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Character : public ICharacter
         std::list<AMateria *> _unequipedMaterias;
     
     public:
-        Character(std::string &name);                   //Default constructor
+        Character(std::string const &name);             //Default constructor
         Character(const Character &other);              //Copy Constructor
         Character &operator=(const Character &other);   //Copy assignement operator
         ~Character();                                   //Destructor

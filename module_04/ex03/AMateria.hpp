@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:31:00 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/26 18:12:40 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:04:54 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "ICharacter.hpp"
 
 class ICharacter;
+
 class AMateria
 {
     protected:
