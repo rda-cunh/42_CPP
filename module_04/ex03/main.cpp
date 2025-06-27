@@ -6,13 +6,14 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 01:18:44 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/25 18:51:47 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:00:18 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Character.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
+#include "MateriaSource.hpp"
 
 int main()
 {
