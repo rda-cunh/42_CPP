@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:31:00 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/27 20:04:54 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/27 22:42:06 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class AMateria
         AMateria(std::string const &type);
         AMateria(const AMateria &other);            //Copy Constructor
         AMateria &operator=(const AMateria &other); //Copy assignment operator 
-        ~AMateria();                                //Destructor
+        virtual ~AMateria();                        //Destructor
         
         std::string const &getType() const;         //Returns the materia type
         

@@ -6,15 +6,17 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:26:46 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/26 22:47:25 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/27 22:53:45 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character(std::string &name) : _name(name)
+Character::Character(std::string const &name) : _name(name)
 {
     std::cout << "Character: default constructed called." << std::endl;
+    for (int i = 0; i < SLOTS; i++)             //initializing inventory array to avoid conditional jumps
+        this->_inventory[i] = NULL;
 }
 
 Character::Character(const Character &other)
