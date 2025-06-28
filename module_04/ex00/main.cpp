@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 01:18:44 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/17 00:22:21 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/28 11:37:29 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int main()
     std::cout << i2->getType() << " " << std::endl;
     std::cout << std::endl;
 
-    i2->makeSound();     //will output the wrong cat sound!
+    i2->makeSound();     //will output the wrong animal sound!
     meta2->makeSound();  //will output the wrong animal sound!
     std::cout << std::endl;
 
