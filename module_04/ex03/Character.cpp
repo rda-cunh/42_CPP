@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:26:46 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/28 01:25:26 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/28 10:57:10 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,32 @@ Character &Character::operator=(const Character &other)
     std::cout << "Character: copy assignement operator called." << std::endl;
     if (this == &other)
         return (*this);
-    while (!this->_unequipedMaterias.empty())
+
+    //cleans the unequiped materias list (subject request)
+    while (!this->_unequipedMaterias.empty()) 
     {
         delete this->_unequipedMaterias.front();
         this->_unequipedMaterias.pop_front();
     }
-    this->_unequipedMaterias.assign(other._unequipedMaterias.begin(), 
-                                        other._unequipedMaterias.end());
-    
+
+    //loop to make deep copy of the list of unequiped materias
+    for (std::list<AMateria *>::const_iterator it =
+        other._unequipedMaterias.begin(); it != other._unequipedMaterias.end(); ++it)
+    {
+        this->_unequipedMaterias.push_back((*it)->clone());
+    }
+
+    //loop to make deep copy of the array of unequiped materias
     for (int i = 0; i < SLOTS; i++)
     {
         if (this->_inventory[i])
             delete this->_inventory[i];
         if (other._inventory[i])
-            this->_inventory[i] = other._inventory[i];
+            this->_inventory[i] = other._inventory[i]->clone();
+        else
+            this->_inventory[i] = NULL;
     }
-    this->_name = other._name;
+    this->_name = other._name; //copy character name
     return (*this);
 }
 

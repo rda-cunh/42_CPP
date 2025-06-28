@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:51:58 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/26 19:38:50 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/28 10:45:32 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Ice::Ice() : AMateria("ice")
 {
-    std::cout << "Ice: default cosntructor called." << std::endl;
+    std::cout << "Ice: default constructor called." << std::endl;
 }
 
 Ice::Ice(const Ice &other) : AMateria(other)
