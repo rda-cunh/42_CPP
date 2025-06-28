@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:28:07 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/27 19:56:48 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/28 01:25:48 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void MateriaSource::learnMateria(AMateria* materiaToLearn)
         if (i == M_SLOTS)
         {
             std::cout << "MateriaSource: there's no free slot to learn more materias." << std::endl;
+            delete materiaToLearn; //delete reject one to avoid leaks
             return ;
         }
         else if (!this->_learnedMaterias[i])

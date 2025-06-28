@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:26:46 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/06/27 22:53:45 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/06/28 01:25:26 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 Character::Character(std::string const &name) : _name(name)
 {
-    std::cout << "Character: default constructed called." << std::endl;
+    std::cout << "Character: default constructed called for " << this->_name 
+        << "." << std::endl;
     for (int i = 0; i < SLOTS; i++)             //initializing inventory array to avoid conditional jumps
         this->_inventory[i] = NULL;
 }
@@ -22,6 +23,8 @@ Character::Character(std::string const &name) : _name(name)
 Character::Character(const Character &other)
 {
     std::cout << "Character: copy constructor called." << std::endl;
+    for (int i = 0; i < SLOTS; i++)             //initializing inventory array to avoid conditional jumps
+        this->_inventory[i] = NULL;
     *this = other;
 }
 
@@ -42,8 +45,10 @@ Character &Character::operator=(const Character &other)
     {
         if (this->_inventory[i])
             delete this->_inventory[i];
-        this->_inventory[i] = other._inventory[i];
+        if (other._inventory[i])
+            this->_inventory[i] = other._inventory[i];
     }
+    this->_name = other._name;
     return (*this);
 }
 
@@ -59,19 +64,27 @@ Character::~Character()
     {
         if (this->_inventory[i])
             delete this->_inventory[i];
+
     }
+
 }
 
 const std::string &Character::getName() const {return (this->_name);}
 
 void Character::equip(AMateria *m)
 {
+    if (!m) //avoid segfault (check for null ptr)
+    {
+        std::cout << "Can't equip a NULL Materia." << std::endl;
+        return ;
+    }
     for (int i = 0; i <= SLOTS; i++)
     {
         if (i == SLOTS)
         {
             std::cout << "There's no space left to equip this " << m->getType() 
                 << "." << std::endl;
+            delete m; //delete reject one to avoid leaks
             return ;
         }
         if (!this->_inventory[i])
