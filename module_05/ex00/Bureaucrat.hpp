@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:11 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/01 20:35:26 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/01 21:14:06 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class Bureaucrat
         
         std::string getName();
         int         getgrade();
+        void        incrementBuro();
+        void        decrementBuro();
 };
 
 #endif
