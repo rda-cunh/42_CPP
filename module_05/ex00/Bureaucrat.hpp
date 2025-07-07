@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:11 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/07 19:41:59 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/08 00:22:22 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include <iostream>
 #include <string>
 
-#define MAX_GRADE 150
-#define MIN_GRADE 1
+#define MAX_GRADE 1
+#define MIN_GRADE 150
 
 class Bureaucrat
 {
@@ -32,18 +32,18 @@ class Bureaucrat
         Bureaucrat &operator=(const Bureaucrat &other);         //copy assignement operator
         ~Bureaucrat();                                          //destructor 
         
-        std::string getName();
-        int         getgrade();
+        std::string getName() const;
+        int         getGrade() const;
         void        incrementBuro();
         void        decrementBuro();
 
         class GradeTooHighException : public std::exception
         {
-            virtual const char *what() const throw(); //verificar a necessidade do virtual: https://cplusplus.com/doc/tutorial/exceptions/ 
+            const char *what() const throw();
         };
         class GradeTooLowException : public std::exception
         {
-            virtual const char *what() const throw(); //verificar a necessidade do virtual 
+            const char *what() const throw();
         };
 };
 

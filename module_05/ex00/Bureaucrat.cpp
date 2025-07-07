@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/07 19:31:43 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/08 00:18:06 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
 Bureaucrat::Bureaucrat(std::string const &name, int const &grade) : _name(name)
 {
     std::cout << "Bureaucrat: constructor called." << std::endl;
-    if (grade < MIN_GRADE)
+    if (grade < MAX_GRADE)
         throw Bureaucrat::GradeTooHighException();
-    else if (grade > MAX_GRADE)
+    else if (grade > MIN_GRADE)
         throw Bureaucrat::GradeTooLowException();
     this->_grade = grade; 
 }
@@ -47,11 +47,36 @@ Bureaucrat::~Bureaucrat()
     std::cout << "Bureaucrat: destructor called." << std::endl;
 }
 
-std::string Bureaucrat::getName() {return(this->_name);}
+std::string Bureaucrat::getName() const {return(this->_name);}
 
-int Bureaucrat::getgrade() {return(this->_grade);}
+int Bureaucrat::getGrade() const {return(this->_grade);}
+
+void Bureaucrat::decrementBuro()
+{
+    if (this->_grade + 1 > MIN_GRADE)
+        Bureaucrat::GradeTooLowException();
+    this->_grade++;
+}
 
 void Bureaucrat::incrementBuro()
 {
-    if (_grade - 1 < MAX_GRADE)
+    if (this->_grade - 1 < MAX_GRADE)
+        Bureaucrat::GradeTooHighException();
+    this->_grade--;
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return ("Bureaucrat: grade is too high!");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return("Bureaucrat: grade is too low!");
+}
+
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj)
+{
+    out << obj.getName() << ",  bureaucrat grade " << obj.getGrade() << "." << std::endl;
+    return (out);
 }
