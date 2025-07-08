@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:11 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/08 20:19:41 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/08 21:19:25 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include "../inc/Form.hpp"
 
 #define MAX_GRADE 1
 #define MIN_GRADE 150
@@ -22,7 +23,7 @@
 class Bureaucrat
 {
     private:
-        const std::string   _name;
+        std::string const   _name;
         int                 _grade;              
 
     public:
@@ -37,6 +38,8 @@ class Bureaucrat
         void        incrementBuro();
         void        decrementBuro();
 
+        void signForm(const Form *signedForm, const std::string &reason);
+     
         class GradeTooHighException : public std::exception
         {
             const char *what() const throw();
