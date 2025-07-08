@@ -10,22 +10,30 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 
+NAME = buro
 
-SRCS = 
-OBJS = $(SRCS:.cpp=.o)
+SRC_DIR = src
+OBJ_DIR = obj
+INC_DIR = inc
+
+SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/Bureaucrat.cpp
+OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR)
 RM = rm -rf
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CPPFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CPPFLAGS) -o $@ $^
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
