@@ -6,11 +6,11 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:30 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/08 00:39:52 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:22:15 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "../inc/Bureaucrat.hpp"
 
 int main ()
 {
@@ -22,7 +22,7 @@ int main ()
     }
     catch (std::exception &e)
     {
-        std::cout << e.what() << std::endl;
+        std::cout << "Error creating 'Buro A': " << e.what() << std::endl;
     }
     std::cout << std::endl;
 
@@ -36,7 +36,7 @@ int main ()
     }
     catch (std::exception &e)
     {
-        std::cout << e.what() << std::endl;
+        std::cout <<  "Error decrementing 'Buro B': " << e.what() << std::endl;
     }
     std::cout << std::endl;
 
@@ -49,26 +49,26 @@ int main ()
     }
     catch (std::exception &e)
     {
-        std::cout << e.what() << std::endl;
+        std::cout << "Error incrementing 'Buro C': " << e.what() << std::endl;
     }
     std::cout << std::endl;
     
-    std::cout << "--- Test 04: working boreaucrat ---" << std::endl;
+    std::cout << "--- Test 04: Create a working bureaucrat, testing operator, decrement, increment and copy ---" << std::endl;
     std::cout << std::endl;
     try
     {
     Bureaucrat BuroD("Buro D", 10);
     std::cout << BuroD << std::endl; //testig operator overloading
-    std::cout << std::endl;
 
-    std::cout << "Decrementing and Increenting 2x:" << std::endl;
+    std::cout << "Decrementing and Incrementing 2x:" << std::endl;
     BuroD.decrementBuro();
-    std::cout << BuroD << std::endl;
+    std::cout << "After Decrementing: " << BuroD;
     BuroD.incrementBuro();
-    std::cout << BuroD << std::endl;
+    std::cout << "After Incrementing: " << BuroD;
     BuroD.incrementBuro();
-    std::cout << std::endl;
+    std::cout << "After Incrementing: " << BuroD;
 
+    std::cout << std::endl;
     std::cout << "Creating a copy:" << std::endl;
     Bureaucrat BuroF(BuroD);
     std::cout << "I am a copy of Buro D: " << BuroF << std::endl;
@@ -77,9 +77,6 @@ int main ()
     {
         std::cout << e.what() << std::endl;
     }
-    std::cout << std::endl;
-    
 
-
-
+    return (0);
 }
