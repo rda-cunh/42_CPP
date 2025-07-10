@@ -11,72 +11,45 @@
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
+#include "../inc/Form.hpp"
 
 int main ()
 {
-    std::cout << "--- Test 01: initiate Buro with a wrong grade ---" << std::endl;
+    std::cout << "--- Test 01: expected behavior when a Buro signs a Form ---" << std::endl;
     std::cout << std::endl;
     try
     {
-    Bureaucrat BuroA("Buro A", 151);
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Error creating 'Buro A': " << e.what() << std::endl;
-    }
-    std::cout << std::endl;
-
-
-    std::cout << "--- Test 02: Perform wrong decrement ---" << std::endl;
-    std::cout << std::endl;
-    try
-    {
-    Bureaucrat BuroB("Buro B", 150);
-    BuroB.decrementBuro();
-    }
-    catch (std::exception &e)
-    {
-        std::cout <<  "Error decrementing 'Buro B': " << e.what() << std::endl;
-    }
-    std::cout << std::endl;
-
-    std::cout << "--- Test 03: Perform wrong increment ---" << std::endl;
-    std::cout << std::endl;
-    try
-    {
-    Bureaucrat BuroC("Buro C", 1);
-    BuroC.incrementBuro();
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Error incrementing 'Buro C': " << e.what() << std::endl;
-    }
-    std::cout << std::endl;
-    
-    std::cout << "--- Test 04: Create a working bureaucrat, testing operator, decrement, increment and copy ---" << std::endl;
-    std::cout << std::endl;
-    try
-    {
-    Bureaucrat BuroD("Buro D", 10);
-    std::cout << BuroD << std::endl; //testig operator overloading
-
-    std::cout << "Decrementing and Incrementing 2x:" << std::endl;
-    BuroD.decrementBuro();
-    std::cout << "After Decrementing: " << BuroD;
-    BuroD.incrementBuro();
-    std::cout << "After Incrementing: " << BuroD;
-    BuroD.incrementBuro();
-    std::cout << "After Incrementing: " << BuroD;
-
-    std::cout << std::endl;
-    std::cout << "Creating a copy:" << std::endl;
-    Bureaucrat BuroF(BuroD);
-    std::cout << "I am a copy of Buro D: " << BuroF << std::endl;
+    Bureaucrat BuroA("Buro A", 100);
+    std::cout << "Buro A: " << BuroA << std::endl;
+    Form FormA("Form A", 120, 110);
+    std::cout << "Form A (before signature): " << FormA << std::endl;
+    FormA.beSigned(BuroA);
+    std::cout << "Form A (after signature): " << FormA << std::endl;
     }
     catch (std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }
+    std::cout << std::endl;
+
+    std::cout << "--- Test 02: Buro B tries to sign a form and fails, then Buro A tries to sign ---" << std::endl;
+    std::cout << std::endl;
+    try
+    {
+    Bureaucrat BuroB("Buro B", 121);
+    std::cout << "Buro B: " << BuroA << std::endl;
+    Form FormA("Form B", 120, 110);
+    std::cout << "Form B (before signature): " << FormB << std::endl;
+    FormA.beSigned(BuroB);
+    std::cout << "Form B (after failed signature): " << FormB << std::endl;
+    FormA.beSigned(BuroA);
+    std::cout << "Form B (after signature): " << FormB << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << std::endl;
 
     return (0);
 }

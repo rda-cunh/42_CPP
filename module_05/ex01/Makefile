@@ -10,13 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = buro
+NAME = form
 
 SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = inc
 
-SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/Bureaucrat.cpp
+SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/Bureaucrat.cpp $(SRC_DIR)/Form.cpp
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CC = c++
