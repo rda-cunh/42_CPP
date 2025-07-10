@@ -6,11 +6,11 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/08 22:53:37 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:24:39 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
 {
@@ -49,7 +49,7 @@ Bureaucrat::~Bureaucrat()
 
 std::string Bureaucrat::getName() const {return(this->_name);}
 
-int Bureaucrat::getGrade() const {return(this->_grade);}
+unsigned int Bureaucrat::getGrade() const {return(this->_grade);}
 
 void Bureaucrat::decrementBuro()
 {
@@ -72,7 +72,7 @@ void Bureaucrat::signForm(const Form *signedForm, const std::string &reason)
             << "." << std::endl;
     else
         std::cout << this->getName() << " couldn't sign " << signedForm->getName() 
-            << " because " << reason << "." << std::endl;
+            << " because " << reason << std::endl;
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
@@ -87,14 +87,6 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj)
 {
-    out << obj.getName() << ",  bureaucrat grade " << obj.getGrade() << "." << std::endl;
+    out << obj.getName() << ", bureaucrat grade " << obj.getGrade() << ".";
     return (out);
-}
-
-const char *Form::GradeTooHighException::what() const throw() {
-  return ("[Form][Exception] Grade is too High!");
-}
-
-const char *Form::GradeTooLowException::what() const throw() {
-  return ("[Form][Exception] Grade is too Low!");
 }

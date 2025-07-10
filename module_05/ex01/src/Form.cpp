@@ -6,11 +6,11 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 19:29:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/08 22:59:21 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:27:31 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Form.hpp"
+#include "Form.hpp"
 
 Form::Form() : _name("default form"), _isSigned(false), _signGrade(150), _execGrade(150)
 {
@@ -21,10 +21,10 @@ Form::Form(std::string name, unsigned int signGrade, unsigned int execGrade)
     : _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade)
 {
     std::cout << "Form: constructor called for " << this->getName() << "." << std::endl;
-    if (signGrade > MAX_GRADE || execGrade > MAX_GRADE)
-        throw GradeTooLowException();
-    else if (signGrade < MIN_GRADE || execGrade < MIN_GRADE)
+    if (signGrade < MAX_GRADE || execGrade < MAX_GRADE)
         throw GradeTooHighException();
+    else if (signGrade > MIN_GRADE || execGrade > MIN_GRADE)
+        throw GradeTooLowException();
 }
 
 Form::Form(const Form &other) 
@@ -59,7 +59,7 @@ void Form::beSigned(Bureaucrat &signer)
 {
     if (this->getIsSigned())
         signer.signForm(this, "This form is already signed.");
-    else if (this->getSignGrade() > signer.getGrade())
+    else if (this->getSignGrade() < signer.getGrade())
     {
         signer.signForm(this, "grade is too low.");
         throw Form::GradeTooLowException();
@@ -78,7 +78,7 @@ const char *Form::GradeTooHighException::what() const throw()
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-    return ("Form | Exception: grade is too high!");
+    return ("Form | Exception: grade is too low!");
 }
 
 std::ostream &operator<<(std::ostream &out, const Form &obj)

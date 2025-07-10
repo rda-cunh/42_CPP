@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/08 19:26:33 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/10 19:52:06 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj)
 {
-    out << obj.getName() << ",  bureaucrat grade " << obj.getGrade() << "." << std::endl;
+    out << obj.getName() << ", bureaucrat grade " << obj.getGrade() << "." << std::endl;
     return (out);
 }
