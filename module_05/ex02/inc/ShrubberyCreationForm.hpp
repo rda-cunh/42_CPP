@@ -31,7 +31,7 @@ class ShrubberyCreationForm : public AForm
         ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);   //copy assignment operator
         ~ShrubberyCreationForm();                                               //destructor
 
-        void executer() const;    
+        void executer() const;
 };
 
 #endif

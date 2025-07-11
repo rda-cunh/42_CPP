@@ -30,3 +30,36 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
     this->getIsSigned(other.getIsSigned());
 }
 
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
+{
+    std::cout << "ShrubberyCreationForm: copy assignement operator called." << std::endl;
+    if (this == &this)
+        return (*this);
+    this->_target = other._target;
+    this->setSigned(other.getSigned())
+    return (*this);
+}
+
+ShrubberyCreationForm::~ShrubberyCreationForm()
+{
+    std::cout << "ShrubberyCreationForm: destructor called." << std::endl;
+}
+
+void ShrubberyCreationForm::executer() const
+{
+    std::ofstream outputfile((this->_target + "_shrubbery").c_str());
+    outputfile << "         &&& &&  & &&\n";
+    outputfile << "     && &\\/&\\|& ()|/ @, &&\n";
+    outputfile << "     &\\/(/&/&||/& /_/)_&/_&\n";
+    outputfile << "  &() &\\/&|()|/&\\/ '%\" & ()\n";
+    outputfile << " &_\\_&&_\\ |& |&&/&__%_/_& &&\n";
+    outputfile << "&&   && & &| &| /& & % ()& /&&\n";
+    outputfile << " ()&_---()&\\&\\|&&-&&--%---()~\n";
+    outputfile << "     &&     \\|||\n";
+    outputfile << "             |||\n";
+    outputfile << "             |||\n";
+    outputfile << "             |||\n";
+    outputfile << "       , -=-~  .-^- _\n";
+    outputfile.close();
+}
+

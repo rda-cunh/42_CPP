@@ -22,10 +22,16 @@ class AForm;
 class RobotomyRequestForm : public AForm 
 {
     private:
-
+        std::string _target;
     
     public:
+        RobotomyRequestForm();                                              //default constructor
+        RobotomyRequestForm(const std::string &target);             
+        RobotomyRequestForm(const RobotomyRequestForm &other);              //copy consttuctor
+        RobotomyRequestForm &operator=(const RobotomyRequestForm &other);   //copy assignement operator
+        ~RobotomyRequestForm();                                             //destructor
 
+        void executer() const;
 };
 
 #endif
