@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 19:29:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/10 20:49:41 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/11 18:50:16 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ AForm::AForm(std::string name, unsigned int signGrade, unsigned int execGrade)
 }
 
 AForm::AForm(const AForm &other) 
-    : _name(other._name), _isSigned(false), _signGrade(other._signGrade), _execGrade(other._execGrade) //evalute this in further detail (false or other.isSigned)
+    : _name(other._name), _isSigned(other._isSigned), _signGrade(other._signGrade), _execGrade(other._execGrade) //evalute this in further detail (false or other.isSigned)
 {
     std::cout << "AForm: copy constructor called." << std::endl;
 }
@@ -38,7 +38,7 @@ AForm &AForm::operator=(const AForm &other)
     std::cout << "Form: copy assignemet operator called." << std::endl;
     if (this == &other)
         return (*this);
-    this->_isSigned = false; //evalute this in further detail (false or other._isSigned)
+    this->_isSigned = other._isSigned; 
     return (*this);    
 }
 
@@ -50,6 +50,8 @@ AForm::~AForm()
 std::string AForm::getName() const {return (this->_name);}
 
 bool AForm::getIsSigned() const {return (this->_isSigned);}
+
+void AForm::setIsSigned(bool sign) {this->_isSigned = sign;}
 
 unsigned int AForm::getSignGrade() const {return (this->_signGrade);}
 

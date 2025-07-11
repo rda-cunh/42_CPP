@@ -39,6 +39,7 @@ class AForm
 
         std::string     getName() const;
         bool            getIsSigned() const;
+        void            setIsSigned(bool sign);
         unsigned int    getSignGrade() const;
         unsigned int    getExecGrade() const; 
 

@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/10 22:16:28 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/11 18:40:56 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void Bureaucrat::incrementBuro()
     this->_grade--;
 }
 
-void Bureaucrat::signForm(const Form *signedForm, const std::string &reason)
+void Bureaucrat::signForm(const AForm *signedForm, const std::string &reason)
 {
     if (reason.empty())
         std::cout << this->getName() << " signed " << signedForm->getName() 

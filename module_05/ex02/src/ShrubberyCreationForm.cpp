@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 22:17:13 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/10 22:49:51 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/11 18:47:14 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
     : AForm(other.getName(), other.getSignGrade(), other.getExecGrade()), _target(other._target)
 {
     std::cout << "ShrubberyCreationForm: copy contructor called." << std::endl;
-    this->getIsSigned(other.getIsSigned());
+    this->setIsSigned(other.getIsSigned());
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
     std::cout << "ShrubberyCreationForm: copy assignement operator called." << std::endl;
-    if (this == &this)
+    if (this == &other)
         return (*this);
     this->_target = other._target;
-    this->setSigned(other.getSigned())
+    this->setIsSigned(other.getIsSigned());
     return (*this);
 }
 
