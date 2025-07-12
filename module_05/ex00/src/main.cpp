@@ -6,13 +6,13 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:30 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/08 19:22:15 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/13 00:26:14 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
 
-int main ()
+int main()
 {
     std::cout << "--- Test 01: initiate Buro with a wrong grade ---" << std::endl;
     std::cout << std::endl;

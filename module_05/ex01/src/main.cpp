@@ -6,14 +6,14 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:30 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/10 20:29:44 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/13 00:26:02 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-int main ()
+int main()
 {
     std::cout << "--- Test 01: Buro A cand can sign a form (same level) ---" << std::endl;
     std::cout << std::endl;
