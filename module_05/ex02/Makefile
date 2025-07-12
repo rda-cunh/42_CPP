@@ -6,11 +6,11 @@
 #    By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/10 17:41:50 by rda-cunh          #+#    #+#              #
-#    Updated: 2025/07/10 22:14:06 by rda-cunh         ###   ########.fr        #
+#    Updated: 2025/07/12 15:26:51 by rda-cunh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = buro
+NAME = form_28b
 
 SRC_DIR = src
 OBJ_DIR = obj

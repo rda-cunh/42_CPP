@@ -45,6 +45,8 @@ class AForm
 
         void beSigned(Bureaucrat &signer);
 
+        virtual void executer() const = 0;
+
         class GradeTooHighException : public std::exception
         {
             const char *what() const throw();

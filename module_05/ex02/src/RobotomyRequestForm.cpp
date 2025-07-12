@@ -48,5 +48,14 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::executer() const
 {
+    std::cout << "Drill starting..." << std::endl;
     std::cout << "Vrrrrrrrrrr! Vrrrrrrrrrr!" << std::endl;
+    std::cout << "Vrrrrrrrrrr! Vrrrrrrrrrr! Vrrrrrrrrrr!" << std::endl;
+    
+    std::srand(std::time(0)); //seeds srand with time to ensure not to have the some output all the time
+
+    if(rand() % 2)
+        std::cout << this->_target << "has been robotimized!" << std::endl;
+    else
+        std::cout << this->_target << "has not been robotimized. Try again!" << std::endl;
 }
