@@ -6,7 +6,7 @@
 #    By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/10 17:41:50 by rda-cunh          #+#    #+#              #
-#    Updated: 2025/07/13 00:03:58 by rda-cunh         ###   ########.fr        #
+#    Updated: 2025/07/14 19:28:33 by rda-cunh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,13 @@ SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = inc
 
-SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/Bureaucrat.cpp $(SRC_DIR)/Form.cpp \
+SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/Bureaucrat.cpp $(SRC_DIR)/AForm.cpp \
 		$(SRC_DIR)/PresidentialPardonForm.cpp $(SRC_DIR)/RobotomyRequestForm.cpp \
 		$(SRC_DIR)/ShrubberyCreationForm.cpp
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR)
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR) -g
 RM = rm -rf
 
 all: $(NAME)

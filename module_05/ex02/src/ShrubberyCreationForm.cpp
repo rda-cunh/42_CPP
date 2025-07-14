@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 22:17:13 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/11 18:47:14 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/15 00:23:04 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void ShrubberyCreationForm::executer() const
     outputfile << "             |||\n";
     outputfile << "       , -=-~  .-^- _\n";
     outputfile.close();
+    std::cout << "Shrubbery: tree file has been created." << std::endl;
 }
 

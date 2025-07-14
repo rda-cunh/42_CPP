@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/11 18:40:56 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/14 19:23:13 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,18 @@ void Bureaucrat::signForm(const AForm *signedForm, const std::string &reason)
             << " because " << reason << std::endl;
 }
 
-//missing function to execute form
+void Bureaucrat::executeForm(AForm const &form)
+{
+    try
+    {
+        form.executer();
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;        
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+}
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {

@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 19:29:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/13 00:22:32 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/14 19:25:16 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ AForm::AForm(std::string name, unsigned int signGrade, unsigned int execGrade)
     std::cout << "AForm: constructor called for " << this->getName() << "." << std::endl;
     if (signGrade < MAX_GRADE || execGrade < MAX_GRADE)
         throw GradeTooHighException();
-    else if (signGrade > MIN_GRADE || execGrade > MIN_GRADE)
+    if (signGrade > MIN_GRADE || execGrade > MIN_GRADE)
         throw GradeTooLowException();
 }
 
@@ -77,7 +77,7 @@ void AForm::execute(const Bureaucrat &exec) const
 {
     if (!this->getIsSigned())
         throw AForm::FormIsNotSigned();
-    if (this->getSignGrade() < exec.getGrade())
+    if (this->getExecGrade() < exec.getGrade())
         throw AForm::GradeTooLowException();
     this->executer();
 }

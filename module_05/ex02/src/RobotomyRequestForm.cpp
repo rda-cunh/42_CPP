@@ -55,7 +55,7 @@ void RobotomyRequestForm::executer() const
     std::srand(std::time(0)); //seeds srand with time to ensure not to have the some output all the time
 
     if(rand() % 2)
-        std::cout << this->_target << "has been robotimized!" << std::endl;
+        std::cout << this->_target << " has been robotimized!" << std::endl;
     else
-        std::cout << this->_target << "has not been robotimized. Try again!" << std::endl;
+        std::cout << this->_target << " has not been robotimized. Try again!" << std::endl;
 }
