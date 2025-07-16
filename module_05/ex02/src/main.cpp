@@ -17,46 +17,88 @@
 
 int main()
 {
+    std::cout << "--- Test 01: ShrubberyCreationForm ---" << std::endl;
+    std::cout << std::endl;
 
-/* std::cout << "--- Test 01: ShrubberyCreationForm ---" << std::endl;
-std::cout << std::endl;
-
-try
-{
     Bureaucrat BuroA("Buro A", 138);
-    std::cout << BuroA << std::endl;
     ShrubberyCreationForm FormA("beach");
+
     std::cout << FormA << std::endl;
 
-    FormA.beSigned(BuroA);
-
+    std::cout << "Trying to execute a unsigned form / exception caught: ";
     try
     {
-        FormA.execute(BuroA);  // First attempt, expected to fail
+        FormA.execute(BuroA);
     }
     catch (std::exception &e)
     {
-        std::cout << "First execution attempt failed: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
-
-    BuroA.incrementBuro();  // Grade becomes 137, sufficient to execute
-    std::cout << "After incrementation: " << BuroA << std::endl;
-
+    
+    
+    std::cout << "Trying to execute whithout enough grade (137 needed) / exception caught: ";
     try
     {
-        FormA.execute(BuroA);  // Second attempt, expected to succeed
+        FormA.beSigned(BuroA);
+        FormA.execute(BuroA);
     }
     catch (std::exception &e)
     {
-        std::cout << "Second execution attempt failed: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
-}
-catch (std::exception &e)
-{
-    std::cout << "Exception caught: " << e.what() << std::endl;
-}
 
-std::cout << std::endl; */
+    std::cout << "Upgrade and execute (success expected): ";
+    try
+    {
+        BuroA.incrementBuro();
+        FormA.execute(BuroA);
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    
+
+    std::cout << "--- Test 02: RobotomyRequestForm ---" << std::endl;
+    std::cout << std::endl;
+
+    Bureaucrat BuroB("Buro B", 45);
+    RobotomyRequestForm FormB("school");
+
+    std::cout << FormA << std::endl;
+
+    std::cout << "Successfull execution: ";
+    try
+    {
+        FormB.beSigned(BuroB);
+        FormB.execute(BuroB);
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    
+    std::cout << "--- Test 03: PresidentialPardonForm ---" << std::endl;
+    std::cout << std::endl;
+
+    Bureaucrat BuroC("Buro C", 6);
+    PresidentialPardonForm FormC("club");
+
+    std::cout << FormA << std::endl;
+
+    std::cout << "Successfull execution: ";
+    try
+    {
+        FormC.beSigned(BuroC);
+        FormC.execute(BuroC);
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+
+
+    /*
     std::cout << "--- Test 01: ShrubberyCreationForm ---" << std::endl;
     std::cout << std::endl;
     try
@@ -127,7 +169,7 @@ std::cout << std::endl; */
     {
         std::cout << "Exception caught: " << e.what() << std::endl;
     }
-
+    */
     return (0);
 }
 
