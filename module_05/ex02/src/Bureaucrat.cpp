@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:23 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/14 19:23:13 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/19 17:56:25 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void Bureaucrat::decrementBuro()
     if (this->_grade + 1 > MIN_GRADE)
         throw Bureaucrat::GradeTooLowException();
     this->_grade++;
+    std::cout << this->getName() << " was decremented and current grade is " 
+        << this->getGrade() << "." << std::endl;
 }
 
 void Bureaucrat::incrementBuro()
@@ -63,6 +65,8 @@ void Bureaucrat::incrementBuro()
     if (this->_grade - 1 < MAX_GRADE)
         throw Bureaucrat::GradeTooHighException();
     this->_grade--;
+    std::cout << this->getName() << " was incremented and current grade is " 
+        << this->getGrade() << "." << std::endl;
 }
 
 void Bureaucrat::signForm(const AForm *signedForm, const std::string &reason)
