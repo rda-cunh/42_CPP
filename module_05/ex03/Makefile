@@ -6,7 +6,7 @@
 #    By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/10 17:41:50 by rda-cunh          #+#    #+#              #
-#    Updated: 2025/07/19 18:06:26 by rda-cunh         ###   ########.fr        #
+#    Updated: 2025/07/21 07:42:02 by rda-cunh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/Bureaucrat.cpp $(SRC_DIR)/AForm.cpp \
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR) -g
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR)
 RM = rm -rf
 
 all: $(NAME)
