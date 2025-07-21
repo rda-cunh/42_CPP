@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 18:39:51 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/21 08:20:01 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:51:49 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ AForm *Intern::makeForm(const std::string &formName, const std::string &formTarg
     //convert string to intiger for switch using
     for (int i = 0; i < 3; i++)
     {
-        if (formTypes[number] = formName)
+        if (formTypes[formIndex] == formName)
         {
             formIndex = i;
             break;
@@ -64,17 +64,17 @@ AForm *Intern::makeForm(const std::string &formName, const std::string &formTarg
     }  
 }
 
-Form *Intern::makeShrubberyCreationForm(const std::string &target) 
+AForm *Intern::makeShrubberyCreationForm(const std::string &target) 
 {
     return (new ShrubberyCreationForm(target));
 }
 
-Form *Intern::makeRobotomyRequestForm(const std::string &target) 
+AForm *Intern::makeRobotomyRequestForm(const std::string &target) 
 {
     return (new RobotomyRequestForm(target));
 }
   
-Form *Intern::makePresidentialPardonForm(const std::string &target) 
+AForm *Intern::makePresidentialPardonForm(const std::string &target) 
 {
     return (new PresidentialPardonForm(target));
 }

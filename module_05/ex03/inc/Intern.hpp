@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 18:31:08 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/19 18:53:58 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:46:25 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ class Intern
 
         static AForm *makeForm(const std::string &formName, const std::string &formTarget);
         
-        static Form *makeShrubberyCreationForm(const std::string &target);
-        static Form *makeRobotomyRequestForm(const std::string &target);
-        static Form *makePresidentialPardonForm(const std::string &target);
+        static AForm *makeShrubberyCreationForm(const std::string &target);
+        static AForm *makeRobotomyRequestForm(const std::string &target);
+        static AForm *makePresidentialPardonForm(const std::string &target);
 
         class FormNotFound : public std::exception
         {
             const char *what() const throw();
-        }
+        };
 };
 
 #endif
