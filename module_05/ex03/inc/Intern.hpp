@@ -33,7 +33,16 @@ class Intern
         Intern &operator=(const Intern &other);     //copy assignment operator
         ~Intern();                                  //destructor
 
-        AForm *makeForm(const std::string &formName, const std::string &formTarget);        
+        static AForm *makeForm(const std::string &formName, const std::string &formTarget);
+        
+        static Form *makeShrubberyCreationForm(const std::string &target);
+        static Form *makeRobotomyRequestForm(const std::string &target);
+        static Form *makePresidentialPardonForm(const std::string &target);
+
+        class FormNotFound : public std::exception
+        {
+            const char *what() const throw();
+        }
 };
 
 #endif

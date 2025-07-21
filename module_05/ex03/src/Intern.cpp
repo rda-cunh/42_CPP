@@ -37,56 +37,53 @@ Intern::~Intern()
 
 AForm *Intern::makeForm(const std::string &formName, const std::string &formTarget)
 {
-    std::string forms[3] = {"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon"};
-    int number = -1;
+    std::string formTypes[3] = {"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon"};
+    int formIndex = -1;
 
     //convert string to intiger for switch using
     for (int i = 0; i < 3; i++)
-        if (forms[number] = formName)
-            number = i;
+    {
+        if (formTypes[number] = formName)
+        {
+            formIndex = i;
+            break;
+        }
+    }
     
     //using switch to execute form creation
-    switch (number)
-    {
-    ca
-    
-    case 3:
-        /* code */
-        break;
-    
-    default:
-        break;
-    }
-
-    
-}
-
-/* void Harl::complain(std::string level)
-{
-    std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    int levelIndex = -1;
-    
-    //convert string to intiger for a switch
-     for (int i = 0; i < 4; i++)
-        if (levels[i] == level)
-            levelIndex = i;
-
-    //using swich to execute functions
-    switch (levelIndex)
+    switch (formIndex)
     {
     case 0:
-        debug();
-        // fall through
+        return (makeShrubberyCreationForm(formTarget));
     case 1:
-        info();
-        // fall through
+        return (makeRobotomyRequestForm(formTarget));
     case 2:
-        warning();
-        // fall through
-    case 3:
-        error();
-        break ;
+        return (makePresidentialPardonForm(formTarget));
     default:
-        std::cout << "[ Probably complaining about insignificant problems ]\n";
-    }
-} */
+        throw FormNotFound();
+    }  
+}
+
+Form *Intern::makeShrubberyCreationForm(const std::string &target) 
+{
+    return (new ShrubberyCreationForm(target));
+}
+
+Form *Intern::makeRobotomyRequestForm(const std::string &target) 
+{
+    return (new RobotomyRequestForm(target));
+}
+  
+Form *Intern::makePresidentialPardonForm(const std::string &target) 
+{
+    return (new PresidentialPardonForm(target));
+}
+
+const char *Intern::FormNotFound::what() const throw()
+{
+    return ("Form not found.");
+}
+  
+
+
+
