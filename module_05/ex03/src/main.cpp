@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:30 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/21 19:50:10 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/21 19:57:55 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,21 @@ int main()
     try
     {
         formB = intern.makeForm("ShrubberyCreation", "beach");
-        std::cout << formB << std::endl;
+        std::cout << *formB << std::endl;
         president.signForm(formB, "because I want");
-        president.executeForm(formB);
+        president.executeForm(*formB);
         std::cout << std::endl;
         
         formC = intern.makeForm("RobotomyRequest", "classroom");
-        std::cout << formC << std::endl;
+        std::cout << *formC << std::endl;
         president.signForm(formC, "because I need");
-        president.executeForm(formC);
+        president.executeForm(*formC);
         std::cout << std::endl;
 
         formD = intern.makeForm("PresidentialPardon", "coffe corner");
-        std::cout << formD << std::endl;
+        std::cout << *formD << std::endl;
         president.signForm(formD, "because I feel");
-        president.executeForm(formD);
+        president.executeForm(*formD);
         std::cout << std::endl;
     }
     catch(std::exception &e)
