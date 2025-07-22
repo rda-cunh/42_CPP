@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 18:39:51 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/21 18:51:49 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/22 08:00:54 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ AForm *Intern::makeForm(const std::string &formName, const std::string &formTarg
     //convert string to intiger for switch using
     for (int i = 0; i < 3; i++)
     {
-        if (formTypes[formIndex] == formName)
+        if (formTypes[i] == formName)
         {
             formIndex = i;
             break;
