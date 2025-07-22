@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 18:39:51 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/22 08:00:54 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:21:47 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,35 +35,6 @@ Intern::~Intern()
     std::cout << "Intern: destructor called." << std::endl;
 }
 
-AForm *Intern::makeForm(const std::string &formName, const std::string &formTarget)
-{
-    std::string formTypes[3] = {"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon"};
-    int formIndex = -1;
-
-    //convert string to intiger for switch using
-    for (int i = 0; i < 3; i++)
-    {
-        if (formTypes[i] == formName)
-        {
-            formIndex = i;
-            break;
-        }
-    }
-    
-    //using switch to execute form creation
-    switch (formIndex)
-    {
-    case 0:
-        return (makeShrubberyCreationForm(formTarget));
-    case 1:
-        return (makeRobotomyRequestForm(formTarget));
-    case 2:
-        return (makePresidentialPardonForm(formTarget));
-    default:
-        throw FormNotFound();
-    }  
-}
-
 AForm *Intern::makeShrubberyCreationForm(const std::string &target) 
 {
     return (new ShrubberyCreationForm(target));
@@ -77,6 +48,30 @@ AForm *Intern::makeRobotomyRequestForm(const std::string &target)
 AForm *Intern::makePresidentialPardonForm(const std::string &target) 
 {
     return (new PresidentialPardonForm(target));
+}
+
+AForm *Intern::makeForm(const std::string &formName, const std::string &formTarget)
+{
+    //array of function pointers
+    AForm* (*functions[3])(const std::string &) = 
+    {
+        &Intern::makeShrubberyCreationForm, 
+        &Intern::makeRobotomyRequestForm, 
+        &Intern::makePresidentialPardonForm
+    };
+    //array of form names (strings)
+    std::string formTypes[3] = {"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon"};
+    //find the correct function for each form.
+    for (int i = 0; i < 3; ++i) 
+    {
+        if (formTypes[i] == formName) 
+        {
+            std::cout << "Intern creates " << formName << " form." << std::endl;
+            return (functions[i])(formTarget);
+        }
+    }
+    //throw exception if any of the form names is found
+    throw FormNotFound();
 }
 
 const char *Intern::FormNotFound::what() const throw()
