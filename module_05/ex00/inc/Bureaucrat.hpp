@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:11 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/08 20:19:41 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/22 18:05:53 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,13 @@ class Bureaucrat
 
         class GradeTooHighException : public std::exception
         {
-            const char *what() const throw();
+            public:
+                const char *what() const throw();
         };
         class GradeTooLowException : public std::exception
         {
-            const char *what() const throw();
+            public:
+                const char *what() const throw();
         };
 };
 

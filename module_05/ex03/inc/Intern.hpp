@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 18:31:08 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/21 18:46:25 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:58:11 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ class Intern
 
         class FormNotFound : public std::exception
         {
-            const char *what() const throw();
+            public:
+                const char *what() const throw();
         };
 };
 
