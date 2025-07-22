@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:38:30 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/07/22 08:08:51 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:17:14 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,23 @@ int main()
     }
 
     std::cout << std::endl;
-    std::cout << "--- Test 02: Intern create different forms ---" << std::endl;
+    std::cout << "--- Test 02: Intern create different forms and president signs and execute them---" << std::endl;
 
     try
     {
-        formB = intern.makeForm("ShrubberyCreation", "beach");
+        formB = intern.makeForm("ShrubberyCreation", "forest");
         std::cout << *formB << std::endl;
         president.signForm(formB, "");
         president.executeForm(*formB);
         std::cout << std::endl;
         
-        formC = intern.makeForm("RobotomyRequest", "classroom");
+        formC = intern.makeForm("RobotomyRequest", "Robocop");
         std::cout << *formC << std::endl;
         president.signForm(formC, "");
         president.executeForm(*formC);
         std::cout << std::endl;
 
-        formD = intern.makeForm("PresidentialPardon", "coffe corner");
+        formD = intern.makeForm("PresidentialPardon", "Adam");
         std::cout << *formD << std::endl;
         president.signForm(formD, "");
         president.executeForm(*formD);
