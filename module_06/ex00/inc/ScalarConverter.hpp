@@ -26,11 +26,11 @@ class ScalarConverter
         ScalarConverter &operator=(const ScalarConverter &other);
         virtual ~ScalarConverter() = 0;
 
-        static bool isChar(const std::string rep);
-        static bool isIntiger(const std::string rep);
-        static bool isFloat(const std::string rep);
-        static bool isDouble(const std::string rep);
-        static bool isInfinite(const std::string rep);
+        static bool isChar(const std::string &rep);
+        static bool isIntiger(const std::string &rep);
+        static bool isFloat(const std::string &rep);
+        static bool isDouble(const std::string &rep);
+        static bool isInfinite(const std::string &rep);
 
     public:
         static void converter(const std::string rep);
