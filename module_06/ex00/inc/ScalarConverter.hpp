@@ -18,6 +18,8 @@
 #include <limits>
 #include <cstdlib>
 
+#DIGITS 0123456789
+
 class ScalarConverter
 {
     private:

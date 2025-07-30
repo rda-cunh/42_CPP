@@ -33,9 +33,14 @@ ScalarConverter::isChar(const std::string &rep)
     return (rep.size() = 1 && std::isprint(rep[0]) && !std::isdigit(rep[0]))
 }
 
-ScalarConverter::isIntiger(const std::string &rep)
+bool ScalarConverter::isIntiger(const std::string &rep)
 {
     const size_t signal = rep.find('-');
-
     if (signal != 0 && signal != std::string::npos)
+        return (false);
+    
+    if (rep.find_first_not_of(
+        DIGITS, signal == std::string::npos ? 0 : 1) != std::string::npos)
+        return (false);
+    return(true),
 }
