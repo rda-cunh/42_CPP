@@ -14,12 +14,12 @@
 
 ScalarConverter::ScalarConverter() {}
 
-ScalarConverter::ScalarConverter(const ScalarConverter &other);
+ScalarConverter::ScalarConverter(const ScalarConverter &other)
 {
     *this = other;
 }
 
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other);
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 {
     if (this == &other)
         return (*this);
@@ -28,9 +28,9 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other);
 
 ScalarConverter::~ScalarConverter() {}
 
-ScalarConverter::isChar(const std::string &rep)
+bool ScalarConverter::isChar(const std::string &rep)
 {
-    return (rep.size() = 1 && std::isprint(rep[0]) && !std::isdigit(rep[0]))
+    return (rep.size() == 1 && std::isprint(rep[0]) && !std::isdigit(rep[0]));
 }
 
 bool ScalarConverter::isIntiger(const std::string &rep)
@@ -40,7 +40,39 @@ bool ScalarConverter::isIntiger(const std::string &rep)
         return (false);
     
     if (rep.find_first_not_of(
-        DIGITS, signal == std::string::npos ? 0 : 1) != std::string::npos)
+            DIGITS, signal == std::string::npos ? 0 : 1) != std::string::npos)
         return (false);
-    return(true),
+    return(true);
+}
+
+/* bool ScalarConverter::isFloat(const std::string &rep)
+{
+    const size_t signal = rep.find('-');
+    if (signal != 0 && signal != std::string::npos)
+        return (false);
+
+    const 
+} */
+
+void ScalarConverter::convertFromChar(const std::string &rep)
+{
+    convertToChar(rep[0]);
+
+}
+
+void ScalarConverter::convertToChar(const char &c)
+{
+    if (std::isprint(c))
+        std::cout << "char: " << c << std::endl;
+    else
+        std::cout << "char: " << "Non displayable" << std::endl;
+}
+
+void ScalarConverter::converter(const std::string &rep)
+{
+    if (isChar(rep))
+        convertFromChar(rep);
+//  else if (isIntiger(cons ))
+    else
+        std::cout << "Unknown Type." << std::endl;
 }

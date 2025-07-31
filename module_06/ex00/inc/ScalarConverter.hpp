@@ -18,7 +18,7 @@
 #include <limits>
 #include <cstdlib>
 
-#DIGITS 0123456789
+#define DIGITS "0123456789"
 
 class ScalarConverter
 {
@@ -34,8 +34,13 @@ class ScalarConverter
         static bool isDouble(const std::string &rep);
         static bool isInfinite(const std::string &rep);
 
+        static void convertFromChar(const std::string &rep);
+        static void convertToChar(const char &c);
+        static void convertToNumber(const std::string &rep);
+        static void convertFromInfinite(const std::string &rep);
+        
     public:
-        static void converter(const std::string rep);
+        static void converter(const std::string &rep);
 };
 
 #endif
