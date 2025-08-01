@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <iomanip>
 
 ScalarConverter::ScalarConverter() {}
 
@@ -57,7 +58,10 @@ bool ScalarConverter::isIntiger(const std::string &rep)
 void ScalarConverter::convertFromChar(const std::string &rep)
 {
     convertToChar(rep[0]);
-
+    std::cout << std::fixed << std::setprecision(1);
+    std::cout << "int: " << static_cast<int>(rep[0]) << std::endl;
+    std::cout << "float: " << static_cast<float>(rep[0]) << "f" << std::endl;
+    std::cout << "Double: " << static_cast<double>(rep[0]) << std::endl;
 }
 
 void ScalarConverter::convertToChar(const char &c)
@@ -68,11 +72,12 @@ void ScalarConverter::convertToChar(const char &c)
         std::cout << "char: " << "Non displayable" << std::endl;
 }
 
-void ScalarConverter::converter(const std::string &rep)
+void ScalarConverter::convert(const std::string &rep)
 {
     if (isChar(rep))
         convertFromChar(rep);
-//  else if (isIntiger(cons ))
+//  else if (isIntiger(rep))
+//      convertToNumber(rep);  
     else
         std::cout << "Unknown Type." << std::endl;
 }

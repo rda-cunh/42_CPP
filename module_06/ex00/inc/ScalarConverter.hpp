@@ -40,7 +40,7 @@ class ScalarConverter
         static void convertFromInfinite(const std::string &rep);
         
     public:
-        static void converter(const std::string &rep);
+        static void convert(const std::string &rep);
 };
 
 #endif
