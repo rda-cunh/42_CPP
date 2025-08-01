@@ -36,9 +36,11 @@ class ScalarConverter
 
         static void convertFromChar(const std::string &rep);
         static void convertToChar(const char &c);
-        static void convertToNumber(const std::string &rep);
+        static void convertToNumber(const std::string &rep, long double number);
         static void convertFromInfinite(const std::string &rep);
         
+        //check subject to identify here the functions / subject says to have only one function
+
     public:
         static void convert(const std::string &rep);
 };
