@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-#include <iomanip>
+
 
 ScalarConverter::ScalarConverter() {}
 
@@ -56,9 +56,43 @@ bool ScalarConverter::isFloat(const std::string &rep)
     if (dot == std::string::npos)
         return (false);
 
-    if (rep.size() - 1 != 'f')
+    if (rep[rep.size() - 1] != 'f')
+        return (false);
+
+    for (size_t i = 0; i < rep.size(); i++)
+    {
+        if (i == 0 && signal == 0)
+            continue;
+        if (i == dot)
+            continue;
+        if (i == rep.size() - 1)
+            continue;
+        if (!std::isdigit(rep[i]))
+            return (false);
+    }
+    return (true);
+}
+
+bool ScalarConverter::isDouble(const std::string &rep)
+{
+    const size_t signal = rep.find('-');
+    if (signal != 0 && signal != std::string::npos)
+        return (false);
+
+    const size_t dot = rep.find('.');
+    if (dot == std::string::npos)
         return (false);
     
+    for (size_t i = 0; i < rep.size(); i++)
+    {
+        if (i == 0 && signal == 0)
+            continue;
+        if (i == dot)
+            continue;
+        if (!std::isdigit(rep[i]))
+            return (false);
+    }
+    return (true);
 }
 
 void ScalarConverter::convertFromChar(const std::string &rep)
@@ -91,14 +125,14 @@ void ScalarConverter::convertToNumber(const std::string &rep, long double number
     else
         std::cout << "int: " << std::atoi(rep.c_str()) << std::endl;
 
-    if (number < std::numeric_limits<float>::min() 
+    if (number < -std::numeric_limits<float>::max() 
         || number > std::numeric_limits<float>::max())
         std::cout << "float: overflows" << std::endl;
     else
         std::cout << "float: " << std::strtof(rep.c_str(), NULL) 
             << "f" << std::endl;
 
-    if (number < std::numeric_limits<double>::min() 
+    if (number < -std::numeric_limits<double>::max() 
         || number > std::numeric_limits<double>::max())
         std::cout << "double: overflows" <<  std::endl; 
     else
@@ -113,7 +147,10 @@ void ScalarConverter::convert(const std::string &rep)
         convertFromChar(rep);
     else if (isIntiger(rep))
         convertToNumber(rep, std::strtold(rep.c_str(), NULL));
-//    else if (isFloat(rep))
+    else if (isFloat(rep))
+        convertToNumber(rep, std::strtold(rep.c_str(), NULL));
+    else if (isDouble(rep))
+        convertToNumber(rep, std::strtold(rep.c_str(), NULL));
     else
         std::cout << "Unknown Type." << std::endl;
 }
