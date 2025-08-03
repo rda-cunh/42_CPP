@@ -26,7 +26,7 @@ class ScalarConverter
         ScalarConverter();
         ScalarConverter(const ScalarConverter &other);
         ScalarConverter &operator=(const ScalarConverter &other);
-        virtual ~ScalarConverter() = 0;
+        virtual ~ScalarConverter();
 
         static bool isChar(const std::string &rep);
         static bool isInteger(const std::string &rep);
@@ -38,8 +38,6 @@ class ScalarConverter
         static void convertToChar(const char &c);
         static void convertToNumber(const std::string &rep, long double number);
         static void convertFromInfinite(const std::string &rep);
-        
-        //check subject to identify here the functions / subject says to have only one function
 
     public:
         static void convert(const std::string &rep);
