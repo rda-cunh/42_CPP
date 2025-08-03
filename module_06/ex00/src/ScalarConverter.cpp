@@ -12,7 +12,6 @@
 
 #include "ScalarConverter.hpp"
 
-
 ScalarConverter::ScalarConverter() {}
 
 ScalarConverter::ScalarConverter(const ScalarConverter &other)
@@ -34,15 +33,18 @@ bool ScalarConverter::isChar(const std::string &rep)
     return (rep.size() == 1 && std::isprint(rep[0]) && !std::isdigit(rep[0]));
 }
 
-bool ScalarConverter::isIntiger(const std::string &rep)
+bool ScalarConverter::isInteger(const std::string &rep)
 {
     const size_t signal = rep.find('-');
     if (signal != 0 && signal != std::string::npos)
         return (false);
     
-    if (rep.find_first_not_of(
-            DIGITS, signal == std::string::npos ? 0 : 1) != std::string::npos)
-        return (false);
+    size_t start = (signal == 0) ? 1 : 0;
+    for (size_t i = start; i < rep.size(); ++i) 
+    {
+        if (!std::isdigit(rep[i]))
+         return false;
+    }
     return(true);
 }
 
@@ -95,6 +97,14 @@ bool ScalarConverter::isDouble(const std::string &rep)
     return (true);
 }
 
+bool ScalarConverter::isInfinite(const std::string &rep)
+{
+    if (rep == "+inf" || rep == "-inf" || rep == "nan" 
+        || rep == "+inff" || rep == "-inff" || rep == "nanf")
+        return (true);
+    return (false); 
+}
+
 void ScalarConverter::convertFromChar(const std::string &rep)
 {
     convertToChar(rep[0]);
@@ -140,17 +150,36 @@ void ScalarConverter::convertToNumber(const std::string &rep, long double number
             << std::endl;
 }
 
+void ScalarConverter::convertFromInfinite(const std::string &rep)
+{
+    std::cout << "char: impossible" << std::endl;
+    std::cout << "int: impossible" << std::endl;
+
+    if (rep.find("nan") != std::string::npos)
+    {
+        std::cout << "float: nanf" << std::endl;
+        std::cout << "double: nan" << std::endl;
+    }
+    else
+    {
+        std::cout << "float: " << rep[0] << "inff" << std::endl;
+        std::cout << "double: " << rep[0] << "inf" <<  std::endl;
+    }
+}
+
 void ScalarConverter::convert(const std::string &rep)
 {
     std::cout << std::fixed << std::setprecision(1);
     if (isChar(rep))
         convertFromChar(rep);
-    else if (isIntiger(rep))
+    else if (isInteger(rep))
         convertToNumber(rep, std::strtold(rep.c_str(), NULL));
     else if (isFloat(rep))
         convertToNumber(rep, std::strtold(rep.c_str(), NULL));
     else if (isDouble(rep))
         convertToNumber(rep, std::strtold(rep.c_str(), NULL));
+    else if (isInfinite(rep))
+        convertFromInfinite(rep);
     else
         std::cout << "Unknown Type." << std::endl;
 }

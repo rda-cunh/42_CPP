@@ -20,8 +20,6 @@
 #include <cstdlib>
 #include <cstring>
 
-#define DIGITS "0123456789"
-
 class ScalarConverter
 {
     private:
@@ -31,7 +29,7 @@ class ScalarConverter
         virtual ~ScalarConverter() = 0;
 
         static bool isChar(const std::string &rep);
-        static bool isIntiger(const std::string &rep);
+        static bool isInteger(const std::string &rep);
         static bool isFloat(const std::string &rep);
         static bool isDouble(const std::string &rep);
         static bool isInfinite(const std::string &rep);
