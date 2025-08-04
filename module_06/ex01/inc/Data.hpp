@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:26:11 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/08/03 16:50:48 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/08/04 19:04:07 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 struct Data
 {
         std::string name;
-        int         phone_umber;
+        int         phone_number;
 };
 
 #endif

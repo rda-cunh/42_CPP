@@ -15,15 +15,20 @@
 
 int main()
 {
-    Data ContactSerializer = {"Ricardo", "960000000"};
+    Data ContactSerializer = {"Ricardo", 964242424};
     std::cout << "Before serializing: " << std::endl
-              << "Name: " << ContactSerializer.name
-              << "Number: " << ContactSerializer.phone_number << std::endl;
+              << "Name: " << ContactSerializer.name << std::endl
+              << "Phone Number: " << ContactSerializer.phone_number 
+              << std::endl << std::endl;
 
     uintptr_t converted = Serializer::serialize(&ContactSerializer);
-    std::cout << "After serializing: " << std::endl
-              << "Name: " << *reinterpret_cast<int *>(converted)
-              << "Number: " << *reinterpret_cast<int *>(converted) << std::endl;
-    
+    std::cout << "After serializing (address): " << converted << std::endl << std::endl;
+
+    Data *reconverted = Serializer::deserialize(converted);
+    std::cout << "After deserializing: " << std::endl
+              << "Name: " << reconverted->name << std::endl
+              << "Phone Number: " << reconverted->phone_number 
+              << std::endl << std::endl;
+      
     return (0);
 }
