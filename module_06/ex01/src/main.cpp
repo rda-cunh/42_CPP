@@ -11,9 +11,19 @@
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
+#include <iostream>
 
 int main()
 {
+    Data ContactSerializer = {"Ricardo", "960000000"};
+    std::cout << "Before serializing: " << std::endl
+              << "Name: " << ContactSerializer.name
+              << "Number: " << ContactSerializer.phone_number << std::endl;
+
+    uintptr_t converted = Serializer::serialize(&ContactSerializer);
+    std::cout << "After serializing: " << std::endl
+              << "Name: " << *reinterpret_cast<int *>(converted)
+              << "Number: " << *reinterpret_cast<int *>(converted) << std::endl;
     
     return (0);
 }
