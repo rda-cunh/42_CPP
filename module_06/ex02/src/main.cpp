@@ -26,6 +26,9 @@ int main()
     Base *wrongClass = new D;
     identify(wrongClass);
     identify(*wrongClass);
+
+    delete derivedClass;
+    delete wrongClass;
       
     return (0);
 }
