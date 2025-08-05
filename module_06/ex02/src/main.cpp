@@ -11,14 +11,21 @@
 /* ************************************************************************** */
 
 #include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
 #include <iostream>
+
+class D : public Base {};
 
 int main()
 {
+    std::cout << "Test with a derived class (reference and pointer):" << std::endl;
+    Base *derivedClass = generate();
+    identify(derivedClass);
+    identify(*derivedClass);
 
+    std::cout << "Test with a wrong/non recognised class:" << std::endl;
+    Base *wrongClass = new D;
+    identify(wrongClass);
+    identify(*wrongClass);
       
     return (0);
 }
