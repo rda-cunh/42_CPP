@@ -6,7 +6,7 @@
 #    By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/10 17:41:50 by rda-cunh          #+#    #+#              #
-#    Updated: 2025/08/04 19:59:34 by rda-cunh         ###   ########.fr        #
+#    Updated: 2025/08/06 18:07:18 by rda-cunh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = inc
 
-SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/Base.hpp $(SRC_DIR)/A.hpp \
-		$(SRC_DIR)/B.hpp $(SRC_DIR)/c.hpp
+SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/Base.cpp
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CC = c++

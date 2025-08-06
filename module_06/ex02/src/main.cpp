@@ -18,14 +18,15 @@ class D : public Base {};
 int main()
 {
     std::cout << "Test with a derived class (reference and pointer):" << std::endl;
-    Base *derivedClass = generate();
-    identify(derivedClass);
-    identify(*derivedClass);
+    Base *derivedClass = Base::generate();
+    Base::identify(derivedClass);
+    Base::identify(*derivedClass);
+    std::cout << std::endl;
 
     std::cout << "Test with a wrong/non recognised class:" << std::endl;
     Base *wrongClass = new D;
-    identify(wrongClass);
-    identify(*wrongClass);
+    Base::identify(wrongClass);
+    Base::identify(*wrongClass);
 
     delete derivedClass;
     delete wrongClass;

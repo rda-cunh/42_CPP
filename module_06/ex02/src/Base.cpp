@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 19:54:39 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/08/04 20:28:38 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/08/06 17:51:29 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ Base *Base::generate(void)
 void Base::identify(Base* p)
 {
     if (dynamic_cast<A *>(p))
-        std::cout << "A" << std::endl;
+        std::cout << "Identified as A." << std::endl;
     else if (dynamic_cast<B *>(p))
-        std::cout << "B" << std::endl;
+        std::cout << "Identified as B." << std::endl;
     else if (dynamic_cast<C *>(p))
-        std::cout << "C" << std::endl;
+        std::cout << "Identified as C." << std::endl;
     else
         std::cout << "Type not identified." << std::endl;
 }
@@ -55,7 +55,7 @@ void Base::identify(Base& p)
     try
     {
         (void)dynamic_cast<A &>(p);
-        std::cout << "-> A <-" << std::endl;
+        std::cout << "-> Identified as A. <-" << std::endl;
         return;
     }
     catch (const std::exception &e) {}
@@ -63,7 +63,7 @@ void Base::identify(Base& p)
     try
     {
         (void)dynamic_cast<B &>(p);
-        std::cout << "-> B <-" << std::endl;
+        std::cout << "-> Identified as B. <-" << std::endl;
         return;
     }
     catch (const std::exception &e) {}
@@ -71,7 +71,7 @@ void Base::identify(Base& p)
     try
     {
         (void)dynamic_cast<C &>(p);
-        std::cout << "-> C <-" << std::endl;
+        std::cout << "-> Identified as C. <-" << std::endl;
         return;
     }
     catch (const std::exception &e) {}
