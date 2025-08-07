@@ -26,7 +26,7 @@ class ScalarConverter
         ScalarConverter();
         ScalarConverter(const ScalarConverter &other);
         ScalarConverter &operator=(const ScalarConverter &other);
-        virtual ~ScalarConverter();
+        ~ScalarConverter();
 
         static bool isChar(const std::string &rep);
         static bool isInteger(const std::string &rep);
