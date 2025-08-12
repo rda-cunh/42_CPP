@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   templates.hpp                                      :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 07:44:33 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/08/12 08:01:29 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:23:40 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEMPLATES_HPP
-# define TEMPLATES_HPP
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
 template <typename T>
 void swap(T &a, T &b)
