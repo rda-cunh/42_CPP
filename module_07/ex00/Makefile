@@ -6,11 +6,11 @@
 #    By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/10 17:41:50 by rda-cunh          #+#    #+#              #
-#    Updated: 2025/08/08 07:43:48 by rda-cunh         ###   ########.fr        #
+#    Updated: 2025/08/12 08:04:10 by rda-cunh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 
+NAME = template
 
 SRC_DIR = src
 OBJ_DIR = obj
