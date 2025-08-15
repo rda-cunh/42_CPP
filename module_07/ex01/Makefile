@@ -6,11 +6,11 @@
 #    By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/10 17:41:50 by rda-cunh          #+#    #+#              #
-#    Updated: 2025/08/12 17:00:21 by rda-cunh         ###   ########.fr        #
+#    Updated: 2025/08/15 17:32:51 by rda-cunh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = inter
+NAME = iter
 
 SRC_DIR = src
 OBJ_DIR = obj
