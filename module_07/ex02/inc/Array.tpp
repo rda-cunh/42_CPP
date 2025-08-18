@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:38:15 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/08/18 16:36:38 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:50:45 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ T &Array<T>::operator[](unsigned int i)
 template <class T> 
 const char *Array<T>::OutOfRange::what() const throw()
 {
-    return ("Out of range Index.");
+    return ("Out of range index.");
 }
 
