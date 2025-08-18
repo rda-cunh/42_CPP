@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:37 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/08/17 16:41:03 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/08/18 09:03:29 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include <exception>
-#include "Array.tpp"
 
 template <typename T>
 class Array
@@ -31,15 +30,17 @@ class Array
         Array &operator=(const Array &other);
         ~Array();
 
-        unsigned int size() const;  //method to get the size of the array
+        unsigned int size() const;                  //method to get the size of the array
 
-        T &operator[](unsigned int i); //operator overloading to allow access to the element i of the array
+        T &operator[](unsigned int i);              //operator overloading to allow access to the element i of the array
 
-        class OutOfRange : public std::exception     //exception for accessing an element of ouf the array range
+        class OutOfRange : public std::exception    //exception for accessing an element of ouf the array range
         {
             const char *what() const throw();
-        }
+        };
         
 };
+
+#include "Array.tpp"
 
 #endif

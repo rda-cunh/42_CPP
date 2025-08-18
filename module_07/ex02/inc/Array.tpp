@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:38:15 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/08/17 16:41:16 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/08/18 08:29:11 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ template <class T> Array<T>::Array() : _size(0)
 template <class T> Array<T>::Array(unsigned int n) : _size(n)
 {
     std::cout << "Array: constructor called." << std::endl;
-    thix->_array = new T(n);
+    this->_array = new T(n);
 }
 
 template <class T> Array<T>::Array(const Array &other)
@@ -52,5 +52,15 @@ template <class T> Array<T>::~Array()
 
 template <class T> unsigned int Array<T>::size() const {return this->_size; }
 
+template <class T> T &Array<T>::operator[](unsigned int i)
+{
+    if (i > this->_size)
+        throw OutOfRange();
+    return (this->_array[i]);
+}
 
+template <class T> const char *Array<T>::OutOfRange::what() const throw()
+{
+    return ("Out of range Index.");
+}
 
