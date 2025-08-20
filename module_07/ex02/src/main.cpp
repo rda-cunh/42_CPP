@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/08/18 17:19:49 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/08/20 08:08:16 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int main()
         std::cout << "Out of Bound exception: " << e.what() << std::endl;
     }
     std::cout << std::endl;
+
     std::cout << "*** Test 2: Array of ints ***" << std::endl;
     try
     {
@@ -90,5 +91,22 @@ int main()
     {
         std::cout << "Out of Bound exception: " << e.what() << std::endl;
     }
+    std::cout << std::endl;
+
+    std::cout << "*** Test 3: Empty Array ***" << std::endl;
+    try
+    {
+        //create an empty array and print its size
+        Array<int> emptyArray;
+        std::cout << "Size of array: " << emptyArray.size() << std::endl;
+
+        //trying to access an empty array will throw an exception
+        emptyArray[0] = 42;
+    }
+    catch(const std::exception &e)
+    {
+        std::cout << "Out of Bound exception: " << e.what() << std::endl;
+    }
+
     return (0);
 }

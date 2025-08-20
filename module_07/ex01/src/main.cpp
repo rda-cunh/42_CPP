@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 16:57:45 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/08/19 14:17:05 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/08/20 07:59:30 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,7 @@
 #include <iostream>
 #include <string>
 
-class Awesome
-{
-public:
-Awesome( void ) : _n( 42 ) { return; }
-int get( void ) const { return this->_n; }
-private:
-int _n;
-};
-
-std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get(); return o; }
-template< typename T >
-void print( T & x ) { std::cout << x << std::endl; return; }
-
-int main() 
-{
-int tab[] = { 0, 1, 2, 3, 4 }; // <--- I never understood why you can't write int[] tab. Wouldn't that make more sense?
-Awesome tab2[5];
-iter( tab, 5, print );
-iter( tab2, 5, print );
-return 0;
-}
-
-/* void ft_printChar(char &c) { std::cout << c << std::endl; }
+void ft_printChar(char &c) { std::cout << c << std::endl; }
 void ft_doubleNum(int &n) 
 { 
     n *= 2; 
@@ -50,7 +28,7 @@ void ft_moduleFloats(float &f)
 
 int main()
 {
-    std::cout << "*** Test 1: print each char of a string (array of chars) ***" << std::endl;
+    std::cout << "*** Test 1: print each char of a string ***" << std::endl;
     std::string str = "Hello World!";
     ::iter(&str[0], str.size(), ft_printChar);
     std::cout << std::endl;
@@ -65,4 +43,4 @@ int main()
     ::iter(&arrayf[0], sizeof(arrayf)/sizeof(arrayf[0]), ft_moduleFloats);
 
     return (0);
-} */
+}
