@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:38:15 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/08/18 16:50:45 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/08/20 08:24:00 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,14 @@ T &Array<T>::operator[](unsigned int i)
     if (i >= this->_size)
         throw OutOfRange();
     return (this->_array[i]);
+}
+
+template <class T>
+T const &Array<T>::operator[](unsigned int i) const
+{
+    if (i >= this->_size)
+        throw OutOfRange();
+    return this->_array[i];
 }
 
 template <class T> 

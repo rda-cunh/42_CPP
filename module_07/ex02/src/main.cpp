@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:37:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/08/20 08:08:16 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/08/20 08:41:33 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,29 @@ int main()
 
         //trying to access an empty array will throw an exception
         emptyArray[0] = 42;
+    }
+    catch(const std::exception &e)
+    {
+        std::cout << "Out of Bound exception: " << e.what() << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "*** Test 4: Const Array ***" << std::endl;
+    try
+    {
+        //create an array and populate its values with multiples of 10
+        Array<int> intArray2(5);
+        for (unsigned int i = 0; i < intArray2.size(); ++i)
+            intArray2[i] = i * 10;
+
+        //create a copy const array
+        const Array<int> constArray = intArray2; //using copy assignement operator;
+        
+        //acessing an element of the const array is possible
+        std::cout << "Printing one element of the array to check access is possible (position 2): " << constArray[2] << std::endl;
+
+        //trying to change an element of the const array will create a compilation error (uncomment to chek the error)
+        //constArray[0] = 100;
     }
     catch(const std::exception &e)
     {
