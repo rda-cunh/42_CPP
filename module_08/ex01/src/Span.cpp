@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 07:41:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/01 07:55:56 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/01 19:42:15 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void Span::addNumber(int number)
 
 int Span::longestSpan()
 {
-    if (this->_maxContainer <= 1)
+    if (this->_listNum.size() <= 1)
         throw maxException;
 
     std::vector<int>::const_iterator it_max;
@@ -64,7 +64,19 @@ int Span::longestSpan()
 
 int Span::shortestSpan()
 {
-    if (this->_maxContainer <= 1)
+    if (this->_listNum.size() <= 1)
         throw maxException;
+       
+    std::sort(this->_listNun.begin(), this->_listNum.end());
     
+    std::vector<int>::iterator it = this->_listNum.begin();
+    int diff = abs(*it - *(it+1));
+    while (it != this->_listNum.end())
+    {
+        if (abs(*it - *(it+1)) < diff)
+            diff = abs(*it - *(it+1));
+        it++;
+    }
+    
+    return (diff);
 }

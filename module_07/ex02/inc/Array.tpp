@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:38:15 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/08/20 08:24:00 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:37:54 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ Array<T>::Array() : _size(0)
     this->_array = NULL;
 }
 
-template <class T> Array<T>::Array(unsigned int n) : _size(n)
+template <class T> 
+Array<T>::Array(unsigned int n) : _size(n)
 {
     std::cout << "Array: constructor called." << std::endl;
     this->_array = new T[n]();
