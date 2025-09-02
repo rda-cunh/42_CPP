@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 07:41:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/02 19:38:20 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/02 19:45:45 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,12 @@ int Span::shortestSpan()
 
 void Span::addRandomNumbers(unsigned int quantity)
 {
-    srandom(time(0));
-    for (std::vector<int>::iterator it = this->_listNum.begin(); it != this->_listNum.end(); it++)
+    std::srand(std::time(0));
+    for (std::vector<int>::iterator it = this->_listNum.begin(); 
+        it != this->_listNum.end(); it++)
     {
-        *it = random() % quantity;
+        *it = std::rand() % quantity;
+        std::cout << "Random number " << *it << "added." << std::endl;
     }
 }
 
