@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 07:41:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/01 19:42:15 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/02 19:38:20 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void Span::addNumber(int number)
 int Span::longestSpan()
 {
     if (this->_listNum.size() <= 1)
-        throw maxException;
+        throw Span::maxException();
 
     std::vector<int>::const_iterator it_max;
     std::vector<int>::const_iterator it_min;
@@ -65,9 +65,9 @@ int Span::longestSpan()
 int Span::shortestSpan()
 {
     if (this->_listNum.size() <= 1)
-        throw maxException;
+        throw Span::maxException();
        
-    std::sort(this->_listNun.begin(), this->_listNum.end());
+    std::sort(this->_listNum.begin(), this->_listNum.end());
     
     std::vector<int>::iterator it = this->_listNum.begin();
     int diff = abs(*it - *(it+1));
@@ -79,4 +79,23 @@ int Span::shortestSpan()
     }
     
     return (diff);
+}
+
+void Span::addRandomNumbers(unsigned int quantity)
+{
+    srandom(time(0));
+    for (std::vector<int>::iterator it = this->_listNum.begin(); it != this->_listNum.end(); it++)
+    {
+        *it = random() % quantity;
+    }
+}
+
+const char *Span::maxException::what() const throw()
+{
+    return ("Exception: Max number of the container achieved.");
+}
+
+const char *Span::noSpanException::what() const throw()
+{
+    return ("Exception: Impossible to calculate span.");
 }
