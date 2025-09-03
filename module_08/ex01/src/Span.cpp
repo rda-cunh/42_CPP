@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 07:41:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/03 07:52:49 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/03 23:34:26 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Span &Span::operator=(const Span &other)
 
 Span::~Span()
 {
-    std::cout << "Span: copy destructor called." << std::endl;
+    std::cout << "Span: destructor called." << std::endl;
 }
 
 void Span::addNumber(int number)
@@ -71,13 +71,13 @@ int Span::shortestSpan()
        
     std::sort(this->_listNum.begin(), this->_listNum.end());
     
-    std::vector<int>::iterator it = this->_listNum.begin();
-    int diff = abs(*it - *(it+1));
-    while (it != this->_listNum.end())
+    int diff = std::abs(this->_listNum[1] - this->_listNum[0]);
+    for(std::vector<int>::iterator it = this->_listNum.begin(); 
+        it != this->_listNum.end() - 1; it++)
     {
-        if (abs(*it - *(it+1)) < diff)
-            diff = abs(*it - *(it+1));
-        it++;
+        int currentDiff = std::abs(*it - *(it+1));
+        if (currentDiff < diff)
+            diff = currentDiff;
     }
     
     return (diff);
@@ -90,7 +90,7 @@ void Span::addRandomNumbers(unsigned int quantity)
     {
         int num = rand();
         Span::addNumber(num);
-        std::cout << "Random number " << num << "added." << std::endl;
+        std::cout << "Random number " << num << " added." << std::endl;
     }
 }
 
