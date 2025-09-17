@@ -6,7 +6,7 @@
 #    By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/10 17:41:50 by rda-cunh          #+#    #+#              #
-#    Updated: 2025/09/10 16:02:49 by rda-cunh         ###   ########.fr        #
+#    Updated: 2025/09/17 13:53:32 by rda-cunh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = inc
 
-SRCS = $(SRC_DIR)/main.cpp 
+SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/BitcoinExchange.cpp 
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CC = c++
