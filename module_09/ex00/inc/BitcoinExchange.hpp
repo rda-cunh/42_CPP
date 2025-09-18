@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:59:58 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/17 22:10:43 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/18 21:59:00 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <map>
 #include <fstream>
 #include <utility>
+#include <ctime>
 
 class BitcoinExchange
 {
@@ -26,7 +27,7 @@ private:
     BitcoinExchange(); // Default constructor (non-instantiable class).
     void parseDatabase();
     void parseInputFile(const char *filename);
-    bool checkValidData();
+    bool checkValidDate(const tm &date);
 
 public:
     BitcoinExchange(const char *file);                        // Constructor
@@ -51,6 +52,21 @@ public:
     };
 
     class NoInputFile : public std::exception
+    {
+        const char *what() const throw();
+    };
+
+    class EmptyInputFile : public std::exception
+    {
+        const char *what() const throw();
+    };
+
+    class InputLineOutOfFormat : public std::exception
+    {
+        const char *what() const throw();
+    };
+
+    class InvalidDate : public std::exception
     {
         const char *what() const throw();
     };
