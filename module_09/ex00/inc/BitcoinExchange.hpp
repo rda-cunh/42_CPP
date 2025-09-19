@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:59:58 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/18 21:59:00 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/19 18:48:52 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <fstream>
 #include <utility>
 #include <ctime>
+#include <cstdlib>
 
 class BitcoinExchange
 {
@@ -30,10 +31,10 @@ private:
     bool checkValidDate(const tm &date);
 
 public:
-    BitcoinExchange(const char *file);                        // Constructor
-    BitcoinExchange(const BitcoinExchange &other);            // Copy Constructor
-    BitcoinExchange &operator=(const BitcoinExchange &other); // Copy assignement operator
-    ~BitcoinExchange();                                       // Destructor
+    BitcoinExchange(const char *file); // Constructor
+                                       /*  BitcoinExchange(const BitcoinExchange &other);            // Copy Constructor
+                                           BitcoinExchange &operator=(const BitcoinExchange &other); // Copy assignement operator */
+    ~BitcoinExchange();                // Destructor
 
     // Exceptions
     class NoDataFile : public std::exception
@@ -67,6 +68,21 @@ public:
     };
 
     class InvalidDate : public std::exception
+    {
+        const char *what() const throw();
+    };
+
+    class WrongHeader : public std::exception
+    {
+        const char *what() const throw();
+    };
+
+    class InvalidNumber : public std::exception
+    {
+        const char *what() const throw();
+    };
+
+    class ValueOutofRange : public std::exception
     {
         const char *what() const throw();
     };
