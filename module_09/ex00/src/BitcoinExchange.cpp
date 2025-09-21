@@ -6,13 +6,20 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:59:28 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/21 01:43:34 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/21 20:49:05 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange() {};
+
+static std::string trim(const std::string str)
+{
+    std::size_t start = str.find_first_not_of(" \t");
+    std::size_t end = str.find_last_not_of(" \t");
+    return ((start == std::string::npos) ? "" : str.substr(start, end - start + 1));
+}
 
 void BitcoinExchange::parseDatabase()
 {
@@ -22,11 +29,15 @@ void BitcoinExchange::parseDatabase()
 
     std::string line;
 
-    if (!std::getline(database, line)) // Skips first line
-        throw EmptyDataFile();         // Empty data file
+    if (!std::getline(database, line))      // Skips first line
+        throw EmptyDataFile();              // Empty data file
+    if (trim(line) != "date,exchange_rate") // If trimed string is different throw an exception (just an extra mile check :) )
+        throw WrongHeader();
 
+    int lineNo = 1;
     while (std::getline(database, line))
     {
+        lineNo++;
         std::size_t pos = line.find(',');
         if (pos == std::string::npos)
             throw DataLineOutOfFormat();
@@ -36,13 +47,6 @@ void BitcoinExchange::parseDatabase()
 
         this->_list.insert(std::make_pair(date, std::atof(rate.c_str())));
     }
-}
-
-static std::string trim(const std::string str)
-{
-    std::size_t start = str.find_first_not_of(" \t");
-    std::size_t end = str.find_last_not_of(" \t");
-    return ((start == std::string::npos) ? "" : str.substr(start, end - start + 1));
 }
 
 float BitcoinExchange::findValue(const std::string &date) const
@@ -136,6 +140,16 @@ BitcoinExchange::BitcoinExchange(const char *file)
     parseInputFile(file);
 }
 
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) : _list(other._list) {}
+
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
+{
+    if (this == &other)
+        return (*this);
+    this->_list = other._list;
+    return (*this);
+}
+
 BitcoinExchange::~BitcoinExchange() {}
 
 const char *BitcoinExchange::NoDataFile::what() const throw()
@@ -175,7 +189,7 @@ const char *BitcoinExchange::InvalidDate::what() const throw()
 
 const char *BitcoinExchange::WrongHeader::what() const throw()
 {
-    return ("File header invalid.");
+    return ("Invalid file header. Check the data.csv and input.txt file headers.");
 }
 
 const char *BitcoinExchange::InvalidNumber::what() const throw()
@@ -185,5 +199,5 @@ const char *BitcoinExchange::InvalidNumber::what() const throw()
 
 const char *BitcoinExchange::ValueOutofRange::what() const throw()
 {
-    return ("Value is out of range.");
+    return ("Value is out of range. Use values between 0 and 1000.");
 }

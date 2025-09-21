@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:59:58 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/21 01:24:50 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/21 20:11:22 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <utility>
 #include <ctime>
 #include <cstdlib>
+#include <algorithm>
 
 class BitcoinExchange
 {
@@ -32,10 +33,10 @@ private:
     float findValue(const std::string &date) const;
 
 public:
-    BitcoinExchange(const char *file); // Constructor
-                                       /*  BitcoinExchange(const BitcoinExchange &other);            // Copy Constructor
-                                           BitcoinExchange &operator=(const BitcoinExchange &other); // Copy assignement operator */
-    ~BitcoinExchange();                // Destructor
+    BitcoinExchange(const char *file);                        // Constructor
+    BitcoinExchange(const BitcoinExchange &other);            // Copy Constructor
+    BitcoinExchange &operator=(const BitcoinExchange &other); // Copy assignement operator */
+    ~BitcoinExchange();                                       // Destructor
 
     // Exceptions
     class NoDataFile : public std::exception
