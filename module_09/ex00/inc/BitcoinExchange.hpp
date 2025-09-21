@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:59:58 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/19 18:48:52 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/21 01:24:50 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ private:
     void parseDatabase();
     void parseInputFile(const char *filename);
     bool checkValidDate(const tm &date);
+    float findValue(const std::string &date) const;
 
 public:
     BitcoinExchange(const char *file); // Constructor

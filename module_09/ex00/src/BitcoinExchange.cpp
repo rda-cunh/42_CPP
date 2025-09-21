@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:59:28 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/19 19:19:16 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/21 01:43:34 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,13 @@ static std::string trim(const std::string str)
     return ((start == std::string::npos) ? "" : str.substr(start, end - start + 1));
 }
 
-float getValue(std::string date)
+float BitcoinExchange::findValue(const std::string &date) const
 {
+    std::map<std::string, float>::const_iterator it = this->_list.upper_bound(date);
+    if (it == this->_list.begin())
+        return it->second; // date is before or equal to the database date or last if no iterator is found
+    --it;
+    return it->second;
 }
 
 void BitcoinExchange::parseInputFile(const char *filename)
@@ -90,7 +95,7 @@ void BitcoinExchange::parseInputFile(const char *filename)
             if (value < 0 || value > 1000)
                 throw ValueOutofRange();
 
-            float rate = 1; // findValue(inputDate); // change later to the appropriate function
+            float rate = findValue(inputDate); // change later to the appropriate function
 
             std::cout << inputDate << " => " << inputValue << " = " << value * rate << std::endl;
         }
@@ -180,5 +185,5 @@ const char *BitcoinExchange::InvalidNumber::what() const throw()
 
 const char *BitcoinExchange::ValueOutofRange::what() const throw()
 {
-    return ("Number format is invalid.");
+    return ("Value is out of range.");
 }
