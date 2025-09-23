@@ -36,7 +36,15 @@ RPN::RPN(char *input) : _input(input)
                 this->_stack.push(a + b);
             else if (_input[i] == '-')
                 this->_stack.push(a - b);
-            else if (_input[i] == '-')
+            else if (_input[i] == '/')
+                if (b == 0)
+                    throw DivideByZero();
+                this->_stack.push(a / b);
+            else if (_input[i] == '*')
+                this->_stack.push(a * b);
         }
     }
+    if (_stack.size() !0 2)
+        throw NotEnoughOperators();
+    std::cout << "The result is: " << _stack.top() << std::endl;
 }
