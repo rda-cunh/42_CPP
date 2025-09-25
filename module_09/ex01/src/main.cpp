@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:05:12 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/23 19:23:26 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/25 19:07:12 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int main(int argc, char **argv)
     }
     try
     {
-    RPN operation(argv[1]);
+        RPN operation(argv[1]);
     }
     catch (const std::exception &e)
     {
-        std::cerr << e.what() << std:endl;
+        std::cerr << e.what() << std::endl;
     }
     return (0);
 }

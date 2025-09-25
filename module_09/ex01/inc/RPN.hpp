@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:05:42 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/23 18:43:17 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/09/25 19:34:38 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <stack>
 #include <cstdlib>
+#include <cctype>
 
 class RPN
 {
@@ -41,6 +42,11 @@ public:
     };
 
     class NotEnoughOperators : public std::exception
+    {
+        const char *what() const throw();
+    };
+
+    class WrongCharactersFound : public std::exception
     {
         const char *what() const throw();
     };
