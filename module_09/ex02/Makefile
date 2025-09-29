@@ -16,7 +16,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = inc
 
-SRCS = $(SRC_DIR)/main.cpp 
+SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/PmergeMe.cpp 
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CC = c++
