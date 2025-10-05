@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/05 09:50:42 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/05 12:28:13 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,16 @@
 #include <deque>
 #include <limits>
 #include <ctime>
+#include <cmath>
+#include <algorithm>
 
 class PmergeMe
 {
 private:
     std::vector<int> _data;
+
+    // helper function to calculate Jacobsthal number
+    int jacobsthal(int n) const;
 
     // Ford-Johnson helper functions (for vector and deque)
     void pairSortV(std::vector<std::vector<int>> &input);
