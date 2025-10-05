@@ -6,24 +6,35 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/03 19:47:20 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/05 09:50:42 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <cstdlib>
+#include <string>
 #include <vector>
 #include <deque>
+#include <limits>
+#include <ctime>
 
 class PmergeMe
 {
 private:
     std::vector<int> _data;
 
-    // Ford-Johnson helper functions (vector and deque)
+    // Ford-Johnson helper functions (for vector and deque)
     void pairSortV(std::vector<std::vector<int>> &input);
-    void jacobsthalInsertV(std::vector<std::vector<int>> &input, std::vector<std::vector<int>> &input2); // check the best name for the args latter
+    void jacobsthalInsertV(std::vector<std::vector<int>> &main,
+                           std::vector<std::vector<int>> &pend);
+    std::vector<int> flattenV(const std::vector<std::vector<int>> &input);
+
+    void pairSortD(std::deque<std::deque<int>> &input);
+    void jacobsthalInsertD(std::deque<std::deque<int>> &main,
+                           std::deque<std::deque<int>> &pend);
+    std::deque<int> flattenD(const std::deque<std::deque<int>> &input);
 
 public:
     PmergeMe();                                 // default constructor
