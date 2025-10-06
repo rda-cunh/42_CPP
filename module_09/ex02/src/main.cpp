@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:14:52 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/06 23:24:01 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/06 23:44:08 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ main(int argc, char **argv)
     PmergeMe one(input);
     clock_t tStart = std::clock();
     std::vector<int> sorted_v = one.sortVector();
-    double elapsed_v =
+    double elapsed_v = static_cast<double>(std::clock() - tStart) / CLOCKS_PER_SEC * 1e6;
 
-        return (0);
+    return (0);
 }
