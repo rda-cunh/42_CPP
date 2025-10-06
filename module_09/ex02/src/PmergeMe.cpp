@@ -34,15 +34,58 @@ int PmergeMe::jacobsthal(int n) const
     return (static_cast<int>((std::pow(2, n + 1) + ((n % 2 == 0) ? 1 : -1) / 3)));
 }
 
+// -- VECTOR ALGORITHM --
+
 // sorting the pairs of the vector
 void PmergeMe::pairSortV(std::vector<std::vector<int>> &input)
 {
     int n = input.size();
-    if (n >= 1)
+    if (n <= 1)
         return;
     for (int i = 0; i + 1 < n; i += 2)
+    {
+        if (input[i + 1].back() < input[i].back())
+            std::swap(input[i], input[i + i]);
+    }
+    if (n > 2)
+    {
+        std::vector<std::vector<int> > grouped;
+        for (int i = 0; i + i < n; i += 2)
+        {
+        std::vector<int> merged(elements[i]);
+        merged.insert(merged.end(), input[i + 1].begin(), elements[i + 1].end());
+        grouped.push_back(merged);
+        }
+        if (n % 2)
+            grouped.push_back(merged);
+        pairSortV(grouped); // recursion for further pairs group levels
+        input = grouped; 
+    }
 }
 
+/* // insert pend elements into the main using Jacobsthal order (vector)
+void PmergeMe::jacobsthalInsertV(std::vector<std::vector<int> > &main, 
+    std::vector<std::vector<int> > &pend)
+{
+    int idx = 1;
+    while (!pend.empty())
+    {
+        int j_curr = jacobsthal(idx);
+        int j_prev = jacobsthal(idx - 1);
+        int count = j_curr - j_prev;
+
+        if (count > (static_cast<int>(pend.size())))
+            count = pend.size();
+
+        for (int i = count - 1; i >= 0; --i)
+        {
+            std::vector<int>
+        }
+    }
+}
+ */
+
+// main function of the Ford-Johnson (merge-insertion) algorithm (vector)
 std::vector<int> PmergeMe::sortVector()
 {
     std::vector<std::vector<int>> pairs;
