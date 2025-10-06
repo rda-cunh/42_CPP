@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:22 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/06 00:34:33 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/06 22:39:06 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,22 @@ void PmergeMe::pairSortV(std::vector<std::vector<int>> &input)
     }
     if (n > 2)
     {
-        std::vector<std::vector<int> > grouped;
+        std::vector<std::vector<int>> grouped;
         for (int i = 0; i + i < n; i += 2)
         {
-        std::vector<int> merged(elements[i]);
-        merged.insert(merged.end(), input[i + 1].begin(), elements[i + 1].end());
-        grouped.push_back(merged);
+            std::vector<int> merged(input[i]);
+            merged.insert(merged.end(), input[i + 1].begin(), input[i + 1].end());
+            grouped.push_back(merged);
         }
         if (n % 2)
-            grouped.push_back(merged);
+            grouped.push_back(input.back());
         pairSortV(grouped); // recursion for further pairs group levels
-        input = grouped; 
+        input = grouped;
     }
 }
 
 /* // insert pend elements into the main using Jacobsthal order (vector)
-void PmergeMe::jacobsthalInsertV(std::vector<std::vector<int> > &main, 
+void PmergeMe::jacobsthalInsertV(std::vector<std::vector<int> > &main,
     std::vector<std::vector<int> > &pend)
 {
     int idx = 1;
