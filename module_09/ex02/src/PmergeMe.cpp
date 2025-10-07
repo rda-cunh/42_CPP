@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:22 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/06 22:39:06 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:28:07 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,6 @@ void PmergeMe::jacobsthalInsertV(std::vector<std::vector<int> > &main,
         if (count > (static_cast<int>(pend.size())))
             count = pend.size();
 
-        for (int i = count - 1; i >= 0; --i)
-        {
-            std::vector<int>
-        }
     }
 }
  */
