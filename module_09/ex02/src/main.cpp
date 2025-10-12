@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:14:52 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/12 01:40:51 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/12 02:53:13 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool is_valid_number(const std::string &s)
     if (s.empty())
         return (false);
     for (size_t i = 0; i < s.size(); ++i)
-        if (s[i] < '0' && s[i] > '9')
+        if (s[i] < '0' || s[i] > '9')
             return (false);
     return (true);
 }

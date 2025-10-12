@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:22 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/12 02:03:33 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/12 02:47:22 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,23 @@ void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
     int n = input.size();
     if (n <= 1)
         return;
+    
+    // sort each pair internally
     for (int i = 0; i + 1 < n; i += 2)
     {
-        if (vectorLess(input[i + 1], input[i]))
-            std::swap(input[i], input[i + 1]);
+        if (input[i].size() == 2 && input[i][0] > input[i][1])
+            std::swap(input[i][0], input[i][1]);
     }
-    if (n > 2)
+    // sort the pairs by their largest element (second element or only element)
+    for (int i = 0; i < n - 1; ++i)
     {
-        std::vector<std::vector<int> > grouped;
-        for (int i = 0; i + 1 < n; i += 2)
+        for (int j = 0; j < n - i - 1; ++j)
         {
-            std::vector<int> merged(input[i]);
-            merged.insert(merged.end(), input[i + 1].begin(), input[i + 1].end());
-            grouped.push_back(merged);
+            int a = input[j].back();
+            int b = input[j+1].back();
+            if (a > b)
+                std::swap(input[j], input[j+1]);
         }
-        if (n % 2)
-            grouped.push_back(input.back());
-        pairSortV(grouped); // recursion for further pairs group levels
-        input = grouped;
     }
 }
 
@@ -107,6 +106,9 @@ std::vector<int> PmergeMe::flattenV(const std::vector<std::vector<int> > &input)
 std::vector<int> PmergeMe::sortVector()
 {
     int n = this->_data.size();
+    if (n <= 1)
+        return _data;
+
     std::vector<std::vector<int> > pairs;
     int i = 0;
     while (i + 1 < n)
@@ -121,7 +123,7 @@ std::vector<int> PmergeMe::sortVector()
     }
     if (i < n)
         pairs.push_back(std::vector<int>(1, _data[i]));
-
+       
     pairSortV(pairs);
 
     std::vector<std::vector<int> > main;
