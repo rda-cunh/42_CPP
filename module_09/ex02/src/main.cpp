@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:14:52 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/07 20:30:00 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/12 01:40:51 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,20 @@ bool is_valid_number(const std::string &s)
 }
 
 template <typename T>
-void print_container(const std::string prefix, const T &c)
+void print_container(const std::string &prefix, const T &c)
 {
     std::cout << prefix;
     for (size_t i = 0; i < c.size(); ++i)
-        std::cout << c[i] << (i + 1 == c.size() ? "\n" : " ");
+    {
+        std::cout << c[i];
+        if (i + 1 < c.size()) 
+            std::cout << " ";
+        else
+            std::cout << std::endl;
+    }
 }
 
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
     if (argc <= 1)
     {
@@ -40,6 +46,7 @@ main(int argc, char **argv)
     }
 
     std::vector<int> input;
+    
     for (int i = 1; i < argc; ++i)
     {
         std::string s(argv[i]);
@@ -60,10 +67,10 @@ main(int argc, char **argv)
 
     PmergeMe one(input);
     clock_t tStart = std::clock();
-    std::vector<int> sorted_v = one.sortVector();
+    std::vector<int> sorted = one.sortVector();
     double elapsed_v = static_cast<double>(std::clock() - tStart) / CLOCKS_PER_SEC * 1e6;
-    print_container("After: ", sorted_v);
-    std::cout << "Time to process a range of " << input.size() << "with std::vector : " << elapsed_v << " us" << std::endl;
+    print_container("After: ", sorted);
+    std::cout << "Time to process a range of " << input.size() << " elements with std::vector: " << elapsed_v << " us" << std::endl;
 
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:22 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/07 20:28:07 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/12 02:03:33 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,32 @@ PmergeMe::~PmergeMe() {}
 // calculate Jacobshtal number
 int PmergeMe::jacobsthal(int n) const
 {
-    return (static_cast<int>((std::pow(2, n + 1) + ((n % 2 == 0) ? 1 : -1) / 3)));
+     return (static_cast<int>((std::pow(2, n + 1) + ((n % 2 == 0) ? 1 : -1)) / 3));
 }
 
 // -- VECTOR ALGORITHM --
 
+bool PmergeMe::vectorLess(const std::vector<int> &a, const std::vector<int> &b)
+{
+    assert(!a.empty() && !b.empty());
+    return (a.back() < b.back()); 
+}
+
 // sorting the pairs of the vector
-void PmergeMe::pairSortV(std::vector<std::vector<int>> &input)
+void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
 {
     int n = input.size();
     if (n <= 1)
         return;
     for (int i = 0; i + 1 < n; i += 2)
     {
-        if (input[i + 1].back() < input[i].back())
-            std::swap(input[i], input[i + i]);
+        if (vectorLess(input[i + 1], input[i]))
+            std::swap(input[i], input[i + 1]);
     }
     if (n > 2)
     {
-        std::vector<std::vector<int>> grouped;
-        for (int i = 0; i + i < n; i += 2)
+        std::vector<std::vector<int> > grouped;
+        for (int i = 0; i + 1 < n; i += 2)
         {
             std::vector<int> merged(input[i]);
             merged.insert(merged.end(), input[i + 1].begin(), input[i + 1].end());
@@ -63,9 +69,9 @@ void PmergeMe::pairSortV(std::vector<std::vector<int>> &input)
     }
 }
 
-/* // insert pend elements into the main using Jacobsthal order (vector)
+// insert pend elements into the main using Jacobsthal order (vector)
 void PmergeMe::jacobsthalInsertV(std::vector<std::vector<int> > &main,
-    std::vector<std::vector<int> > &pend)
+                                 std::vector<std::vector<int> > &pend)
 {
     int idx = 1;
     while (!pend.empty())
@@ -75,39 +81,62 @@ void PmergeMe::jacobsthalInsertV(std::vector<std::vector<int> > &main,
         int count = j_curr - j_prev;
 
         if (count > (static_cast<int>(pend.size())))
-            count = pend.size();
+            count = static_cast<int>(pend.size());
+        for (int i = count - 1; i >= 0; --i)
+        {
+            std::vector<int> to_insert = pend.back();
+            pend.pop_back();
 
+            std::vector<std::vector<int> >::iterator it =
+                std::upper_bound(main.begin(), main.end(), to_insert, vectorLess);
+            main.insert(it, to_insert);
+        }
+        ++idx;
     }
 }
- */
+// joints vector of vector into one vector to present result
+std::vector<int> PmergeMe::flattenV(const std::vector<std::vector<int> > &input)
+{
+    std::vector<int> result;
+    for (size_t i = 0; i < input.size(); ++i)
+        result.insert(result.end(), input[i].begin(), input[i].end());
+    return (result);
+}
 
 // main function of the Ford-Johnson (merge-insertion) algorithm (vector)
 std::vector<int> PmergeMe::sortVector()
 {
-    std::vector<std::vector<int>> pairs;
-    int i = 0;
     int n = this->_data.size();
+    std::vector<std::vector<int> > pairs;
+    int i = 0;
     while (i + 1 < n)
     {
         int a = this->_data[i];
         int b = this->_data[i + 1];
-        pairs.push_back(a > b ? std::vector<int>{b, a} : std::vector<int>{a, b});
+        if (b < a)
+            pairs.push_back(std::vector<int>(2,0)), pairs.back()[0] = b, pairs.back()[1] = a;
+        else
+            pairs.push_back(std::vector<int>(2,0)), pairs.back()[0] = a, pairs.back()[1] = b;
         i += 2;
     }
     if (i < n)
-        pairs.push_back(std::vector<int>{_data[i]});
+        pairs.push_back(std::vector<int>(1, _data[i]));
 
     pairSortV(pairs);
 
-    std::vector<std::vector<int>> main;
-    main.push_back(std::vector<int>{pairs[0][0]});
+    std::vector<std::vector<int> > main;
+    main.push_back(std::vector<int>(1, pairs[0][0]));
     for (size_t idx = 0; idx < pairs.size(); ++idx)
+    {
         if (pairs[idx].size() == 2)
-            main.push_back(std::vector<int>{pairs[idx][1]});
+            main.push_back(std::vector<int>(1, pairs[idx][1]));
+    }
 
-    std::vector<std::vector<int>> pend;
+    std::vector<std::vector<int> > pend;
     for (size_t idx = 1; idx < pairs.size(); ++idx)
-        pend.push_back(std::vector<int>{pairs[idx][0]});
+        pend.push_back(std::vector<int>(1, pairs[idx][0]));
+    
     jacobsthalInsertV(main, pend);
+    
     return flattenV(main);
 }
