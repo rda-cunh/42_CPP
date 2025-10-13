@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:22 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/12 02:47:22 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:37:34 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,22 @@ int PmergeMe::jacobsthal(int n) const
      return (static_cast<int>((std::pow(2, n + 1) + ((n % 2 == 0) ? 1 : -1)) / 3));
 }
 
-// -- VECTOR ALGORITHM --
-
+// bool function to check if the pairs are in order (compare last element) for a vector
 bool PmergeMe::vectorLess(const std::vector<int> &a, const std::vector<int> &b)
 {
-    assert(!a.empty() && !b.empty());
+/*     if (a.empty() || b.empty())
+        throw std::logic_error("vectorLess: empty vector passed to comparator");   //evaluate later if this check is needed */
     return (a.back() < b.back()); 
 }
+
+bool PmergeMe::dequeLess(const std::deque<int> &a, const std::deque<int> &b)
+{
+/*     if (a.empty() || b.empty())
+        throw std::logic_error("vectorLess: empty vector passed to comparator");   //evaluate later if this check is needed */
+    return (a.back() < b.back()); 
+}
+
+// -- VECTOR ALGORITHM --
 
 // sorting the pairs of the vector
 void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
@@ -111,7 +120,7 @@ std::vector<int> PmergeMe::sortVector()
 
     std::vector<std::vector<int> > pairs;
     int i = 0;
-    while (i + 1 < n)
+    while (i + 1 < n)    
     {
         int a = this->_data[i];
         int b = this->_data[i + 1];
@@ -141,4 +150,12 @@ std::vector<int> PmergeMe::sortVector()
     jacobsthalInsertV(main, pend);
     
     return flattenV(main);
+}
+
+// -- DEQUE ALGORITHM --
+
+std::deque<int> PmergeMe::sortDeque()
+{
+
+    
 }

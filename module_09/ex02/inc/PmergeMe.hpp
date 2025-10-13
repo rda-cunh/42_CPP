@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/12 00:43:49 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:31:50 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include <ctime>
 #include <cmath>
 #include <algorithm>
-#include <cassert>
 
 class PmergeMe
 {
@@ -30,6 +29,10 @@ private:
 
     // helper function to calculate Jacobsthal number
     int jacobsthal(int n) const;
+
+    // bool function to check if the pairs are in order (compare last element)
+    static bool vectorLess(const std::vector<int> &a, const std::vector<int> &b);
+    static bool dequeLess(const std::deque<int> &a, const std::deque<int> &b);
 
     // Ford-Johnson helper functions (for vector and deque)
     void pairSortV(std::vector<std::vector<int> > &input);
@@ -42,7 +45,7 @@ private:
                                std::deque<std::deque<int>> &pend);
         std::deque<int> flattenD(const std::deque<std::deque<int>> &input); */
     
-    static bool vectorLess(const std::vector<int> &a, const std::vector<int> &b);
+
 
 public:
     PmergeMe();                                 // default constructor
@@ -53,5 +56,5 @@ public:
 
     // Ford-Johnson sorting functions (vector and deque)
     std::vector<int> sortVector();
-    //    std::deque<int> sortDeque();
+    std::deque<int> sortDeque();
 };
