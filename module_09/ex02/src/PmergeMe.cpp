@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:22 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/13 19:37:34 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/14 08:04:57 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ int PmergeMe::jacobsthal(int n) const
      return (static_cast<int>((std::pow(2, n + 1) + ((n % 2 == 0) ? 1 : -1)) / 3));
 }
 
+
+// -- VECTOR ALGORITHM --
+
 // bool function to check if the pairs are in order (compare last element) for a vector
 bool PmergeMe::vectorLess(const std::vector<int> &a, const std::vector<int> &b)
 {
@@ -42,21 +45,10 @@ bool PmergeMe::vectorLess(const std::vector<int> &a, const std::vector<int> &b)
     return (a.back() < b.back()); 
 }
 
-bool PmergeMe::dequeLess(const std::deque<int> &a, const std::deque<int> &b)
-{
-/*     if (a.empty() || b.empty())
-        throw std::logic_error("vectorLess: empty vector passed to comparator");   //evaluate later if this check is needed */
-    return (a.back() < b.back()); 
-}
-
-// -- VECTOR ALGORITHM --
-
 // sorting the pairs of the vector
 void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
 {
     int n = input.size();
-    if (n <= 1)
-        return;
     
     // sort each pair internally
     for (int i = 0; i + 1 < n; i += 2)
@@ -115,9 +107,6 @@ std::vector<int> PmergeMe::flattenV(const std::vector<std::vector<int> > &input)
 std::vector<int> PmergeMe::sortVector()
 {
     int n = this->_data.size();
-    if (n <= 1)
-        return _data;
-
     std::vector<std::vector<int> > pairs;
     int i = 0;
     while (i + 1 < n)    
@@ -125,9 +114,17 @@ std::vector<int> PmergeMe::sortVector()
         int a = this->_data[i];
         int b = this->_data[i + 1];
         if (b < a)
-            pairs.push_back(std::vector<int>(2,0)), pairs.back()[0] = b, pairs.back()[1] = a;
+        {
+            pairs.push_back(std::vector<int>(2,0));
+            pairs.back()[0] = b;
+            pairs.back()[1] = a;
+        }
         else
-            pairs.push_back(std::vector<int>(2,0)), pairs.back()[0] = a, pairs.back()[1] = b;
+        {
+            pairs.push_back(std::vector<int>(2,0));
+            pairs.back()[0] = a;
+            pairs.back()[1] = b;
+        }
         i += 2;
     }
     if (i < n)
@@ -154,8 +151,114 @@ std::vector<int> PmergeMe::sortVector()
 
 // -- DEQUE ALGORITHM --
 
+bool PmergeMe::dequeLess(const std::deque<int> &a, const std::deque<int> &b)
+{
+/*     if (a.empty() || b.empty())
+        throw std::logic_error("vectorLess: empty vector passed to comparator");   //evaluate later if this check is needed */
+    return (a.back() < b.back()); 
+}
+
+// sorting the pairs of the deque
+void PmergeMe::pairSortD(std::deque<std::deque<int> > &input)
+{
+    int n = input.size();
+
+    // sort each pair internally
+    for (int i = 0; i + 1 < n; i += 2)
+    {
+        if (input[i].size() == 2 && input[i][0] > input[i][1])
+            std::swap(input[i][0], input[i][1]);
+    }
+    // sort the pairs by their largest element (second element or only element)
+    for (int i = 0; i < n - 1; ++i)
+    {
+        for (int j = 0; j < n - i - 1; ++j)
+        {
+            int a = input[j].back();
+            int b = input[j+1].back();
+            if (a > b)
+                std::swap(input[j], input[j+1]);
+        }
+    }
+}
+
+// insert pend elements into the main using Jacobsthal order (deque)
+void PmergeMe::jacobsthalInsertD(std::deque<std::deque<int> > &main,
+                                 std::deque<std::deque<int> > &pend)
+{
+    int idx = 1;
+    while (!pend.empty())
+    {
+        int j_curr = jacobsthal(idx);
+        int j_prev = jacobsthal(idx - 1);
+        int count = j_curr - j_prev;
+
+        if (count > (static_cast<int>(pend.size())))
+            count = static_cast<int>(pend.size());
+        for (int i = count - 1; i >= 0; --i)
+        {
+            std::deque<int> to_insert = pend.back();
+            pend.pop_back();
+
+            std::deque<std::deque<int> >::iterator it =
+                std::upper_bound(main.begin(), main.end(), to_insert, dequeLess);
+            main.insert(it, to_insert);
+        }
+        ++idx;
+    }
+}
+
+// joints deque of deques into one vector to present result
+std::deque<int> PmergeMe::flattenD(const std::deque<std::deque<int> > &input)
+{
+    std::deque<int> result;
+    for (size_t i = 0; i < input.size(); ++i)
+        result.insert(result.end(), input[i].begin(), input[i].end());
+    return (result);
+}
+
+// sort deque function
 std::deque<int> PmergeMe::sortDeque()
 {
+    int n = this->_data.size();
+    std::deque<std::deque<int> > pairs;
+    int i = 0;
+    while (i + 1 < n)    
+    {
+        int a = this->_data[i];
+        int b = this->_data[i + 1];
+        if (b < a)
+        {
+            pairs.push_back(std::deque<int>(2,0));
+            pairs.back()[0] = b;
+            pairs.back()[1] = a;
+        }
+        else
+        {
+            pairs.push_back(std::deque<int>(2,0));
+            pairs.back()[0] = a;
+            pairs.back()[1] = b;
+        }
+        i += 2;
+    }
+    if (i < n)
+        pairs.push_back(std::deque<int>(1, _data[i]));
+       
+    pairSortD(pairs);
 
+    std::deque<std::deque<int> > main;
+    main.push_back(std::deque<int>(1, pairs[0][0]));
+    for (size_t idx = 0; idx < pairs.size(); ++idx)
+    {
+        if (pairs[idx].size() == 2)
+            main.push_back(std::deque<int>(1, pairs[idx][1]));
+    }
+
+    std::deque<std::deque<int> > pend;
+    for (size_t idx = 1; idx < pairs.size(); ++idx)
+        pend.push_back(std::deque<int>(1, pairs[idx][0]));
     
+    jacobsthalInsertD(main, pend);
+    
+    return flattenD(main);
 }
