@@ -68,9 +68,15 @@ int main(int argc, char **argv)
     PmergeMe one(input);
     clock_t tStart = std::clock();
     std::vector<int> sorted = one.sortVector();
-    double elapsed_v = static_cast<double>(std::clock() - tStart) / CLOCKS_PER_SEC * 1e6;
+    double elapsed_v = static_cast<double>(std::clock() - tStart) * 1000000.0 / CLOCKS_PER_SEC;
     print_container("After: ", sorted);
     std::cout << "Time to process a range of " << input.size() << " elements with std::vector: " << elapsed_v << " us" << std::endl;
 
+    PmergeMe two(input);
+    clock_t tStart = std::clock();
+    std::deque<int> sorted = two.sortDeque();
+    double elapsed_d = static_cast<double>(std::clock() - tStart) * 1000000.0 / CLOCKS_PER_SEC;
+    std::cout << "Time to process a range of " << input.size() << " elements with std::deque: " << elapsed_d << " us" << std::endl;
+    
     return (0);
 }
