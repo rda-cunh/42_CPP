@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:14:52 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/12 02:53:13 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/15 00:01:52 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,16 @@ int main(int argc, char **argv)
     print_container("Before: ", input);
 
     PmergeMe one(input);
-    clock_t tStart = std::clock();
-    std::vector<int> sorted = one.sortVector();
-    double elapsed_v = static_cast<double>(std::clock() - tStart) * 1000000.0 / CLOCKS_PER_SEC;
-    print_container("After: ", sorted);
+    clock_t tStartV = std::clock();
+    std::vector<int> sortedV = one.sortVector();
+    double elapsed_v = static_cast<double>(std::clock() - tStartV) * 1000000.0 / CLOCKS_PER_SEC;
+    print_container("After: ", sortedV);
     std::cout << "Time to process a range of " << input.size() << " elements with std::vector: " << elapsed_v << " us" << std::endl;
 
     PmergeMe two(input);
-    clock_t tStart = std::clock();
-    std::deque<int> sorted = two.sortDeque();
-    double elapsed_d = static_cast<double>(std::clock() - tStart) * 1000000.0 / CLOCKS_PER_SEC;
+    clock_t tStartD = std::clock();
+    std::deque<int> sortedD = two.sortDeque();
+    double elapsed_d = static_cast<double>(std::clock() - tStartD) * 1000000.0 / CLOCKS_PER_SEC;
     std::cout << "Time to process a range of " << input.size() << " elements with std::deque: " << elapsed_d << " us" << std::endl;
     
     return (0);

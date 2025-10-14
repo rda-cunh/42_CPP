@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/14 07:38:25 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/14 23:56:46 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ private:
     static bool vectorLess(const std::vector<int> &a, const std::vector<int> &b);
 
     // Ford-Johnson helper functions (for deque)
-    void pairSortD(std::deque<std::deque<int>> &input);
-    void jacobsthalInsertD(std::deque<std::deque<int>> &main,
-         std::deque<std::deque<int>> &pend);
-    std::deque<int> flattenD(const std::deque<std::deque<int>> &input);
+    void pairSortD(std::deque<std::deque<int> > &input);
+    void jacobsthalInsertD(std::deque<std::deque<int> > &main,
+         std::deque<std::deque<int> > &pend);
+    std::deque<int> flattenD(const std::deque<std::deque<int> > &input);
     static bool dequeLess(const std::deque<int> &a, const std::deque<int> &b);
 
 public:
