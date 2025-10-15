@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:22 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/14 08:04:57 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/15 22:48:30 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool PmergeMe::vectorLess(const std::vector<int> &a, const std::vector<int> &b)
     return (a.back() < b.back()); 
 }
 
-// sorting the pairs of the vector
+// sorting the pairs of the vector [USING SIMPLE SORTING - JUST COMPARES FIRST LEVEL OF PAIS - WORKS BUT DO NOT RESPECT COMPLETELY THE ALGO]
 void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
 {
     int n = input.size();
@@ -68,6 +68,44 @@ void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
         }
     }
 }
+
+/* // sorting the pairs of the vector recursivelly [RESPECTS ALGO BUT DOES NOT WORK - IT EATS MEMBERS]
+void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
+{
+    int n = input.size();
+    if (n <= 1)
+        return;  //nothing to sort
+    
+    // sort pairs by their maximun element
+    for (int i = 0; i + 1 < n; i += 2)
+    {
+        if (vectorLess(input[i + 1], input[i]))
+            std::swap(input[i], input[i + 1]);
+    }
+    // use recursion to group pairs into larger units
+    if (n > 2)
+    {
+        std::vector<std::vector<int> > grouped;
+        
+        //merge pairs into larger groups
+        for (int i = 0; i + 1 < n; i += 2)
+        {
+            std::vector<int> merged(input[i]);
+            merged.insert(merged.end(), input[i + 1].begin(), input[i + 1].end());
+            grouped.push_back(merged);
+        }
+
+        // handle odd elements at the end, if they exist
+        if (n % 2)
+            grouped.push_back(input.back());
+
+        // recursion on grouped pairs
+        pairSortV(grouped);
+
+        //update elements to the sorted group
+        input = grouped;
+    }
+} */
 
 // insert pend elements into the main using Jacobsthal order (vector)
 void PmergeMe::jacobsthalInsertV(std::vector<std::vector<int> > &main,
