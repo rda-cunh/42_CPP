@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/14 23:56:46 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/16 00:06:47 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ private:
     int jacobsthal(int n) const;
   
     // Ford-Johnson helper functions (for vector)
+    void pairSortVRecursive(std::vector<std::vector<int> > &input,
+        std::vector<int> &indices);
     void pairSortV(std::vector<std::vector<int> > &input);
     void jacobsthalInsertV(std::vector<std::vector<int> > &main,
         std::vector<std::vector<int> > &pend);
@@ -38,9 +40,11 @@ private:
     static bool vectorLess(const std::vector<int> &a, const std::vector<int> &b);
 
     // Ford-Johnson helper functions (for deque)
+    void pairSortDRecursive(std::deque<std::deque<int> > &input,
+        std::deque<int> &indices);
     void pairSortD(std::deque<std::deque<int> > &input);
     void jacobsthalInsertD(std::deque<std::deque<int> > &main,
-         std::deque<std::deque<int> > &pend);
+        std::deque<std::deque<int> > &pend);
     std::deque<int> flattenD(const std::deque<std::deque<int> > &input);
     static bool dequeLess(const std::deque<int> &a, const std::deque<int> &b);
 

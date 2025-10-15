@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:22 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/15 22:48:30 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/16 00:15:47 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int PmergeMe::jacobsthal(int n) const
      return (static_cast<int>((std::pow(2, n + 1) + ((n % 2 == 0) ? 1 : -1)) / 3));
 }
 
-
 // -- VECTOR ALGORITHM --
 
 // bool function to check if the pairs are in order (compare last element) for a vector
@@ -45,67 +44,89 @@ bool PmergeMe::vectorLess(const std::vector<int> &a, const std::vector<int> &b)
     return (a.back() < b.back()); 
 }
 
-// sorting the pairs of the vector [USING SIMPLE SORTING - JUST COMPARES FIRST LEVEL OF PAIS - WORKS BUT DO NOT RESPECT COMPLETELY THE ALGO]
-void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
+void PmergeMe::pairSortVRecursive(std::vector<std::vector<int> > &input, 
+        std::vector<int> &indices)
 {
-    int n = input.size();
+    int n = indices.size();
+    if (n <= 1)
+        return;
     
-    // sort each pair internally
+    // order each adjacent pair ensure indices[i] is the small and indices[i+1] is the large
     for (int i = 0; i + 1 < n; i += 2)
     {
-        if (input[i].size() == 2 && input[i][0] > input[i][1])
-            std::swap(input[i][0], input[i][1]);
+        int left = indices[i];
+        int right = indices[i + 1];
+        if (vectorLess(input[right], input[left]))
+            std::swap(indices[i], indices[i + 1]);
     }
-    // sort the pairs by their largest element (second element or only element)
-    for (int i = 0; i < n - 1; ++i)
+
+    // build grouped list that contains the "large" indices (and maybe the last number)
+    std::vector<int> grouped;
+    grouped.reserve((n + 1) / 2);
+    for (int i = 0; i + 1 < n; i += 2)
+        grouped.push_back(indices[i + 1]);
+    if (n % 2)
+        grouped.push_back(indices[n - 1]);
+
+    // recurse on grouped (to sort the large elements)
+    pairSortVRecursive(input, grouped);
+
+    // Build a map large -> small so we can reinsert the smalls in the correct place. Use a vector sized to input.size(), filled with -1 to mark "no small"
+    std::vector<int> small_for_large(input.size(), -1);
+    for (int i = 0; i + 1 < n; i += 2)
     {
-        for (int j = 0; j < n - i - 1; ++j)
-        {
-            int a = input[j].back();
-            int b = input[j+1].back();
-            if (a > b)
-                std::swap(input[j], input[j+1]);
-        }
+        int small = indices[i];
+        int large = indices[i + 1];
+        small_for_large[large] = small;
     }
+
+    // Reconstruct indices: for each element g in grouped, if it has a paired small, push the small first, then push the large. If no pair (single), push g alone.
+    std::vector<int> result;
+    result.reserve(n);
+    for (size_t k = 0; k < grouped.size(); ++k)
+    {
+        int g = grouped[k];
+        if (g >= 0 && g < static_cast<int>(small_for_large.size()) &&
+            small_for_large[g] != -1)
+        {
+            result.push_back(small_for_large[g]);
+        }
+        result.push_back(g);
+    }
+
+    // replace indices with the reconstructed order (no duplicates, same length)
+    indices = result;
 }
 
-/* // sorting the pairs of the vector recursivelly [RESPECTS ALGO BUT DOES NOT WORK - IT EATS MEMBERS]
+
+// sorting the pairs of the vector recursivelly [RESPECTS ALGO BUT DOES NOT WORK - IT EATS MEMBERS]
 void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
 {
     int n = input.size();
     if (n <= 1)
         return;  //nothing to sort
     
-    // sort pairs by their maximun element
-    for (int i = 0; i + 1 < n; i += 2)
+    // sort each pair internally
+    for (int i = 0; i < n; ++i)
     {
-        if (vectorLess(input[i + 1], input[i]))
-            std::swap(input[i], input[i + 1]);
+        if (input[i].size() == 2 && input[i][0] > input [i][1])
+            std::swap(input[i][0], input[i][1]);
     }
-    // use recursion to group pairs into larger units
-    if (n > 2)
-    {
-        std::vector<std::vector<int> > grouped;
-        
-        //merge pairs into larger groups
-        for (int i = 0; i + 1 < n; i += 2)
-        {
-            std::vector<int> merged(input[i]);
-            merged.insert(merged.end(), input[i + 1].begin(), input[i + 1].end());
-            grouped.push_back(merged);
-        }
 
-        // handle odd elements at the end, if they exist
-        if (n % 2)
-            grouped.push_back(input.back());
+    //Build an initial index list to help with ordering
+    std::vector<int> indices;
+    for (int i = 0; i < n; ++i)
+        indices.push_back(i);
+       
+    // use recursion to sort the indices based on pair max values
+    pairSortVRecursive(input, indices);
 
-        // recursion on grouped pairs
-        pairSortV(grouped);
-
-        //update elements to the sorted group
-        input = grouped;
-    }
-} */
+    // reorder input according with the indices (avoiding loosing data)
+    std::vector<std::vector<int> > sorted;
+    for (size_t i = 0; i < indices.size(); ++i)
+        sorted.push_back(input[indices[i]]);
+    input.swap(sorted);
+}
 
 // insert pend elements into the main using Jacobsthal order (vector)
 void PmergeMe::jacobsthalInsertV(std::vector<std::vector<int> > &main,
@@ -196,28 +217,86 @@ bool PmergeMe::dequeLess(const std::deque<int> &a, const std::deque<int> &b)
     return (a.back() < b.back()); 
 }
 
+void PmergeMe::pairSortDRecursive(std::deque<std::deque<int> > &input,
+                                  std::deque<int> &indices)
+{
+    int n = indices.size();
+    if (n <= 1)
+        return;
+    
+    // order each adjacent pair ensure indices[i] is the small and indices[i+1] is the large
+    for (int i = 0; i + 1 < n; i += 2)
+    {
+        int left = indices[i];
+        int right = indices[i + 1];
+        if (dequeLess(input[right], input[left]))
+            std::swap(indices[i], indices[i + 1]);
+    }
+
+    // build grouped list that contains the "large" indices (and maybe the last number)
+    std::deque<int> grouped;
+    for (int i = 0; i + 1 < n; i += 2)
+        grouped.push_back(indices[i + 1]);
+    if (n % 2)
+        grouped.push_back(indices[n - 1]);
+
+    // recurse on grouped (to sort the large elements)
+    pairSortDRecursive(input, grouped);
+
+    // Build a map large -> small so we can reinsert the smalls in the correct place. Use a vector sized to input.size(), filled with -1 to mark "no small"
+    std::deque<int> small_for_large(input.size(), -1);
+    for (int i = 0; i + 1 < n; i += 2)
+    {
+        int small = indices[i];
+        int large = indices[i + 1];
+        small_for_large[large] = small;
+    }
+
+    // Reconstruct indices: for each element g in grouped, if it has a paired small, push the small first, then push the large. If no pair (single), push g alone.
+    std::deque<int> result;
+    for (size_t k = 0; k < grouped.size(); ++k)
+    {
+        int g = grouped[k];
+        if (g >= 0 && g < static_cast<int>(small_for_large.size()) &&
+            small_for_large[g] != -1)
+        {
+            result.push_back(small_for_large[g]);
+        }
+        result.push_back(g);
+    }
+
+    // replace indices with the reconstructed order (no duplicates, same length)
+    indices = result;
+    
+}
+
+
 // sorting the pairs of the deque
 void PmergeMe::pairSortD(std::deque<std::deque<int> > &input)
 {
     int n = input.size();
+    if (n <= 1)
+        return;
 
     // sort each pair internally
-    for (int i = 0; i + 1 < n; i += 2)
+    for (int i = 0; i < n; ++i)
     {
         if (input[i].size() == 2 && input[i][0] > input[i][1])
             std::swap(input[i][0], input[i][1]);
     }
-    // sort the pairs by their largest element (second element or only element)
+    // build initial index list
+    std::deque<int> indices;
     for (int i = 0; i < n - 1; ++i)
-    {
-        for (int j = 0; j < n - i - 1; ++j)
-        {
-            int a = input[j].back();
-            int b = input[j+1].back();
-            if (a > b)
-                std::swap(input[j], input[j+1]);
-        }
-    }
+        indices.push_back(i);
+    
+    // recursive pair sorting
+    pairSortDRecursive(input, indices);
+
+    // reorder input according with sorted indices
+    std::deque<std::deque<int> > sorted;
+    for (size_t i = 0; i < indices.size(); ++i)
+        sorted.push_back(input[indices[i]]);
+    input.swap(sorted);
 }
 
 // insert pend elements into the main using Jacobsthal order (deque)
