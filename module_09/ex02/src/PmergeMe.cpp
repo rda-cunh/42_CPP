@@ -6,11 +6,14 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:22 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/16 00:15:47 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/16 20:31:54 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+int PmergeMe::_comparisonCountV = 0;
+int PmergeMe::_comparisonCountD = 0;
 
 PmergeMe::PmergeMe() {}
 
@@ -28,6 +31,10 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 
 PmergeMe::~PmergeMe() {}
 
+// getters
+int PmergeMe::getComparisonCountV() const { return _comparisonCountV; }
+int PmergeMe::getComparisonCountD() const { return _comparisonCountV; }
+
 // calculate Jacobshtal number
 int PmergeMe::jacobsthal(int n) const
 {
@@ -39,11 +46,10 @@ int PmergeMe::jacobsthal(int n) const
 // bool function to check if the pairs are in order (compare last element) for a vector
 bool PmergeMe::vectorLess(const std::vector<int> &a, const std::vector<int> &b)
 {
-/*     if (a.empty() || b.empty())
-        throw std::logic_error("vectorLess: empty vector passed to comparator");   //evaluate later if this check is needed */
+    ++_comparisonCountV;
     return (a.back() < b.back()); 
 }
-
+/* 
 void PmergeMe::pairSortVRecursive(std::vector<std::vector<int> > &input, 
         std::vector<int> &indices)
 {
@@ -99,10 +105,10 @@ void PmergeMe::pairSortVRecursive(std::vector<std::vector<int> > &input,
 }
 
 
-// sorting the pairs of the vector recursivelly [RESPECTS ALGO BUT DOES NOT WORK - IT EATS MEMBERS]
+// sorting the pairs of the vector recursivelly
 void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
 {
-    int n = input.size();
+    int n = input.size();this->_comparisonCountV = 0;
     if (n <= 1)
         return;  //nothing to sort
     
@@ -126,6 +132,19 @@ void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
     for (size_t i = 0; i < indices.size(); ++i)
         sorted.push_back(input[indices[i]]);
     input.swap(sorted);
+} */
+
+void PmergeMe::pairSortV(std::vector<std::vector<int> > &input)
+{
+    // sort pairs by their maximum element (back element)
+    for (size_t i = 0; i < input.size(); ++i)
+    {
+        for (size_t j = i + 1; j < input.size(); ++j)
+        {
+            if (input[j].back() < input[i].back())
+                std::swap(input[i], input[j]);
+        }
+    }
 }
 
 // insert pend elements into the main using Jacobsthal order (vector)
@@ -165,6 +184,7 @@ std::vector<int> PmergeMe::flattenV(const std::vector<std::vector<int> > &input)
 // main function of the Ford-Johnson (merge-insertion) algorithm (vector)
 std::vector<int> PmergeMe::sortVector()
 {
+    _comparisonCountV = 0;
     int n = this->_data.size();
     std::vector<std::vector<int> > pairs;
     int i = 0;
@@ -212,12 +232,11 @@ std::vector<int> PmergeMe::sortVector()
 
 bool PmergeMe::dequeLess(const std::deque<int> &a, const std::deque<int> &b)
 {
-/*     if (a.empty() || b.empty())
-        throw std::logic_error("vectorLess: empty vector passed to comparator");   //evaluate later if this check is needed */
+    ++_comparisonCountD;
     return (a.back() < b.back()); 
 }
 
-void PmergeMe::pairSortDRecursive(std::deque<std::deque<int> > &input,
+/* void PmergeMe::pairSortDRecursive(std::deque<std::deque<int> > &input,
                                   std::deque<int> &indices)
 {
     int n = indices.size();
@@ -297,6 +316,19 @@ void PmergeMe::pairSortD(std::deque<std::deque<int> > &input)
     for (size_t i = 0; i < indices.size(); ++i)
         sorted.push_back(input[indices[i]]);
     input.swap(sorted);
+}  */
+
+void PmergeMe::pairSortD(std::deque<std::deque<int> > &input)
+{
+    // sort pairs by their maximum element (back element)
+    for (size_t i = 0; i < input.size(); ++i)
+    {
+        for (size_t j = i + 1; j < input.size(); ++j)
+        {
+            if (input[j].back() < input[i].back())
+                std::swap(input[i], input[j]);
+        }
+    }
 }
 
 // insert pend elements into the main using Jacobsthal order (deque)
@@ -337,6 +369,7 @@ std::deque<int> PmergeMe::flattenD(const std::deque<std::deque<int> > &input)
 // sort deque function
 std::deque<int> PmergeMe::sortDeque()
 {
+    _comparisonCountD = 0;
     int n = this->_data.size();
     std::deque<std::deque<int> > pairs;
     int i = 0;

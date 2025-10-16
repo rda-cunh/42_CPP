@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:18 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/16 00:06:47 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/16 20:20:48 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class PmergeMe
 {
 private:
     std::vector<int> _data;
+    static int _comparisonCountV;
+    static int _comparisonCountD;
 
     // helper function to calculate Jacobsthal number
     int jacobsthal(int n) const;
@@ -58,4 +60,7 @@ public:
     // Ford-Johnson sorting functions (vector and deque)
     std::vector<int> sortVector();
     std::deque<int> sortDeque();
+
+    int getComparisonCountV() const;
+    int getComparisonCountD() const;
 };
