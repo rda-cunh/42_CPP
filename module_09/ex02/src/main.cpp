@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:14:52 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/16 20:24:13 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/20 11:48:18 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ int main(int argc, char **argv)
     double elapsed_v = static_cast<double>(std::clock() - tStartV) * 1000000.0 / CLOCKS_PER_SEC;
     print_container("After: ", sortedV);
     std::cout << "Time to process a range of " << input.size() << " elements with std::vector: " << elapsed_v << " us" << std::endl;
-    std::cout << "Comparissons made with std::vector: " << one.getComparisonCountV() << std::endl;
+//    std::cout << "Comparissons made with std::vector: " << one.getComparisonCountV() << std::endl;
 
     PmergeMe two(input);
     clock_t tStartD = std::clock();
     std::deque<int> sortedD = two.sortDeque();
     double elapsed_d = static_cast<double>(std::clock() - tStartD) * 1000000.0 / CLOCKS_PER_SEC;
     std::cout << "Time to process a range of " << input.size() << " elements with std::deque: " << elapsed_d << " us" << std::endl;
-    std::cout << "Comparissons made with std::deque: " << one.getComparisonCountD() << std::endl;
+//    std::cout << "Comparissons made with std::deque: " << one.getComparisonCountD() << std::endl;
     
     return (0);
 }

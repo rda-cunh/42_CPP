@@ -6,12 +6,13 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:22 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/16 20:31:54 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/20 11:47:59 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
+//initialization of the static variables
 int PmergeMe::_comparisonCountV = 0;
 int PmergeMe::_comparisonCountD = 0;
 
