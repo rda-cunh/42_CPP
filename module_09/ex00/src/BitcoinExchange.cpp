@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:59:28 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/21 20:49:05 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/20 13:45:54 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void BitcoinExchange::parseDatabase()
 
     if (!std::getline(database, line))      // Skips first line
         throw EmptyDataFile();              // Empty data file
-    if (trim(line) != "date,exchange_rate") // If trimed string is different throw an exception (just an extra mile check :) )
-        throw WrongHeader();
+    if (trim(line) != "date,exchange_rate") // If trimed string is different throw prints a message
+        std::cerr << "Invalid file header. Check the data.csv file header." << std::endl;;
 
     int lineNo = 1;
     while (std::getline(database, line))
@@ -68,9 +68,9 @@ void BitcoinExchange::parseInputFile(const char *filename)
 
     // Header check
     if (!std::getline(inputFile, inputLine)) // Skip first line
-        throw EmptyInputFile();              // Empty data file
-    if (trim(inputLine) != "date | value")   // If trimed string is different throw an exception
-        throw WrongHeader();
+        std::cerr << "The input.txt file is empty." << std::endl;             // Empty data file 
+    if (trim(inputLine) != "date | value")   // If trimed string is different prints an error
+        std::cerr << "Invalid file header. Check the input.txt file header." << std::endl;
 
     int lineNum = 1;
     while (std::getline(inputFile, inputLine))
@@ -172,11 +172,6 @@ const char *BitcoinExchange::NoInputFile::what() const throw()
     return ("There is no input.txt file available.");
 }
 
-const char *BitcoinExchange::EmptyInputFile::what() const throw()
-{
-    return ("The input.txt file is empty.");
-}
-
 const char *BitcoinExchange::InputLineOutOfFormat::what() const throw()
 {
     return ("There is a line out of format on the input.txt file.");
@@ -185,11 +180,6 @@ const char *BitcoinExchange::InputLineOutOfFormat::what() const throw()
 const char *BitcoinExchange::InvalidDate::what() const throw()
 {
     return ("Date format is invalid.");
-}
-
-const char *BitcoinExchange::WrongHeader::what() const throw()
-{
-    return ("Invalid file header. Check the data.csv and input.txt file headers.");
 }
 
 const char *BitcoinExchange::InvalidNumber::what() const throw()

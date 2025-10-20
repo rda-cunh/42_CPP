@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:59:58 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/09/21 20:11:22 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/20 13:40:25 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,22 +59,12 @@ public:
         const char *what() const throw();
     };
 
-    class EmptyInputFile : public std::exception
-    {
-        const char *what() const throw();
-    };
-
     class InputLineOutOfFormat : public std::exception
     {
         const char *what() const throw();
     };
 
     class InvalidDate : public std::exception
-    {
-        const char *what() const throw();
-    };
-
-    class WrongHeader : public std::exception
     {
         const char *what() const throw();
     };
