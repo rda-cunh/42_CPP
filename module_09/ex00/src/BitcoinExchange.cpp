@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:59:28 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/20 14:38:16 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/20 14:47:59 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void BitcoinExchange::parseInputFile(const char *filename)
             if (value < 0 || value > 1000)
                 throw ValueOutofRange();
 
-            float rate = findValue(inputDate); // change later to the appropriate function
+            float rate = findValue(inputDate); 
 
             std::cout << inputDate << " => " << inputValue << " = " << value * rate << std::endl;
         }
