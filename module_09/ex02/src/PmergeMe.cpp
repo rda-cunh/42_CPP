@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:15:22 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/20 11:47:59 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/20 11:53:06 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ PmergeMe::~PmergeMe() {}
 
 // getters
 int PmergeMe::getComparisonCountV() const { return _comparisonCountV; }
-int PmergeMe::getComparisonCountD() const { return _comparisonCountV; }
+int PmergeMe::getComparisonCountD() const { return _comparisonCountD; }
 
 // calculate Jacobshtal number
 int PmergeMe::jacobsthal(int n) const
