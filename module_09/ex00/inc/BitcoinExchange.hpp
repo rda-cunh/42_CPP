@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:59:58 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/20 13:40:25 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/20 14:34:36 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,6 @@ public:
     };
 
     class EmptyDataFile : public std::exception
-    {
-        const char *what() const throw();
-    };
-
-    class DataLineOutOfFormat : public std::exception
     {
         const char *what() const throw();
     };

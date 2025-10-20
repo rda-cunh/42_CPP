@@ -6,7 +6,7 @@
 /*   By: rda-cunh <rda-cunh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:59:28 by rda-cunh          #+#    #+#             */
-/*   Updated: 2025/10/20 13:45:54 by rda-cunh         ###   ########.fr       */
+/*   Updated: 2025/10/20 14:38:16 by rda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void BitcoinExchange::parseDatabase()
         lineNo++;
         std::size_t pos = line.find(',');
         if (pos == std::string::npos)
-            throw DataLineOutOfFormat();
+            std::cerr << "Line " << lineNo << " | There is a line out of format on the data.csv file." << std::endl;
 
         std::string date = line.substr(0, pos);
         std::string rate = line.substr(pos + 1);
@@ -68,8 +68,8 @@ void BitcoinExchange::parseInputFile(const char *filename)
 
     // Header check
     if (!std::getline(inputFile, inputLine)) // Skip first line
-        std::cerr << "The input.txt file is empty." << std::endl;             // Empty data file 
-    if (trim(inputLine) != "date | value")   // If trimed string is different prints an error
+        std::cerr << "The input.txt file is empty." << std::endl;   // Empty data file 
+    else if (trim(inputLine) != "date | value")   // If trimed string is different prints an error
         std::cerr << "Invalid file header. Check the input.txt file header." << std::endl;
 
     int lineNum = 1;
@@ -160,11 +160,6 @@ const char *BitcoinExchange::NoDataFile::what() const throw()
 const char *BitcoinExchange::EmptyDataFile::what() const throw()
 {
     return ("The data.csv file is empty.");
-}
-
-const char *BitcoinExchange::DataLineOutOfFormat::what() const throw()
-{
-    return ("There is a line out of format on the data.csv file.");
 }
 
 const char *BitcoinExchange::NoInputFile::what() const throw()
